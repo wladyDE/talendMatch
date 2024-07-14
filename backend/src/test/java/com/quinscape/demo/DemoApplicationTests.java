@@ -1,4 +1,4 @@
-package com.talend_match.demo;
+package com.quinscape.demo;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

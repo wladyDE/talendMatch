@@ -1,6 +1,6 @@
-package com.talend_match.repository;
+package com.quinscape.repository;
 
-import com.talend_match.model.Role;
+import com.quinscape.model.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

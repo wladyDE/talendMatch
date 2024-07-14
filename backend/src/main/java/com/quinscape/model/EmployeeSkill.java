@@ -1,4 +1,4 @@
-package com.talend_match.model;
+package com.quinscape.model;
 
 
 import jakarta.persistence.*;
@@ -11,6 +11,7 @@ import lombok.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@IdClass(EmployeeSkillId.class)
 public class EmployeeSkill {
     @Id
     @ManyToOne
@@ -26,3 +27,4 @@ public class EmployeeSkill {
     @JoinColumn(name = "level_id", nullable = false)
     private Level level;
 }
+

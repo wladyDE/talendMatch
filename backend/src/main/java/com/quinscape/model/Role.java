@@ -1,4 +1,4 @@
-package com.talend_match.model;
+package com.quinscape.model;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -10,10 +10,10 @@ import lombok.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class SkillCategory {
+public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long skillCategoryId;
+    private Long roleId;
 
-    private String skillCategoryName;
+    private String roleName;
 }

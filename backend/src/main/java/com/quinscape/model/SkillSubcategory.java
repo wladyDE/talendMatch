@@ -1,4 +1,4 @@
-package com.talend_match.model;
+package com.quinscape.model;
 
 import jakarta.persistence.*;
 import lombok.*;
