@@ -28,4 +28,13 @@ public class EmployeeService {
     public List<EmployeeSkill> getSkillsByEmployeeId(Long employeeId) {
         return employeeSkillRepository.findByEmployeeEmployeeId(employeeId);
     }
+
+    public List<Employee> getEmployeesBySkills(List<Long> skillIds) {
+        long skillCount = skillIds.size();
+        return employeeRepository.findEmployeesBySkills(skillIds, skillCount);
+    }
+
+    public List<EmployeeSkill> getSpecifiedSkillsByEmployeeId(Long employeeId, List<Long> skillIds) {
+        return employeeSkillRepository.findByEmployeeEmployeeIdAndSkillSkillIdIn(employeeId, skillIds);
+    }
 }

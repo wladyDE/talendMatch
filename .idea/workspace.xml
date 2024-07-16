@@ -5,8 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8a2fbda8-20e1-4e01-9d22-741a966261eb" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/request/SkillFilterRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/controller/EmployeeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/controller/EmployeeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/repository/EmployeeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/repository/EmployeeRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/repository/EmployeeSkillRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/repository/EmployeeSkillRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/service/EmployeeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/service/EmployeeService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,7 +87,7 @@
       <workItem from="1720704606271" duration="606000" />
       <workItem from="1720926900589" duration="4360000" />
       <workItem from="1720941622238" duration="63000" />
-      <workItem from="1721148196620" duration="1782000" />
+      <workItem from="1721148196620" duration="5240000" />
     </task>
     <servers />
   </component>
