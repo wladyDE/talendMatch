@@ -17,8 +17,8 @@ public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long employeeId;
-
     private String employeeName;
+    private String password;
 
     @ManyToOne
     @JoinColumn(name = "role_id", nullable = false)
