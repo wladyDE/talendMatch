@@ -31,7 +31,8 @@ public class EmployeeController {
         }
 
         return employees.stream()
-                .sorted(Comparator.comparing(Employee::getEmployeeName))
+                .sorted(Comparator.comparing(Employee::getLastname)
+                        .thenComparing(Employee::getFirstname))
                 .collect(Collectors.toList());
     }
 

@@ -1,19 +1,17 @@
 package com.quinscape.model;
 
-import jakarta.persistence.*;
-import lombok.*;
+public enum Role {
+    USER("BENUTZER"),
+    ADMIN("ADMINISTRATOR"),
+    TEAM_LEADER("TEAMLEITER");
 
-@Entity
-@Getter
-@Setter
-@ToString
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
-public class Role {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long roleId;
+    private final String dbValue;
 
-    private String roleName;
+    Role(String dbValue) {
+        this.dbValue = dbValue;
+    }
+
+    public String getDbValue() {
+        return dbValue;
+    }
 }

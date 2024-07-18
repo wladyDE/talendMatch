@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class EmployeeService implements UserDetailsService {
+public class EmployeeService {
     @Autowired
     private EmployeeRepository employeeRepository;
 
@@ -41,24 +41,5 @@ public class EmployeeService implements UserDetailsService {
 
     public List<EmployeeSkill> getSpecifiedSkillsByEmployeeId(Long employeeId, List<Long> skillIds) {
         return employeeSkillRepository.findByEmployeeEmployeeIdAndSkillSkillIdIn(employeeId, skillIds);
-    }
-
-    public Optional<Employee> findByEmployeeName(String employeeName) {
-        return employeeRepository.findByEmployeeName(employeeName);
-    }
-
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<Employee> user = employeeRepository.findByEmployeeName(username);
-        if(user.isPresent()) {
-            var userObj = user.get();
-
-            return User.builder()
-                    .username(userObj.getEmployeeName())
-                    .password(userObj.getPassword())
-                    .build();
-        } else {
-            throw new UsernameNotFoundException(username);
-        }
     }
 }
