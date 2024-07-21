@@ -1,4 +1,4 @@
-package com.quinscape.security.config;
+package com.quinscape.security;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

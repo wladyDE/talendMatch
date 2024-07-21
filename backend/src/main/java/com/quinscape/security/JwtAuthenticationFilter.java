@@ -1,4 +1,4 @@
-package com.quinscape.security.config;
+package com.quinscape.security;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
