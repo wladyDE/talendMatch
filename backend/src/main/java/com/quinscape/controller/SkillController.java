@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/talendmatch/skills")
+@RequestMapping("/talendmatch/api/v1/skills")
 public class SkillController {
 
     @Autowired
