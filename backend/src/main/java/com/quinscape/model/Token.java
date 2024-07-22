@@ -1,10 +1,8 @@
 package com.quinscape.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Data
 @Builder
@@ -29,5 +27,7 @@ public class Token {
 
     @ManyToOne
     @JoinColumn(name = "employee_id")
+    @ToString.Exclude
+    @JsonBackReference
     private Employee employee;
 }

@@ -31,10 +31,13 @@ public class Employee implements UserDetails {
     private Role role;
 
     @OneToMany(mappedBy = "employee")
+    @ToString.Exclude
+    @JsonManagedReference
     private List<Token> tokens;
 
     @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonManagedReference
+    @ToString.Exclude
     private List<EmployeeSkill> employeeSkills;
 
     @Override
