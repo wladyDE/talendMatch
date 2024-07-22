@@ -2,7 +2,10 @@ package com.quinscape.service;
 
 import com.quinscape.model.Employee;
 import com.quinscape.model.Role;
+import com.quinscape.model.Token;
+import com.quinscape.model.TokenType;
 import com.quinscape.repository.EmployeeRepository;
+import com.quinscape.repository.TokenRepository;
 import com.quinscape.request.AuthenticationRequest;
 import com.quinscape.request.RegisterRequest;
 import com.quinscape.response.AuthenticationResponse;
@@ -21,6 +24,7 @@ public class AuthenticationService {
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
+    private final TokenRepository tokenRepository;
 
     public AuthenticationResponse register(RegisterRequest request) {
         var user = Employee.builder()
@@ -30,8 +34,9 @@ public class AuthenticationService {
                 .password(passwordEncoder.encode(request.getPassword()))
                 .role(Role.USER)
                 .build();
-        repository.save(user);
+        var savedUser = repository.save(user);
         var jwtToken = jwtService.generateToken(user);
+        saveUserToken(savedUser, jwtToken);
         return AuthenticationResponse.builder()
                 .token(jwtToken)
                 .build();
@@ -39,25 +44,41 @@ public class AuthenticationService {
 
 
     public AuthenticationResponse authenticate(AuthenticationRequest request) {
-        try {
-            System.out.println("Authenticating user: " + request.getEmail());
-            authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(
-                            request.getEmail(),
-                            request.getPassword()
-                    )
-            );
-            System.out.println("Authentication successful for user: " + request.getEmail());
-        } catch (Exception e) {
-            // Log the exception
-            System.out.println("Authentication failed: " + e.getMessage());
-            throw e;
-        }
+        authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(
+                        request.getEmail(),
+                        request.getPassword()
+                )
+        );
         var user = repository.findByEmail(request.getEmail())
                 .orElseThrow();
         var jwtToken = jwtService.generateToken(user);
+        revokeAllUserTokens(user);
+        saveUserToken(user, jwtToken);
         return AuthenticationResponse.builder()
                 .token(jwtToken)
                 .build();
+    }
+
+    private void saveUserToken(Employee employee, String jwtToken) {
+        var token = Token.builder()
+                .employee(employee)
+                .token(jwtToken)
+                .tokenType(TokenType.BEARER)
+                .expired(false)
+                .revoked(false)
+                .build();
+        tokenRepository.save(token);
+    }
+
+    private void revokeAllUserTokens(Employee employee) {
+        var validUserTokens = tokenRepository.findAllValidTokenByUser(employee.getEmployeeId());
+        if (validUserTokens.isEmpty())
+            return;
+        validUserTokens.forEach(token -> {
+            token.setExpired(true);
+            token.setRevoked(true);
+        });
+        tokenRepository.saveAll(validUserTokens);
     }
 }

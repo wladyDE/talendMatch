@@ -30,6 +30,9 @@ public class Employee implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Role role;
 
+    @OneToMany(mappedBy = "employee")
+    private List<Token> tokens;
+
     @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonManagedReference
     private List<EmployeeSkill> employeeSkills;
