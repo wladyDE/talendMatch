@@ -24,7 +24,7 @@ public class SecurityConfiguration {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
-        http
+       /* http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/talendmatch/api/v1/auth/**").permitAll()
@@ -39,7 +39,7 @@ public class SecurityConfiguration {
                         .logoutUrl("/talendmatch/api/v1/auth/logout")
                         .addLogoutHandler(logoutHandler)
                         .logoutSuccessHandler((request, response, authentication) -> SecurityContextHolder.clearContext())
-                );
+                ); */
         
         return http.build();
     }

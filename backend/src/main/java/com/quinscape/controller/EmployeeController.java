@@ -18,17 +18,21 @@ public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
+    @GetMapping
+    public List<Employee> getEmployees() {
+        List<Employee> employees = employeeService.getAllEmployees();
+
+        return employees.stream()
+                .sorted(Comparator.comparing(Employee::getLastname)
+                        .thenComparing(Employee::getFirstname))
+                .collect(Collectors.toList());
+    }
+
     @PostMapping
     public List<Employee> getEmployees(@RequestBody SkillFilterRequest skillFilterRequest) {
         List<Long> skillIds = skillFilterRequest.getSkillIds();
-        List<Employee> employees;
-
-        if (skillIds != null && !skillIds.isEmpty()) {
-            employees = employeeService.getEmployeesBySkills(skillIds);
-            loadSpecifiedSkillsForEmployees(employees, skillIds);
-        } else {
-            employees = employeeService.getAllEmployees();
-        }
+        List<Employee> employees = employeeService.getEmployeesBySkills(skillIds);
+        loadSpecifiedSkillsForEmployees(employees, skillIds);
 
         return employees.stream()
                 .sorted(Comparator.comparing(Employee::getLastname)

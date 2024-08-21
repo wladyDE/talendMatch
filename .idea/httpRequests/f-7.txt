@@ -1,0 +1,6 @@
+{
+  "timestamp": "2024-07-24T10:01:03.760+00:00",
+  "status": 500,
+  "error": "Internal Server Error",
+  "path": "/a.html"
+}
