@@ -7,12 +7,12 @@ type Props = {
 
 const Layout: React.FC<Props> = ({ children }) => {
     return (
-        <>
+        <div style={{ backgroundColor: '#3D4145', color: 'white' }}>
             <Header/>
             <Container>
                 {children}
             </Container>
-        </>
+        </div>
     )
 }
 

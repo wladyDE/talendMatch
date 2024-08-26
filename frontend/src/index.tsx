@@ -7,7 +7,7 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 
 import { store } from './app/store';
 import { Paths } from './paths';
-import Home from './pages/Home';
+import Profil from './pages/Profil';
 import './index.css';
 
 const container = document.getElementById('root')!;
@@ -16,7 +16,7 @@ const root = createRoot(container);
 const router = createBrowserRouter([
   {
     path: Paths.home,
-    element: <Home></Home>
+    element: <Profil></Profil>
   }
 ])
 

@@ -8,6 +8,7 @@ import { useLocation } from 'react-router-dom';
 
 import { Paths } from '../../paths';
 import Logo from '../../img/dataciders_quinscape_white.png'
+import './header.css'
 
 const Header = () => {
     const location = useLocation();
@@ -19,17 +20,17 @@ const Header = () => {
                     <Image src={Logo} style={{ width: '100px', height: 'auto' }} />
                 </Navbar.Brand>
                 <Nav className="me-auto">
-                    <Nav.Link
+                <Nav.Link
                         href={Paths.home}
-                        style={{ color: location.pathname === Paths.home ? 'white' : 'gray' }}
+                        className={location.pathname === Paths.home ? 'nav-link active' : 'nav-link'}
                     >
                         Profil
                     </Nav.Link>
                     <Nav.Link
                         href={Paths.search}
-                        style={{ color: location.pathname === Paths.search ? 'white' : 'gray' }}
+                        className={location.pathname === Paths.search ? 'nav-link active' : 'nav-link'}
                     >
-                        Suche
+                        Suchen
                     </Nav.Link>
                 </Nav>
                 <Button variant="outline-light">
