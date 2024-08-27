@@ -1,7 +1,8 @@
 import React from 'react';
-import { skillsData } from '../../data';
+import { iconsMap, skillsData } from '../../data';
 import LevelSelect from '../level-select/LevelSelect';
 import { Accordion, Row, Col } from 'react-bootstrap';
+import './skillsAccordion.css'
 
 interface SkillSubcategory {
   skill_subcategory_name: string;
@@ -26,9 +27,11 @@ const SkillAccordion: React.FC<SkillAccordionProps> = ({ title, skills }) => (
     <Accordion>
       {skills.map((subcategory, index) => (
         <Accordion.Item eventKey={index.toString()} key={index}>
-          <Accordion.Header>
-            {subcategory.skill_subcategory_name}
-          </Accordion.Header>
+<Accordion.Header>
+  {React.cloneElement(iconsMap[subcategory.skill_subcategory_name as keyof typeof iconsMap], { className: 'icon-spacing' })}
+  {subcategory.skill_subcategory_name}
+</Accordion.Header>
+
           <Accordion.Body>
             <Row>
               {subcategory.skills.map((skill, skillIndex) => (

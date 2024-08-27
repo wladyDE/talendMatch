@@ -1,3 +1,5 @@
+import { FaBrain, FaHandshake, FaUserTie, FaComments, FaCode, FaServer, FaDatabase, FaTools, FaFlask, FaLanguage, FaAtom, FaIndustry, FaStar } from 'react-icons/fa';
+
 export const skillsData = {
     levels: [
         "Anfänger",
@@ -261,3 +263,19 @@ export const skillsData = {
         }
     ]
   };
+
+  export const iconsMap = {
+    "Methodische Soft Skills": <FaBrain />,
+    "Soziale Soft Skills": <FaHandshake />,
+    "Personale Soft Skills": <FaUserTie />,
+    "Kommunikative Soft Skills": <FaComments />,
+    "Frontend Entwicklung": <FaCode />,
+    "Backend Entwicklung": <FaServer />,
+    "Datenbanken": <FaDatabase />,
+    "DevOps": <FaTools />,
+    "Testing": <FaFlask />,
+    "Sprachen": <FaLanguage />,
+    "Wissenschaften": <FaAtom />,
+    "Kundenkenntnisse": <FaIndustry />,
+    "Spezielle Fähigkeiten": <FaStar />
+};

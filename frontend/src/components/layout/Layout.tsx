@@ -9,7 +9,7 @@ const Layout: React.FC<Props> = ({ children }) => {
     return (
         <div style={{ backgroundColor: '#3D4145', color: 'white' }}>
             <Header/>
-            <Container>
+            <Container style={{paddingBottom : '30px'}}>
                 {children}
             </Container>
         </div>
