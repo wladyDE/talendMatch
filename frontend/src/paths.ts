@@ -2,5 +2,5 @@ export const Paths = {
     home: '/',
     login: '/login',
     register: '/register',
-    search: 'search'
+    search: '/search'
 } as const 

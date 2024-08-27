@@ -9,6 +9,7 @@ import { store } from './app/store';
 import { Paths } from './paths';
 import Profil from './pages/Profil';
 import './index.css';
+import Suche from './pages/Suche';
 
 const container = document.getElementById('root')!;
 const root = createRoot(container);
@@ -16,7 +17,11 @@ const root = createRoot(container);
 const router = createBrowserRouter([
   {
     path: Paths.home,
-    element: <Profil></Profil>
+    element: <Profil />
+  },
+  {
+    path: Paths.search,
+    element: <Suche />
   }
 ])
 

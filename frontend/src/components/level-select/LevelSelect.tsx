@@ -35,7 +35,7 @@ const LevelSelect: React.FC<SkillLevelSelectorProps> = ({ skill, levels }) => {
             {levels.map((level, index) => (
                 <div
                     key={index}
-                    title={level}  // Добавляем подсказку с уровнем
+                    title={level} 
                     onMouseEnter={() => handleMouseEnter(index)}
                     onMouseLeave={handleMouseLeave}
                     style={{
