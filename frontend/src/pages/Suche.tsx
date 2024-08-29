@@ -4,6 +4,7 @@ import { Col, Row } from 'react-bootstrap'
 import Layout from '../components/layout/Layout'
 import { employees } from '../data'
 import EmployeeCard from '../components/employee-card/EmployeeCard'
+import Filters from '../components/filters/Filters'
 
 const Suche = () => {
     return (
@@ -24,7 +25,7 @@ const Suche = () => {
                     ))}
                 </Col>
                 <Col md={4}>
-
+                    <Filters />
                 </Col>
             </Row>
         </Layout>

@@ -7,7 +7,7 @@ type Props = {
 
 const Layout: React.FC<Props> = ({ children }) => {
     return (
-        <div style={{ backgroundColor: '#3D4145', color: 'white', height: '100%'}}>
+        <div>
             <Header/>
             <Container style={{paddingBottom : '30px'}}>
                 {children}

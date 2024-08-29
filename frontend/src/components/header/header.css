@@ -12,16 +12,21 @@
     height: 2px;
     bottom: -2px;
     left: 0;
-    background-color: white;
+    background-color: #e5e5e1;
     visibility: hidden;
     transition: all 0.3s ease-in-out;
 }
 
 .nav-link:hover {
-    color: white;
+    color: #e5e5e1
 }
 
 .nav-link:hover::after {
     visibility: visible;
     width: 100%;
+}
+
+.login-button {
+    color: #e5e5e1;
+    border-color: #e5e5e1;
 }

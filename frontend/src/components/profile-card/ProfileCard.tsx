@@ -10,9 +10,9 @@ import {
 
 const ProfileCard = () => {
     return (
-        <Card text='white' className="shadow-lg" style={{ background: 'linear-gradient(135deg, #1c1c1c, #343a40)', borderRadius: '20px' }}>
+        <Card className="shadow-lg card">
             <Card.Body>
-                <Card.Title className="mb-4" style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>Volodymyr Havryliuk</Card.Title>
+                <Card.Title className="mb-3 card-title">Volodymyr Havryliuk</Card.Title>
                 <Card.Text className="mb-2"><FaCalendarAlt /> Geburtstag: 14.12.1997</Card.Text>
                 <Card.Text className="mb-2"><FaEnvelope /> Email: vovawestland@gmail.com</Card.Text>
                 <Card.Text className="mb-2"><FaMapMarkerAlt /> Standort: Dortmund</Card.Text>

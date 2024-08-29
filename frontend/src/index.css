@@ -1,0 +1,15 @@
+body {
+    background-color: #3D4145;
+    color: #e5e5e1;
+}
+
+.card {
+    background: linear-gradient(135deg, #1c1c1c, #343a40);
+    border-radius: 20px;
+    color: #e5e5e1
+}
+
+.card-title {
+    font-size: 1.5rem; 
+    font-weight: bold;
+}

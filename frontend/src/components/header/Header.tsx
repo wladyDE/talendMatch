@@ -14,13 +14,13 @@ const Header = () => {
     const location = useLocation();
 
     return (
-        <Navbar bg="dark" data-bs-theme="dark">
+        <Navbar bg="dark" data-bs-theme="dark" style={{ color: '#e5e5e1' }} >
             <Container>
                 <Navbar.Brand href={Paths.home} style={{ marginRight: '30px' }}>
                     <Image src={Logo} style={{ width: '100px', height: 'auto' }} />
                 </Navbar.Brand>
                 <Nav className="me-auto">
-                <Nav.Link
+                    <Nav.Link
                         href={Paths.home}
                         className={location.pathname === Paths.home ? 'nav-link active' : 'nav-link'}
                     >
@@ -33,7 +33,7 @@ const Header = () => {
                         Suchen
                     </Nav.Link>
                 </Nav>
-                <Button variant="outline-light">
+                <Button variant="outline-light" className='login-button'>
                     <i className="bi bi-box-arrow-in-right"> </i>
                     Login
                 </Button>{' '}
