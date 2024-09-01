@@ -8,7 +8,7 @@ import {
     FaBriefcase
 } from 'react-icons/fa'
 
-interface EmployeeCardProps {
+export interface IEmployee {
     name: string;
     year: number;
     email: string;
@@ -18,7 +18,7 @@ interface EmployeeCardProps {
     image: string;
 }
 
-const EmployeeCard: React.FC<EmployeeCardProps> = ({ name, year, email, location, department, position, image }) => {
+const EmployeeCard: React.FC<IEmployee> = ({ name, year, email, location, department, position, image }) => {
     return (
         <Card className="shadow-lg mb-3 card">
             <Card.Body>

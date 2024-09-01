@@ -1,0 +1,25 @@
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination-container .page-item .page-link {
+    background: #343a40;
+    color: #e5e5e1;
+    border: none;
+    margin: 0 5px;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.pagination-container .page-item.active .page-link {
+    background: #1c1c1c;
+    color: #fff;
+}
+
+.pagination-container .page-item .page-link:hover {
+    background: #454d55;
+    color: #fff;
+}

@@ -340,5 +340,113 @@ export const employees = [
         department: "Support",
         position: "Kundensupport",
         image: user6
+    },
+    {
+        name: "Max Mustermann",
+        year: 1985,
+        email: "max.mustermann@example.com",
+        location: "Berlin",
+        department: "Vertrieb",
+        position: "Vertriebsleiter",
+        image: user1
+    },
+    {
+        name: "Anna Müller",
+        year: 1990,
+        email: "anna.mueller@example.com",
+        location: "München",
+        department: "Marketing",
+        position: "Marketing Manager",
+        image: user2
+    },
+    {
+        name: "Peter Schmidt",
+        year: 1982,
+        email: "peter.schmidt@example.com",
+        location: "Hamburg",
+        department: "Entwicklung",
+        position: "Softwareentwickler",
+        image: user3
+    },
+    {
+        name: "Laura Becker",
+        year: 1995,
+        email: "laura.becker@example.com",
+        location: "Köln",
+        department: "Personal",
+        position: "Personalleiter",
+        image: user4
+    },
+    {
+        name: "Michael Weber",
+        year: 1978,
+        email: "michael.weber@example.com",
+        location: "Frankfurt",
+        department: "Finanzen",
+        position: "Finanzanalyst",
+        image: user5
+    },
+    {
+        name: "Julia Wagner",
+        year: 1988,
+        email: "julia.wagner@example.com",
+        location: "Stuttgart",
+        department: "Support",
+        position: "Kundensupport",
+        image: user6
+    },
+    {
+        name: "Max Mustermann",
+        year: 1985,
+        email: "max.mustermann@example.com",
+        location: "Berlin",
+        department: "Vertrieb",
+        position: "Vertriebsleiter",
+        image: user1
+    },
+    {
+        name: "Anna Müller",
+        year: 1990,
+        email: "anna.mueller@example.com",
+        location: "München",
+        department: "Marketing",
+        position: "Marketing Manager",
+        image: user2
+    },
+    {
+        name: "Peter Schmidt",
+        year: 1982,
+        email: "peter.schmidt@example.com",
+        location: "Hamburg",
+        department: "Entwicklung",
+        position: "Softwareentwickler",
+        image: user3
+    },
+    {
+        name: "Laura Becker",
+        year: 1995,
+        email: "laura.becker@example.com",
+        location: "Köln",
+        department: "Personal",
+        position: "Personalleiter",
+        image: user4
+    },
+    {
+        name: "Michael Weber",
+        year: 1978,
+        email: "michael.weber@example.com",
+        location: "Frankfurt",
+        department: "Finanzen",
+        position: "Finanzanalyst",
+        image: user5
+    },
+    {
+        name: "Julia Wagner",
+        year: 1988,
+        email: "julia.wagner@example.com",
+        location: "Stuttgart",
+        department: "Support",
+        position: "Kundensupport",
+        image: user6
     }
 ];
