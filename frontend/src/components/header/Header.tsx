@@ -4,7 +4,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Image } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import { Paths } from '../../paths';
 import Logo from '../../img/dataciders_quinscape_white.png'
@@ -12,6 +12,7 @@ import './header.css'
 
 const Header = () => {
     const location = useLocation();
+    const navigate = useNavigate();
 
     return (
         <Navbar bg="dark" data-bs-theme="dark" style={{ color: '#e5e5e1' }} >
@@ -33,7 +34,11 @@ const Header = () => {
                         Suchen
                     </Nav.Link>
                 </Nav>
-                <Button variant="outline-light" className='login-button'>
+                <Button
+                    onClick={() => navigate(Paths.login)}
+                    variant="outline-light"
+                    className='login-button'
+                >
                     <i className="bi bi-box-arrow-in-right"> </i>
                     Login
                 </Button>{' '}

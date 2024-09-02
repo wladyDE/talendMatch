@@ -5,12 +5,12 @@ import Layout from '../components/layout/Layout'
 import Filters from '../components/filters/Filters'
 import EmployeeList from '../components/employee-list/EmployeeList'
 
-const Suche = () => {
+const SuchePage = () => {
     return (
         <Layout>
-            <Row  className="my-4">
+            <Row className="my-4">
                 <Col md={8}>
-                    <EmployeeList/>
+                    <EmployeeList />
                 </Col>
                 <Col md={4}>
                     <Filters />
@@ -20,4 +20,4 @@ const Suche = () => {
     )
 }
 
-export default Suche
+export default SuchePage

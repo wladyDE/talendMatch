@@ -6,7 +6,7 @@ import ProfileFoto from '../img/Havryliok_Volodymyr_043_FINAL.jpg'
 import ProfileCard from '../components/profile-card/ProfileCard';
 import SkillsAccordion from '../components/skills-accordion/SkillsAccordion';
 
-const Profil = () => {
+const ProfilPage = () => {
   return (
     <Layout>
       <Row className="my-4">
@@ -27,4 +27,4 @@ const Profil = () => {
   )
 }
 
-export default Profil
+export default ProfilPage

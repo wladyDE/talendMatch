@@ -7,9 +7,10 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 
 import { store } from './app/store';
 import { Paths } from './paths';
-import Profil from './pages/Profil';
+import ProfilPage from './pages/Profil';
 import './index.css';
-import Suche from './pages/Suche';
+import SuchePage from './pages/Suche';
+import LoginPage from './pages/Login';
 
 const container = document.getElementById('root')!;
 const root = createRoot(container);
@@ -17,11 +18,15 @@ const root = createRoot(container);
 const router = createBrowserRouter([
   {
     path: Paths.home,
-    element: <Profil />
+    element: <ProfilPage />
   },
   {
     path: Paths.search,
-    element: <Suche />
+    element: <SuchePage />
+  },
+  {
+    path: Paths.login,
+    element: <LoginPage />
   }
 ])
 
