@@ -5,7 +5,7 @@
 }
 
 .pagination-container .page-item .page-link {
-    background: #343a40;
+    background: #303c3e;
     color: #e5e5e1;
     border: none;
     margin: 0 5px;
@@ -15,11 +15,11 @@
 }
 
 .pagination-container .page-item.active .page-link {
-    background: #1c1c1c;
+    background: #505e61;
     color: #fff;
 }
 
 .pagination-container .page-item .page-link:hover {
-    background: #454d55;
+    background: #424f52;
     color: #fff;
 }

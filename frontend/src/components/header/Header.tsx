@@ -15,7 +15,7 @@ const Header = () => {
     const navigate = useNavigate();
 
     return (
-        <Navbar bg="dark" data-bs-theme="dark" style={{ color: '#e5e5e1' }} >
+        <Navbar data-bs-theme="dark" className='black-theme' >
             <Container>
                 <Navbar.Brand href={Paths.home} style={{ marginRight: '30px' }}>
                     <Image src={Logo} style={{ width: '100px', height: 'auto' }} />

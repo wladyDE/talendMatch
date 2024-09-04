@@ -1,15 +1,19 @@
 body {
-    background-color: #3D4145;
-    color: #e5e5e1;
+    background-color: #101010;
+    color: #e5f4f7
 }
 
 .card {
-    background: linear-gradient(135deg, #1c1c1c, #343a40);
     border-radius: 20px;
-    color: #e5e5e1
+    color: #e5f4f7
+}
+
+.black-theme {
+    background: #303c3e;
 }
 
 .card-title {
     font-size: 1.5rem; 
     font-weight: bold;
+    color : #00a3c8;
 }

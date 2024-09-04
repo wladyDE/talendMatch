@@ -1,21 +1,24 @@
 import React from 'react'
-import { Row, Col, Image } from 'react-bootstrap';
+import { Row, Col} from 'react-bootstrap';
 
 import Layout from '../components/layout/Layout'
-import ProfileFoto from '../img/Havryliok_Volodymyr_043_FINAL.jpg'
-import ProfileCard from '../components/profile-card/ProfileCard';
 import SkillsAccordion from '../components/skills-accordion/SkillsAccordion';
+import EmployeeCard from '../components/employee-card/EmployeeCard';
+import ProfileFoto from '../img/Havryliok_Volodymyr_043_FINAL.jpg'
 
 const ProfilPage = () => {
   return (
     <Layout>
       <Row className="my-4">
-        <Col md={4} className="text-center">
-          <Image src={ProfileFoto} style={{ borderRadius: '20px' }} fluid />
-        </Col>
-        <Col md={8}>
-          <ProfileCard />
-        </Col>
+        <EmployeeCard
+            name = 'Volodymyr Havryliuk'
+            year = {1997}
+            email = 'volodymyr.havryliuk@quinscape.de'
+            location='Dortmund'
+            department='D&A'
+            position='Teamleiter'
+            image={ProfileFoto}
+        />
       </Row>
       <Row>
         <Col>

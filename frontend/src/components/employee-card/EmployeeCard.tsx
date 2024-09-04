@@ -20,7 +20,7 @@ export interface IEmployee {
 
 const EmployeeCard: React.FC<IEmployee> = ({ name, year, email, location, department, position, image }) => {
     return (
-        <Card className="shadow-lg mb-3 card">
+        <Card className="shadow-lg mb-3 card black-theme">
             <Card.Body>
                 <Row>
                     <Col md={4} className="text-center">

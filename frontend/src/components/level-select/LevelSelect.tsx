@@ -17,8 +17,8 @@ const LevelSelect: React.FC<SkillLevelSelectorProps> = ({ skill, levels }) => {
     };
 
     const getColorForLevel = (index: number) => {
-        const colorStart = '#8C6F9A';
-        const colorEnd = '#55009A'; 
+        const colorStart = '#dcf4f9';
+        const colorEnd = '#00a3c8'; 
         const ratio = index / (levels.length - 1);
         const mix = (start: number, end: number) => Math.round(start + ratio * (end - start));
 

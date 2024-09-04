@@ -1,34 +1,65 @@
 .login-container {
     width: 300px;
-    background-color: #2d2d2d;
+    background-color: #303c3e;
     border-radius: 10px;
     padding: 20px;
 }
 
-.login-container h2 {
-    color: white;
+.form-control-custom {
+    color: #e5e5e1 !important;
+    border-color: #3b494c;
+    background-color: #3b494c;
+    box-shadow: none;
+    padding-left: 35px;
 }
 
-.form-control-custom {
-    color: #e5e5e1;
-    border-color: #e5e5e1;
-    background-color: transparent;
+.form-control-custom:focus {
+    background-color: #3b494c;
+    border-color: #3b494c;
+    box-shadow: none;
 }
 
 .form-control-custom::placeholder {
-    color: #e5e5e1;
+    color: #becbcf;
 }
 
 .login-container .login-button {
     color: #e5e5e1 !important;
-    background-color: transparent;
-    border-color: #e5e5e1;
+    font-weight: bold;
+    background-color: #00a3c8;
+    border-color: #00a3c8;
     width: 50%;
     margin: 0 auto;
     display: block;
 }
 
+.login-container .login-button:hover {
+    color: #303c3e !important;
+    background-color: #e5f4f7;
+    border-color: #e5f4f7;
+}
+
 .forgot-password-link {
-    color: #7f7f7f;
+    color: #becbcf;
     text-decoration: none;
+}
+
+.input-icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #000;
+    pointer-events: none;
+}
+
+.form-control-custom:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px #3b494c inset !important;
+    -webkit-text-fill-color: #e5e5e1 !important;
+}
+
+.form-control-custom:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 30px #3b494c inset !important;
+    -webkit-text-fill-color: #e5e5e1 !important;
+    box-shadow: none; 
 }
