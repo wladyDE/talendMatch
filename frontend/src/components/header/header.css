@@ -26,7 +26,13 @@
     width: 100%;
 }
 
+.logo-img {
+    width: 100px;
+    height: auto;
+}
+
 .login-button {
     color: #e5e5e1;
     border-color: #e5e5e1;
 }
+
