@@ -1,8 +1,12 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import { Accordion, Row, Col } from 'react-bootstrap';
+
 import { iconsMap, skillsData } from '../../data';
 import LevelSelect from '../level-select/LevelSelect';
-import { Accordion, Row, Col } from 'react-bootstrap';
-import './skillsAccordion.css'
+import { useSelector } from 'react-redux';
+import { selectTheme } from '../../features/theme/themeSlice';
+import { styles as currentStyles } from '../../styles/styles';
+import { loadStylesheet } from '../../utils/loadCssFile';
 
 export interface SkillSubcategory {
   skill_subcategory_name: string;
@@ -22,14 +26,23 @@ const getSoftSkills = (): SkillSubcategory[] =>
 const getHardSkills = (): SkillSubcategory[] =>
   skillsData.skill_subcategories.filter(subcategory => subcategory.skill_category_id === 2);
 
-export const SkillAccordion: React.FC<SkillAccordionProps> = ({ title, skills, size }) => (
-  <Col md={size}>
-    <h5>{title}</h5>
+export const SkillAccordion: React.FC<SkillAccordionProps> = ({ title, skills, size }) => {
+  const theme = useSelector(selectTheme);
+  const styles = currentStyles(theme)
+
+  useEffect(() => {
+    const cleanup = loadStylesheet(theme, 'accordion-theme', '/darkSkillsAccordion.css', '/lightSkillsAccordion.css');
+
+    return cleanup;
+  }, [theme]);
+
+  return (<Col md={size}>
+    <h5 style={{color : styles.card.color}}>{title}</h5>
     <Accordion>
       {skills.map((subcategory, index) => (
         <Accordion.Item eventKey={index.toString()} key={index}>
           <Accordion.Header>
-            {React.cloneElement(iconsMap[subcategory.skill_subcategory_name as keyof typeof iconsMap], { className: 'icon-spacing' })}
+            {React.cloneElement(iconsMap[subcategory.skill_subcategory_name as keyof typeof iconsMap], { style : { marginRight : '8px'} })}
             {subcategory.skill_subcategory_name}
           </Accordion.Header>
 
@@ -49,8 +62,8 @@ export const SkillAccordion: React.FC<SkillAccordionProps> = ({ title, skills, s
         </Accordion.Item>
       ))}
     </Accordion>
-  </Col>
-);
+  </Col>)
+}
 
 const SkillsAccordion: React.FC = () => {
   const softSkills = getSoftSkills();
@@ -58,8 +71,8 @@ const SkillsAccordion: React.FC = () => {
 
   return (
     <Row>
-      <SkillAccordion title="Soft Skills" skills={softSkills} size={6}/>
-      <SkillAccordion title="Hard Skills" skills={hardSkills} size={6}/>
+      <SkillAccordion title="Soft Skills" skills={softSkills} size={6} />
+      <SkillAccordion title="Hard Skills" skills={hardSkills} size={6} />
     </Row>
   );
 }

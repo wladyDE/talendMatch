@@ -1,6 +1,10 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { Pagination } from 'react-bootstrap'
+import { useSelector } from 'react-redux';
 
+import { selectTheme } from '../../features/theme/themeSlice';
+import { styles as currentStyles } from '../../styles/styles';
+import { loadStylesheet } from '../../utils/loadCssFile';
 import './employeePagination.css'
 
 interface IPagination {
@@ -10,6 +14,14 @@ interface IPagination {
 }
 
 const EmployeePagination = ({ total, current, onChangePage }: IPagination) => {
+    const theme = useSelector(selectTheme);
+  
+    useEffect(() => {
+      const cleanup = loadStylesheet(theme, 'pagination-theme', '/darkEmployeePagination.css', '/lightEmployeePagination.css');
+  
+      return cleanup;
+    }, [theme]);
+    
     let items = []
     if(current > 1) {
         items.push(<Pagination.First key="prev" onClick={() => onChangePage(1)}/>)

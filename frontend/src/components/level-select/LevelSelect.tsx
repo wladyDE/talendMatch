@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { selectTheme } from '../../features/theme/themeSlice';
+import { styles as currentStyles } from '../../styles/styles';
 
 interface SkillLevelSelectorProps {
     skill: string;
@@ -7,6 +10,8 @@ interface SkillLevelSelectorProps {
 
 const LevelSelect: React.FC<SkillLevelSelectorProps> = ({ skill, levels }) => {
     const [hoveredLevel, setHoveredLevel] = useState<number>(0);
+    const theme = useSelector(selectTheme);
+    const styles = currentStyles(theme)
 
     const handleMouseEnter = (index: number) => {
         setHoveredLevel(index + 1);
@@ -17,8 +22,8 @@ const LevelSelect: React.FC<SkillLevelSelectorProps> = ({ skill, levels }) => {
     };
 
     const getColorForLevel = (index: number) => {
-        const colorStart = '#dcf4f9';
-        const colorEnd = '#00a3c8'; 
+        const colorStart = styles.level.startColor
+        const colorEnd = styles.level.endColor
         const ratio = index / (levels.length - 1);
         const mix = (start: number, end: number) => Math.round(start + ratio * (end - start));
 

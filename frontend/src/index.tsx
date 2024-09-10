@@ -8,7 +8,6 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import { store } from './app/store';
 import { Paths } from './paths';
 import ProfilPage from './pages/Profil';
-import './index.css';
 import SuchePage from './pages/Suche';
 import LoginPage from './pages/Login';
 
