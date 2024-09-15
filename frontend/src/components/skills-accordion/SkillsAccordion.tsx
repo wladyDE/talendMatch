@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux';
 import { selectTheme } from '../../features/theme/themeSlice';
 import { styles as currentStyles } from '../../styles/styles';
 import { loadStylesheet } from '../../utils/loadCssFile';
+import './skillsAccordion.css'
 
 export interface SkillSubcategory {
   skill_subcategory_name: string;

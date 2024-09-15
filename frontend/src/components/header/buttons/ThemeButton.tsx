@@ -1,10 +1,19 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
-import { changeTheme } from '../../../features/theme/themeSlice';
+import React, {useEffect} from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { changeTheme, selectTheme } from '../../../features/theme/themeSlice';
 import HeaderButton from './HeaderButton';
 
 const ThemeButton = () => {
     const dispatch = useDispatch();
+    const theme = useSelector(selectTheme);
+
+    useEffect(() => {
+        if (theme === 'dark') {
+            document.body.classList.add('dark');
+        } else {
+            document.body.classList.remove('dark');
+        }
+    }, [theme]);
 
     return (
         <HeaderButton
