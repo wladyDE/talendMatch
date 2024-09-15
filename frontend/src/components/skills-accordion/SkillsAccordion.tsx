@@ -50,7 +50,7 @@ export const SkillAccordion: React.FC<SkillAccordionProps> = ({ title, skills, s
           <Accordion.Body>
             <Row>
               {subcategory.skills.map((skill, skillIndex) => (
-                <Col md={6} key={skillIndex} className="mb-2">
+                <Col md={size} key={skillIndex} className="mb-2">
                   <label>{skill}</label>
                   <LevelSelect
                     skill={skill}

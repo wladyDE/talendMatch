@@ -7,16 +7,20 @@ import EmployeeList from '../components/employee-list/EmployeeList'
 
 const SuchePage = () => {
     return (
-        <Layout>
-            <Row className="my-4">
-                <Col md={8}>
-                    <EmployeeList />
-                </Col>
-                <Col md={4}>
-                    <Filters />
-                </Col>
-            </Row>
-        </Layout>
+<Layout>
+    <Row className="my-4">
+        {/* Filters will be first on small screens only */}
+        <Col xs={12} md={4} className="order-1 order-md-2">
+            <Filters />
+        </Col>
+        {/* EmployeeList will be second on small screens only */}
+        <Col xs={12} md={8} className="order-2 order-md-1">
+            <EmployeeList />
+        </Col>
+    </Row>
+</Layout>
+
+
     )
 }
 
