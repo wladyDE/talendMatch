@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import { Accordion, Row, Col } from 'react-bootstrap';
 
 import { iconsMap, skillsData } from '../../data';
@@ -6,7 +6,6 @@ import LevelSelect from '../level-select/LevelSelect';
 import { useSelector } from 'react-redux';
 import { selectTheme } from '../../features/theme/themeSlice';
 import { styles as currentStyles } from '../../styles/styles';
-import { loadStylesheet } from '../../utils/loadCssFile';
 import './skillsAccordion.css'
 
 export interface SkillSubcategory {
@@ -31,12 +30,6 @@ export const SkillAccordion: React.FC<SkillAccordionProps> = ({ title, skills, s
   const theme = useSelector(selectTheme);
   const styles = currentStyles(theme)
 
-  useEffect(() => {
-    const cleanup = loadStylesheet(theme, 'accordion-theme', '/darkSkillsAccordion.css', '/lightSkillsAccordion.css');
-
-    return cleanup;
-  }, [theme]);
-
   return (<Col md={size}>
     <h5 style={{color : styles.card.color}}>{title}</h5>
     <Accordion>
@@ -51,7 +44,6 @@ export const SkillAccordion: React.FC<SkillAccordionProps> = ({ title, skills, s
             <Row>
               {subcategory.skills.map((skill, skillIndex) => (
                 <Col md={size} key={skillIndex} className="mb-2">
-                  <label>{skill}</label>
                   <LevelSelect
                     skill={skill}
                     levels={skillsData.levels}

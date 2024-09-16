@@ -1,7 +1,6 @@
 import React from 'react'
-import { Form, Button } from 'react-bootstrap'
 import { skillsData } from '../../data'
-import { SkillAccordion, SkillSubcategory } from '../skills-accordion/SkillsAccordion'
+import { SkillAccordion } from '../skills-accordion/SkillsAccordion'
 
 const Filters = () => {
 

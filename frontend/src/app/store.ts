@@ -1,11 +1,13 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import themeReducer from '../features/theme/themeSlice'
+import activeFiltersReducer from '../features/activeFilters/activeFiltersSlice';
 
 export const store = configureStore({
   reducer: {
-    themeReducer
+    themeReducer,
+    activeFiltersReducer
   },
-  middleware: (getDefaultMiddleware) => 
+  middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()
 });
 
