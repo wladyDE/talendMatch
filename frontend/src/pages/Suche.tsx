@@ -4,10 +4,14 @@ import { Col, Row } from 'react-bootstrap'
 import Layout from '../components/layout/Layout'
 import Filters from '../components/filters/Filters'
 import EmployeeList from '../components/employee-list/EmployeeList'
+import ActiveFilters from '../components/active-filters/ActiveFilters'
 
 const SuchePage = () => {
     return (
         <Layout>
+            <Row className="my-4">
+                <ActiveFilters/>
+            </Row>
             <Row className="my-4">
                 <Col xs={12} md={4} className="order-1 order-md-2">
                     <Filters />

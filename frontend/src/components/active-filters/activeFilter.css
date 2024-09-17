@@ -1,0 +1,26 @@
+.filters-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.filter-item {
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin: 5px;
+    background-color: transparent;
+}
+
+.remove-filter {
+    margin-left: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    color: #ff0000;
+    font-weight: bold;
+}
+
+.remove-filter:hover {
+    color: #cc0000;
+}

@@ -24,10 +24,18 @@ const activeFiltersSlice = createSlice({
         state.push(action.payload);
       }
     },
+    removeFilter: (state, action: PayloadAction<string>) => {
+      const skill = action.payload;
+
+      state.splice(
+        state.findIndex(filter => filter.skill === skill),
+        1
+      );
+    },
   },
 });
 
-export const { addFilter } = activeFiltersSlice.actions;
+export const { addFilter, removeFilter } = activeFiltersSlice.actions;
 
 export default activeFiltersSlice.reducer;
 

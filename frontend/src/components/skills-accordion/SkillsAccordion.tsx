@@ -47,6 +47,7 @@ export const SkillAccordion: React.FC<SkillAccordionProps> = ({ title, skills, s
                   <LevelSelect
                     skill={skill}
                     levels={skillsData.levels}
+                    showAll={true}
                   />
                 </Col>
               ))}

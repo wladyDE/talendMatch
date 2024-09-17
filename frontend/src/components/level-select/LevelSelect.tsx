@@ -9,9 +9,10 @@ import './levelSelect.css';
 interface SkillLevelSelectorProps {
     skill: string;
     levels: string[];
+    showAll: boolean;
 }
 
-const LevelSelect: React.FC<SkillLevelSelectorProps> = ({ skill, levels }) => {
+const LevelSelect: React.FC<SkillLevelSelectorProps> = ({ skill, levels, showAll }) => {
     const [hoveredLevel, setHoveredLevel] = useState<number>(0);
     const theme = useSelector(selectTheme);
     const activeFilters = useSelector(selectActiveFilters);
@@ -19,10 +20,10 @@ const LevelSelect: React.FC<SkillLevelSelectorProps> = ({ skill, levels }) => {
     const dispatch = useDispatch();
 
     const activeFilter = activeFilters.find(filter => filter.skill === skill);
-    const selectedLevel = activeFilter ? levels.indexOf(activeFilter.level) + 1 : 0; 
+    const selectedLevel = activeFilter ? levels.indexOf(activeFilter.level) + 1 : 0;
 
     const handleClick = (level: Level, index: number) => {
-        dispatch(addFilter({ level, skill })); 
+        dispatch(addFilter({ level, skill }));
     };
 
     const getColorForLevel = (index: number) => {
@@ -44,20 +45,22 @@ const LevelSelect: React.FC<SkillLevelSelectorProps> = ({ skill, levels }) => {
             <label>{skill}</label>
             <div className="d-flex align-items-center">
                 {levels.map((level, index) => (
-                    <div
-                        key={index}
-                        title={level}
-                        onMouseEnter={() => setHoveredLevel(index + 1)}
-                        onMouseLeave={() => setHoveredLevel(0)}
-                        className='level'
-                        style={{
-                            backgroundColor:
-                                index + 1 <= (hoveredLevel || selectedLevel)
-                                    ? getColorForLevel(index)
-                                    : '#e9ecef',
-                        }}
-                        onClick={() => handleClick(level as Level, index)}
-                    />
+                    (showAll || index + 1 <= selectedLevel) && (
+                        <div
+                            key={index}
+                            title={level}
+                            onMouseEnter={() => setHoveredLevel(index + 1)}
+                            onMouseLeave={() => setHoveredLevel(0)}
+                            className='level'
+                            style={{
+                                backgroundColor:
+                                    index + 1 <= (hoveredLevel || selectedLevel)
+                                        ? getColorForLevel(index)
+                                        : '#e9ecef',
+                            }}
+                            onClick={() => handleClick(level as Level, index)}
+                        />
+                    )
                 ))}
             </div>
         </>
