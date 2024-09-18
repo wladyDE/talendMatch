@@ -13,6 +13,7 @@ const ThemeButton = () => {
         } else {
             document.body.classList.remove('dark');
         }
+        localStorage.setItem('theme', theme);
     }, [theme]);
 
     return (

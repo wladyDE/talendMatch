@@ -8,7 +8,10 @@ interface ActiveFilter {
   skill: string
 }
 
-const initialState: ActiveFilter[] = []
+const storedFilters = JSON.parse(
+  localStorage.getItem('filters') || '[]') as ActiveFilter[];
+
+const initialState: ActiveFilter[] = storedFilters
 
 const activeFiltersSlice = createSlice({
   name: 'activeFilters',
@@ -23,6 +26,8 @@ const activeFiltersSlice = createSlice({
       } else {
         state.push(action.payload);
       }
+
+      localStorage.setItem('filters', JSON.stringify(state));
     },
     removeFilter: (state, action: PayloadAction<string>) => {
       const skill = action.payload;
@@ -31,6 +36,8 @@ const activeFiltersSlice = createSlice({
         state.findIndex(filter => filter.skill === skill),
         1
       );
+
+      localStorage.setItem('filters', JSON.stringify(state));
     },
   },
 });

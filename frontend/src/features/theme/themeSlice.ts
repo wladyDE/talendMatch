@@ -7,8 +7,10 @@ interface Theme {
   theme: ThemeMode;
 }
 
+const storedTheme = localStorage.getItem('theme') as ThemeMode || 'light';
+
 const initialState: Theme = {
-  theme: 'light',
+  theme: storedTheme,
 };
 
 const themeSlice = createSlice({
