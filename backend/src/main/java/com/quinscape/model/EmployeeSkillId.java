@@ -10,6 +10,6 @@ import java.io.Serializable;
 @AllArgsConstructor
 @EqualsAndHashCode
 public class EmployeeSkillId implements Serializable {
-    private Long employee;
+    private String employee;
     private Long skill;
 }

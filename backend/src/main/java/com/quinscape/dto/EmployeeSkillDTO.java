@@ -9,7 +9,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class EmployeeSkillDTO {
-    private Long employeeId;
+    private String employeeId;
     private Long skillId;
     private String level;
 }

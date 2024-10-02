@@ -31,11 +31,11 @@ public class EmployeeService {
         return employeeRepository.findAll();
     }
 
-    public Employee getEmployeeById(Long id) {
+    public Employee getEmployeeById(String id) {
         return employeeRepository.findById(id).orElse(null);
     }
 
-    public List<EmployeeSkill> getSkillsByEmployeeId(Long employeeId) {
+    public List<EmployeeSkill> getSkillsByEmployeeId(String employeeId) {
         return employeeSkillRepository.findByEmployeeEmployeeId(employeeId);
     }
 
@@ -44,7 +44,7 @@ public class EmployeeService {
         return employeeRepository.findEmployeesBySkills(skillIds, skillCount);
     }
 
-    public List<EmployeeSkill> getSpecifiedSkillsByEmployeeId(Long employeeId, List<Long> skillIds) {
+    public List<EmployeeSkill> getSpecifiedSkillsByEmployeeId(String employeeId, List<Long> skillIds) {
         return employeeSkillRepository.findByEmployeeEmployeeIdAndSkillSkillIdIn(employeeId, skillIds);
     }
 }
