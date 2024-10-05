@@ -1,5 +1,6 @@
 package com.quinscape.controller;
 
+import com.quinscape.dto.AzureUserGroupsAndRoles;
 import com.quinscape.mapper.AzureUserMapper;
 import com.quinscape.model.AzureUser;
 import com.quinscape.model.Employee;
@@ -71,6 +72,10 @@ public class EmployeeProfileController {
             if (employee == null) {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
             }
+
+            AzureUserGroupsAndRoles userGroupsAndRoles = azureUserService.fetchUserRoles(accessToken, azureEmployee.getId());
+            azureEmployee.setGroups(userGroupsAndRoles.getGroups());
+            azureEmployee.setRoles(userGroupsAndRoles.getRoles());
 
             List<EmployeeSkill> skills = employeeService.getSkillsByEmployeeId(id);
             employee.setEmployeeSkills(skills);

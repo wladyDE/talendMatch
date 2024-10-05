@@ -3,7 +3,6 @@ package com.quinscape.mapper;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.quinscape.model.AzureUser;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -11,6 +10,7 @@ import java.util.List;
 
 @Component
 public class AzureUserMapper {
+
     public List<AzureUser> parseUsers(String responseBody) throws Exception {
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode rootNode = objectMapper.readTree(responseBody);
@@ -18,7 +18,7 @@ public class AzureUserMapper {
 
         List<AzureUser> userDTOList = new ArrayList<>();
         for (JsonNode userNode : usersArray) {
-            userDTOList.add(buildUserDTO(userNode));
+            userDTOList.add(buildAzureUser(userNode));
         }
 
         return userDTOList;
@@ -28,11 +28,10 @@ public class AzureUserMapper {
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode rootNode = objectMapper.readTree(responseBody);
 
-        return buildUserDTO(rootNode);
+        return buildAzureUser(rootNode);
     }
 
-
-    private AzureUser buildUserDTO(JsonNode userNode) {
+    private AzureUser buildAzureUser(JsonNode userNode) {
         return AzureUser.builder()
                 .id(userNode.path("id").asText())
                 .displayName(userNode.path("displayName").asText())

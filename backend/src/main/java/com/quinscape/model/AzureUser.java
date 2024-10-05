@@ -2,6 +2,8 @@ package com.quinscape.model;
 
 import lombok.*;
 
+import java.util.List;
+
 @Getter
 @Setter
 @ToString
@@ -16,4 +18,7 @@ public class AzureUser {
     private String jobTitle;
     private String mail;
     private String mobilePhone;
+    private String photo;
+    private List<String> roles;
+    private List<String> groups;
 }
