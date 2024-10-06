@@ -7,6 +7,7 @@ import com.quinscape.model.Level;
 import com.quinscape.model.Skill;
 import com.quinscape.repository.EmployeeRepository;
 import com.quinscape.repository.EmployeeSkillRepository;
+import com.quinscape.repository.LevelRepository;
 import com.quinscape.repository.SkillRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,13 +23,16 @@ public class EmployeeSkillService {
 
     @Autowired
     private SkillRepository skillRepository;
+    @Autowired
+    private LevelRepository levelRepository;
 
     public EmployeeSkill addEmployeeSkill(EmployeeSkillDTO employeeSkillDTO) {
         Employee employee = employeeRepository.findById(employeeSkillDTO.getEmployeeId())
                 .orElseThrow(() -> new EntityNotFoundException("Employee not found"));
         Skill skill = skillRepository.findById(employeeSkillDTO.getSkillId())
                 .orElseThrow(() -> new EntityNotFoundException("Skill not found"));
-        Level level = Level.valueOf(employeeSkillDTO.getLevel());
+        Level level = levelRepository.findById(employeeSkillDTO.getLevel())
+                .orElseThrow(() -> new EntityNotFoundException("Level not found"));
 
         EmployeeSkill employeeSkill = EmployeeSkill.builder()
                 .employee(employee)

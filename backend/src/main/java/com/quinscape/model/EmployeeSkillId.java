@@ -12,4 +12,5 @@ import java.io.Serializable;
 public class EmployeeSkillId implements Serializable {
     private String employee;
     private Long skill;
+    private Long level;
 }

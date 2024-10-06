@@ -25,6 +25,7 @@ public class EmployeeSkill {
     @JoinColumn(name = "skill_id", nullable = false)
     private Skill skill;
 
+    @ManyToOne
     @JoinColumn(name = "level_id", nullable = false)
     private Level level;
 }

@@ -42,7 +42,7 @@ public class EmployeeProfileController {
             String responseBody = azureUserService.fetchUserData(accessToken, null);
             List<AzureUser> azureEmployees = azureUserMapper.parseUsers(responseBody);
 
-            List<Employee> employees = employeeService.getAllEmployees();
+            List<Employee> employees = employeeService.getEmployees();
 
             List<EmployeeProfile> employeeProfiles = employeeProfileService.getEmployeeProfiles(employees, azureEmployees);
             List<EmployeeProfile> sortedProfiles = employeeProfileService.sortEmployeeProfiles(employeeProfiles);

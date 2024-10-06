@@ -1,21 +1,21 @@
 package com.quinscape.model;
 
-public enum Level {
-    BEGINNER("Anfänger"),
-    BASIC_KNOWLEDGE("Grundkenntnisse"),
-    INTERMEDIATE("Mittelstufe"),
-    ADVANCED("Gehoben"),
-    PROFICIENT("Fortgeschritten"),
-    EXPERT("Experte");
+import jakarta.persistence.*;
+import lombok.*;
 
-    private final String dbValue;
+@Entity
+@Getter
+@Setter
+@ToString
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+public class Level {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "level_id")
+    private Long levelId;
 
-    Level(String dbValue) {
-        this.dbValue = dbValue;
-    }
-
-    public String getDbValue() {
-        return dbValue;
-    }
+    @Column(name = "level_name")
+    private String levelName;
 }
-

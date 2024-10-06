@@ -4,7 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8a2fbda8-20e1-4e01-9d22-741a966261eb" name="Changes" comment="" />
+    <list default="true" id="8a2fbda8-20e1-4e01-9d22-741a966261eb" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/controller/LevelController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/data/LevelInitializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/repository/LevelRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/service/LevelService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/controller/EmployeeProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/controller/EmployeeProfileController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/dto/EmployeeSkillDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/dto/EmployeeSkillDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/model/EmployeeSkill.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/model/EmployeeSkill.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/model/EmployeeSkillId.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/model/EmployeeSkillId.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/model/Group.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/model/Group.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/model/Level.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/model/Level.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/model/Role.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/service/EmployeeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/service/EmployeeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/service/EmployeeSkillService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/service/EmployeeSkillService.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,6 +30,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -73,6 +90,9 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\vhavryliuk\Desktop\talend_match\backend\src\main\resources" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\vhavryliuk\Desktop\talend_match\backend\src\main\resources" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.talend_match" />
     </key>
@@ -110,6 +130,8 @@
       <workItem from="1727881868934" duration="743000" />
       <workItem from="1727883427325" duration="31000" />
       <workItem from="1727948534432" duration="5680000" />
+      <workItem from="1728116081293" duration="1748000" />
+      <workItem from="1728194774539" duration="2909000" />
     </task>
     <servers />
   </component>

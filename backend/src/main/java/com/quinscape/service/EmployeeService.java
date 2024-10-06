@@ -1,23 +1,13 @@
 package com.quinscape.service;
 
-import com.quinscape.dto.EmployeeSkillDTO;
 import com.quinscape.model.Employee;
 import com.quinscape.model.EmployeeSkill;
-import com.quinscape.model.Level;
-import com.quinscape.model.Skill;
 import com.quinscape.repository.EmployeeRepository;
 import com.quinscape.repository.EmployeeSkillRepository;
-import com.quinscape.repository.SkillRepository;
-import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class EmployeeService {
@@ -27,7 +17,7 @@ public class EmployeeService {
     @Autowired
     private EmployeeSkillRepository employeeSkillRepository;
 
-    public List<Employee> getAllEmployees() {
+    public List<Employee> getEmployees() {
         return employeeRepository.findAll();
     }
 

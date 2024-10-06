@@ -11,6 +11,6 @@ import lombok.*;
 public class EmployeeSkillDTO {
     private String employeeId;
     private Long skillId;
-    private String level;
+    private Long level;
 }
 
