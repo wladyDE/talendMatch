@@ -19,6 +19,7 @@ public class EmployeeProfileService {
 
     public List<EmployeeProfile> getEmployeeProfiles(List<Employee> employees, List<AzureUser> azureEmployees) {
         List<EmployeeProfile> employeeProfiles = new ArrayList<>();
+        List<Employee> newEmployees = new ArrayList<>();
 
         for (AzureUser azureUser : azureEmployees) {
             Employee employee = employees.stream()
@@ -33,12 +34,15 @@ public class EmployeeProfileService {
                         .employeeSkills(new ArrayList<>())
                         .build();
 
-                employeeRepository.save(employee);
+                newEmployees.add(employee);
             }
 
             EmployeeProfile employeeProfile = getEmployeeProfile(employee, azureUser);
-
             employeeProfiles.add(employeeProfile);
+        }
+
+        if (!newEmployees.isEmpty()) {
+            employeeRepository.saveAll(newEmployees);
         }
 
         return employeeProfiles;
