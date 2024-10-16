@@ -46,7 +46,6 @@ export const SkillAccordion: React.FC<SkillAccordionProps> = ({ title, skills, s
                 <Col md={size} key={skillIndex} className="mb-2">
                   <LevelSelect
                     skill={skill}
-                    levels={skillsData.levels}
                     showAll={true}
                   />
                 </Col>

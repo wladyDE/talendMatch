@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { selectTheme } from '../../features/theme/themeSlice';
 import { removeFilter, selectActiveFilters } from '../../features/activeFilters/activeFiltersSlice';
 import LevelSelect from '../level-select/LevelSelect';
-import { skillsData } from '../../data';
 import { styles as currentStyles } from '../../styles/styles';
 import './activeFilter.css'
 
@@ -22,7 +21,6 @@ const ActiveFilters = () => {
                     <div key={filter.skill} className="filter-item" style={styles.card}>
                         <LevelSelect
                             skill={filter.skill}
-                            levels={skillsData.levels}
                             showAll={false}
                         />
                         <span

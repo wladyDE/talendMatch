@@ -7,14 +7,6 @@ import user5 from './img/users/user-5.jpg';
 import user6 from './img/users/user-6.jpg';
 
 export const skillsData = {
-    levels: [
-        "Einsteiger",
-        "Grundlegend",
-        "Fortgeschritten",
-        "Kompetent",
-        "Sehr erfahren",
-        "Meisterhaft"
-    ],
     skill_subcategories: [
         {
             skill_subcategory_name: "Methodische Soft Skills",

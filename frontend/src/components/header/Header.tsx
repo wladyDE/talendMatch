@@ -7,7 +7,7 @@ import { useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { selectTheme } from '../../features/theme/themeSlice';
 
-import { Paths } from '../../paths';
+import { Paths } from '../../constants';
 import LightLogo from '../../img/dataciders_quinscape_black.png'
 import './header.css'
 
@@ -23,7 +23,7 @@ const Header = () => {
     return (
         <Navbar style={styles.navbar}>
             <Container>
-                <Navbar.Brand href={Paths.home} style={{marginRight : '30px'}}>
+                <Navbar.Brand href={Paths.home} style={{ marginRight: '30px' }}>
                     <Image
                         src={LightLogo}
                         className='logo-img'
@@ -45,8 +45,8 @@ const Header = () => {
                     </Nav.Link>
                 </Nav>
 
-                <ThemeButton/>
-                <AusloggenButton/>
+                <ThemeButton />
+                <AusloggenButton />
 
             </Container>
         </Navbar>

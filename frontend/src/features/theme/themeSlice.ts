@@ -3,7 +3,7 @@ import { RootState } from "../../app/store";
 
 export type ThemeMode = 'light' | 'dark';
 
-interface Theme {
+export type Theme = {
   theme: ThemeMode;
 }
 
