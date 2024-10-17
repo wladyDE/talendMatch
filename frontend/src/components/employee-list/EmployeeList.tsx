@@ -1,14 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import { employees } from '../../data'
-import EmployeeCard, { type IEmployee } from '../../components/employee-card/EmployeeCard'
+import EmployeeCard from '../../components/employee-card/EmployeeCard'
 import EmployeePagination from '../employee-pagination/EmployeePagination';
 
-interface IEmployeeData {
-    employees: IEmployee[],
-    totalPage: number;
-}
-
 const EmployeeList = () => {
+    return null
+    /*
     const [data, setData] = useState<IEmployeeData>({ employees: [], totalPage: 0 })
     const [page, setPage] = useState(1)
 
@@ -49,6 +45,7 @@ const EmployeeList = () => {
             )}
         </>
     )
+        */
 }
 
 export default EmployeeList

@@ -17,6 +17,9 @@ public class EmployeeProfileService {
     @Autowired
     private EmployeeRepository employeeRepository;
 
+    @Autowired
+    private EmployeeService employeeService;
+
     public List<EmployeeProfile> getEmployeeProfiles(List<Employee> employees, List<AzureUser> azureEmployees) {
         List<EmployeeProfile> employeeProfiles = new ArrayList<>();
         List<Employee> newEmployees = new ArrayList<>();
@@ -28,11 +31,7 @@ public class EmployeeProfileService {
                     .orElse(null);
 
             if (employee == null) {
-                employee = Employee.builder()
-                        .employeeId(azureUser.getId())
-                        .skillsVisibility(false)
-                        .employeeSkills(new ArrayList<>())
-                        .build();
+                employee = employeeService.createEmployee(azureUser);
 
                 newEmployees.add(employee);
             }

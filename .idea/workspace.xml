@@ -5,28 +5,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8a2fbda8-20e1-4e01-9d22-741a966261eb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_oauth2_resource_server_3_3_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_oauth2_resource_server_6_3_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/service/AzureTokenService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/config/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/config/SecurityConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/public/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/controller/CurrentUserController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/controller/EmployeeProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/controller/EmployeeProfileController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/service/AzureUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/service/AzureUserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/service/EmployeeProfileService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/service/EmployeeProfileService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/service/EmployeeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/service/EmployeeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/AppInitializer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/AppInitializer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/services/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/services/api.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/services/levels.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/services/levels.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/app/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/store.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/active-filters/ActiveFilters.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/active-filters/ActiveFilters.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/header/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/header/Header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/header/buttons/AusloggenButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/header/buttons/AusloggenButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/employee-card/EmployeeCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/employee-card/EmployeeCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/employee-list/EmployeeList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/employee-list/EmployeeList.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/level-select/LevelSelect.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/level-select/LevelSelect.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/skills-accordion/SkillsAccordion.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/skills-accordion/SkillsAccordion.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/level-select/levelColor.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/level-select/levelColor.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/data.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/data.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/features/activeFilters/activeFiltersSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/activeFilters/activeFiltersSlice.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/features/theme/themeSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/theme/themeSlice.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Login.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/paths.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/features/levels/levelsSlice.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/img/Havryliok_Volodymyr_043_FINAL.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/img/users/user-1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/img/users/user-2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/img/users/user-3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/img/users/user-4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/img/users/user-5.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/img/users/user-6.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Profil.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Profil.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -146,7 +151,9 @@
       <workItem from="1728491577765" duration="31000" />
       <workItem from="1728918444837" duration="1274000" />
       <workItem from="1728972478861" duration="8787000" />
-      <workItem from="1729064804287" duration="1173000" />
+      <workItem from="1729064804287" duration="4468000" />
+      <workItem from="1729104058310" duration="6743000" />
+      <workItem from="1729154497140" duration="1457000" />
     </task>
     <servers />
   </component>

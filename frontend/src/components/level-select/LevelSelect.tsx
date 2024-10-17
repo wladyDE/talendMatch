@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import {type Level } from '../../features/levels/levelsSlice';
+import { type Level } from '../../features/level/levelSlice';
 import { selectTheme } from '../../features/theme/themeSlice';
 import { addFilter, selectActiveFilters } from '../../features/activeFilters/activeFiltersSlice';
-import { selectLevels } from '../../features/levels/levelsSlice';
+import { selectLevels } from '../../features/level/levelSlice';
 import { getColorForLevel } from './levelColor';
 import './levelSelect.css';
 
@@ -21,7 +21,7 @@ const LevelSelect: React.FC<SkillLevelSelectorProps> = ({ skill, showAll }) => {
     const theme = useSelector(selectTheme);
 
     const activeFilter = activeFilters.find(filter => filter.skill === skill);
-    const selectedLevel = activeFilter 
+    const selectedLevel = activeFilter
         ? levels.findIndex(level => level.levelName === activeFilter.levelName) + 1
         : 0;
 

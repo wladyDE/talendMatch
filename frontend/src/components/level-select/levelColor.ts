@@ -1,9 +1,9 @@
-import { Level } from '../../features/levels/levelsSlice';
-import { ThemeMode} from '../../features/theme/themeSlice';
+import { Level } from '../../features/level/levelSlice';
+import { ThemeMode } from '../../features/theme/themeSlice';
 import { styles as currentStyles } from '../../styles/styles';
 
 export const getColorForLevel = (index: number, theme: ThemeMode, levels: Level[]) => {
-    const styles = currentStyles(theme); 
+    const styles = currentStyles(theme);
 
     const colorStart = styles.level.startColor;
     const colorEnd = styles.level.endColor;

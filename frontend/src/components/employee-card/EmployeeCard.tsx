@@ -5,39 +5,40 @@ import {
     FaEnvelope,
     FaMapMarkerAlt,
     FaBuilding,
-    FaBriefcase
+    FaBriefcase,
+    FaPhone
 } from 'react-icons/fa'
 import { useSelector } from 'react-redux';
 import { selectTheme } from '../../features/theme/themeSlice';
 import { styles as currentStyles } from '../../styles/styles';
+import { IUser } from '../../features/currentUser/currentUserSlice';
+import userPhotoWhite from '../../img/user.png'
+import userPhotoBlack from '../../img/user_black.png'
 
-export interface IEmployee {
-    name: string;
-    year: number;
-    email: string;
-    location: string;
-    department: string;
-    position: string;
-    image: string;
+interface EmployeeCardProps {
+    currentUser: IUser;
 }
 
-const EmployeeCard: React.FC<IEmployee> = ({ name, year, email, location, department, position, image }) => {
-    const theme = useSelector(selectTheme);
+const EmployeeCard: React.FC<EmployeeCardProps> = ({ currentUser }) => {
+    const { displayName, jobTitle, email, mobilePhone, photo, groups } = currentUser; 
+    
+    const theme = useSelector(selectTheme)
     const styles = currentStyles(theme)
+
+    const userPhoto = photo || theme === 'dark' ? userPhotoBlack : userPhotoWhite
     
     return (
         <Card className="mb-3" style={styles.card}>
             <Card.Body>
                 <Row>
                     <Col md={4} className="text-center">
-                        <Image src={image} style={{ borderRadius: '20px' }} fluid /></Col>
+                        <Image src={photo || userPhoto} style={{ borderRadius: '20px' }} fluid /></Col>
                     <Col md={8}>
-                        <Card.Title className='mb-3' style={{ fontWeight: 'bold' }}>{name}</Card.Title>
-                        <Card.Text className="mb-2"><FaCalendarAlt /> Geburtsjahr: {year}</Card.Text>
+                        <Card.Title className='mb-3' style={{ fontWeight: 'bold' }}>{displayName}</Card.Title>
                         <Card.Text className="mb-2"><FaEnvelope /> Email: {email}</Card.Text>
-                        <Card.Text className="mb-2"><FaMapMarkerAlt /> Standort: {location}</Card.Text>
-                        <Card.Text className="mb-2"><FaBuilding /> Abteilung: {department}</Card.Text>
-                        <Card.Text className="mb-2"><FaBriefcase /> Position: {position}</Card.Text>
+                        <Card.Text className="mb-2"><FaBriefcase /> Position: {jobTitle}</Card.Text>
+                        <Card.Text className="mb-2"><FaBuilding /> Abteilung: {groups[0]}</Card.Text>
+                        <Card.Text className="mb-2"><FaPhone /> Telefon: {mobilePhone}</Card.Text>
                     </Col>
                 </Row>
             </Card.Body>
@@ -46,3 +47,6 @@ const EmployeeCard: React.FC<IEmployee> = ({ name, year, email, location, depart
 };
 
 export default EmployeeCard;
+
+//<Card.Text className="mb-2"><FaCalendarAlt /> Geburtsjahr: {year}</Card.Text>
+//<Card.Text className="mb-2"><FaMapMarkerAlt /> Standort: {location}</Card.Text>

@@ -1,9 +1,9 @@
-import { Level } from '../../features/levels/levelsSlice'
+import { Level } from '../../features/level/levelSlice'
 import { api } from './api'
 
 export const levelsApi = api.injectEndpoints({
     endpoints: (builder) => ({
-        getAllLevels : builder.query<Level[], void>({
+        getAllLevels: builder.query<Level[], void>({
             query: () => ({
                 url: '/levels',
                 method: 'GET'
@@ -17,7 +17,7 @@ export const {
 } = levelsApi
 
 export const {
-    endpoints : {
+    endpoints: {
         getAllLevels,
     }
 } = levelsApi

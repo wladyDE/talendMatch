@@ -4,26 +4,21 @@ import { Row, Col } from 'react-bootstrap';
 import Layout from '../components/layout/Layout'
 import SkillsAccordion from '../components/skills-accordion/SkillsAccordion';
 import EmployeeCard from '../components/employee-card/EmployeeCard';
-import ProfileFoto from '../img/Havryliok_Volodymyr_043_FINAL.jpg'
 import { useSelector } from 'react-redux';
 import { selectTheme } from '../features/theme/themeSlice';
 import { styles as currentStyles } from '../styles/styles';
+import { selectCurrentUser } from '../features/currentUser/currentUserSlice';
 
 const ProfilPage = () => {
   const theme = useSelector(selectTheme);
+  const currentUser = useSelector(selectCurrentUser)
   const styles = currentStyles(theme)
 
   return (
     <Layout>
       <Row className="my-4">
         <EmployeeCard
-          name='Volodymyr Havryliuk'
-          year={1997}
-          email='volodymyr.havryliuk@quinscape.de'
-          location='Dortmund'
-          department='D&A'
-          position='Teamleiter'
-          image={ProfileFoto}
+          currentUser={currentUser}
         />
       </Row>
       <Row>
