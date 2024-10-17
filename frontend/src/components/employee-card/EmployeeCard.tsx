@@ -1,38 +1,34 @@
 import React from 'react';
-import { Card, Row, Col, Image } from 'react-bootstrap';
+import { Card, Row, Col } from 'react-bootstrap';
 import {
-    FaCalendarAlt,
     FaEnvelope,
-    FaMapMarkerAlt,
     FaBuilding,
     FaBriefcase,
-    FaPhone
+    FaPhone,
 } from 'react-icons/fa'
 import { useSelector } from 'react-redux';
 import { selectTheme } from '../../features/theme/themeSlice';
 import { styles as currentStyles } from '../../styles/styles';
 import { IUser } from '../../features/currentUser/currentUserSlice';
-import userPhotoWhite from '../../img/user.png'
-import userPhotoBlack from '../../img/user_black.png'
+import ProfilePhoto from '../profilePhoto/ProfilePhoto';
 
 interface EmployeeCardProps {
     currentUser: IUser;
 }
 
 const EmployeeCard: React.FC<EmployeeCardProps> = ({ currentUser }) => {
-    const { displayName, jobTitle, email, mobilePhone, photo, groups } = currentUser; 
-    
+    const { displayName, jobTitle, email, mobilePhone, photo, groups } = currentUser;
+
     const theme = useSelector(selectTheme)
     const styles = currentStyles(theme)
 
-    const userPhoto = photo || theme === 'dark' ? userPhotoBlack : userPhotoWhite
-    
     return (
         <Card className="mb-3" style={styles.card}>
             <Card.Body>
                 <Row>
                     <Col md={4} className="text-center">
-                        <Image src={photo || userPhoto} style={{ borderRadius: '20px' }} fluid /></Col>
+                        <ProfilePhoto theme={theme} photo={photo} />
+                    </Col>
                     <Col md={8}>
                         <Card.Title className='mb-3' style={{ fontWeight: 'bold' }}>{displayName}</Card.Title>
                         <Card.Text className="mb-2"><FaEnvelope /> Email: {email}</Card.Text>
