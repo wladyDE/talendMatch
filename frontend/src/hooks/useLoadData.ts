@@ -20,14 +20,12 @@ export const useLoadData = (userId: string | null) => {
             dispatch(setLevels(levels));
             dispatch(setSkills(skills))
             console.log("Levels:", levels);
-            console.log("Skills", skills)
         }
     }, [levels, skills, dispatch]);
 
     useEffect(() => {
         if (currentUser) {
             dispatch(setCurrentUser(currentUser));
-            console.log("Current User:", currentUser);
         }
     }, [currentUser, dispatch]);
 

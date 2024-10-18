@@ -1,3 +1,5 @@
+import { ActiveFilter } from '../../features/activeFilters/activeFiltersSlice';
+import { IUser } from '../../features/currentUser/currentUserSlice';
 import { Level } from '../../features/levels/levelsSlice';
 import { ThemeMode } from '../../features/theme/themeSlice';
 import { styles as currentStyles } from '../../styles/styles';
@@ -16,4 +18,20 @@ export const getColorForLevel = (index: number, theme: ThemeMode, levels: Level[
     const mixedRGB = startRGB.map((start, i) => mix(start, endRGB[i]));
 
     return `rgb(${mixedRGB.join(',')})`;
+};
+
+export const getSelectedLevel = (
+    value: string,
+    skill: string,
+    currentUser: IUser,
+    activeFilters: ActiveFilter[],
+    levels: Level[]
+): number => {
+    if (value === 'USER') {
+        const userSkill = currentUser.employeeSkills.find((filter: any) => filter.skill.skillName === skill);
+        return userSkill ? levels.findIndex(level => level.levelName === userSkill.level.levelName) + 1 : 0;
+    } else {
+        const activeFilter = activeFilters.find(filter => filter.skill === skill);
+        return activeFilter ? levels.findIndex(level => level.levelName === activeFilter.levelName) + 1 : 0;
+    }
 };

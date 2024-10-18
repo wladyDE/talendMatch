@@ -11,8 +11,17 @@ const SkillsAccordion: React.FC = () => {
 
   return (
     <Row>
-      <SkillAccordion title="Soft Skills" skills={softSkills} size={6} />
-      <SkillAccordion title="Hard Skills" skills={hardSkills} size={6} />
+      <SkillAccordion
+        title="Soft Skills"
+        skills={softSkills}
+        size={6}
+        value='USER'
+      />
+      <SkillAccordion
+        title="Hard Skills"
+        skills={hardSkills}
+        size={6}
+        value='USER' />
     </Row>
   );
 };

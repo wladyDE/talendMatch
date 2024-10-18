@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../app/store';
 import { Level } from '../levels/levelsSlice';
 
-interface ActiveFilter {
+export interface ActiveFilter {
   levelName: Level["levelName"];
   skill: string
 }

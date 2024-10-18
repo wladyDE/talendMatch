@@ -14,6 +14,8 @@ const ProfilPage = () => {
   const currentUser = useSelector(selectCurrentUser)
   const styles = currentStyles(theme)
 
+  console.log(currentUser);
+
   return (
     <Layout>
       <Row className="my-4">

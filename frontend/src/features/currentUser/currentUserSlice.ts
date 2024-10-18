@@ -1,8 +1,15 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from "../../app/store";
+import { Skill } from '../skills/skillsSlice';
+import { Level } from '../levels/levelsSlice';
+
+export interface EmployeeSkill {
+  skill: Skill,
+  level: Level
+}
 
 export interface IUser {
-  userId: string;
+  employeeId: string;
   skillsVisibility: boolean;
   displayName: string;
   givenName: string;
@@ -11,13 +18,13 @@ export interface IUser {
   email: string;
   mobilePhone: string;
   photo: string | null;
-  employeeSkills: string[];
+  employeeSkills: EmployeeSkill[];
   roles: string[];
   groups: string[];
 }
 
 const initialState: IUser = {
-  userId: '',
+  employeeId: '',
   skillsVisibility: false,
   displayName: '',
   givenName: '',
@@ -37,11 +44,24 @@ const userSlice = createSlice({
   reducers: {
     setCurrentUser: (state, action: PayloadAction<IUser>) => {
       return action.payload
+    },
+    addSkill: (state, action: PayloadAction<EmployeeSkill>) => {
+      const { skill, level } = action.payload
+
+      const existingSkill = state.employeeSkills.findIndex(
+        employeeSkill => employeeSkill.skill.skillId === skill.skillId)
+
+      if (existingSkill === -1) {
+        state.employeeSkills.push(action.payload)
+      } else if (state.employeeSkills[existingSkill].level.levelId !== level.levelId) {
+        state.employeeSkills[existingSkill].level = level
+      }
+
     }
   },
 });
 
-export const { setCurrentUser } = userSlice.actions;
+export const { setCurrentUser, addSkill } = userSlice.actions;
 
 export default userSlice.reducer;
 

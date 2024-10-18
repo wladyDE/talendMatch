@@ -26,7 +26,7 @@ public class EmployeeSkillService {
     @Autowired
     private LevelRepository levelRepository;
 
-    public EmployeeSkill addEmployeeSkill(EmployeeSkillDTO employeeSkillDTO) {
+    public void addEmployeeSkill(EmployeeSkillDTO employeeSkillDTO) {
         Employee employee = employeeRepository.findById(employeeSkillDTO.getEmployeeId())
                 .orElseThrow(() -> new EntityNotFoundException("Employee not found"));
         Skill skill = skillRepository.findById(employeeSkillDTO.getSkillId())
@@ -40,6 +40,6 @@ public class EmployeeSkillService {
                 .level(level)
                 .build();
 
-        return employeeSkillRepository.save(employeeSkill);
+        employeeSkillRepository.save(employeeSkill);
     }
 }

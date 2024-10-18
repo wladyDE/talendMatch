@@ -3,14 +3,21 @@ import { Accordion, Row, Col } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 
 import { skillsIcons } from '../../constants/skillsIcons';
-import LevelSelect from '../level-select/LevelSelect';
+import LevelSelect, { LevelType } from '../level-select/LevelSelect';
 import { selectTheme } from '../../features/theme/themeSlice';
 import { styles as currentStyles } from '../../styles/styles';
 import { Skill } from '../../features/skills/skillsSlice';
 import { groupSkillsBySubcategory } from './utils';
 import './skillsAccordion.css';
 
-export const SkillAccordion: React.FC<{ title: string, skills: Skill[], size: number }> = ({ title, skills, size }) => {
+interface SkillAccordionProps {
+  title: string,
+  skills : Skill [],
+  size: number,
+  value : LevelType
+}
+
+export const SkillAccordion: React.FC<SkillAccordionProps> = ({ title, skills, size, value }) => {
   const theme = useSelector(selectTheme);
   const styles = currentStyles(theme);
 
@@ -37,6 +44,7 @@ export const SkillAccordion: React.FC<{ title: string, skills: Skill[], size: nu
                       <LevelSelect
                         skill={skill.skillName}
                         showAll={true}
+                        value={value}
                       />
                     </Col>
                   ))}

@@ -23,10 +23,14 @@ public class EmployeeService {
     }
 
     public Employee createEmployee(AzureUser azureUser){
-        return Employee.builder()
+        Employee newEmployee = Employee.builder()
                 .employeeId(azureUser.getId())
                 .skillsVisibility(false)
                 .employeeSkills(new ArrayList<>())
                 .build();
+
+        employeeRepository.save(newEmployee);
+
+        return newEmployee;
     }
 }
