@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../app/store';
-import { Level } from '../level/levelSlice';
+import { Level } from '../levels/levelsSlice';
 
 interface ActiveFilter {
   levelName: Level["levelName"];

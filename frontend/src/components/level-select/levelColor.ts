@@ -1,4 +1,4 @@
-import { Level } from '../../features/level/levelSlice';
+import { Level } from '../../features/levels/levelsSlice';
 import { ThemeMode } from '../../features/theme/themeSlice';
 import { styles as currentStyles } from '../../styles/styles';
 

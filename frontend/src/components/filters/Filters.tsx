@@ -1,9 +1,8 @@
 import React from 'react'
-import { skillsData } from '../../data'
-import { SkillAccordion } from '../skills-accordion/SkillsAccordion'
 
 const Filters = () => {
-
+  return null
+/*
   return (
     <div className="filters">
       <SkillAccordion
@@ -12,6 +11,7 @@ const Filters = () => {
         size={12} />
     </div>
   )
+    */
 }
 
 export default Filters

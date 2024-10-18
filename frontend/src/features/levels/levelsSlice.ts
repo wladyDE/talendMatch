@@ -14,8 +14,8 @@ const initialState: LevelState = {
   levels: [], 
 };
 
-const levelSlice = createSlice({
-  name: 'level',
+const levelsSlice = createSlice({
+  name: 'levels',
   initialState,
   reducers: {
     setLevels: (state, action) => {
@@ -24,8 +24,8 @@ const levelSlice = createSlice({
   },
 });
 
-export const { setLevels } = levelSlice.actions;
+export const { setLevels } = levelsSlice.actions;
 
-export default levelSlice.reducer;
+export default levelsSlice.reducer;
 
 export const selectLevels = (state: RootState) => state.levelsReducer.levels

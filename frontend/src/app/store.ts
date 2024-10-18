@@ -1,8 +1,9 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import themeReducer from '../features/theme/themeSlice'
 import activeFiltersReducer from '../features/activeFilters/activeFiltersSlice';
-import levelsReducer from '../features/level/levelSlice';
+import levelsReducer from '../features/levels/levelsSlice';
 import currentUserreducer from '../features/currentUser/currentUserSlice';
+import skillReducer from '../features/skills/skillsSlice'
 import { api } from './services/api'
 
 export const store = configureStore({
@@ -11,6 +12,7 @@ export const store = configureStore({
     activeFiltersReducer,
     levelsReducer,
     currentUserreducer,
+    skillReducer,
     [api.reducerPath]: api.reducer,
   },
   middleware: (getDefaultMiddleware) =>

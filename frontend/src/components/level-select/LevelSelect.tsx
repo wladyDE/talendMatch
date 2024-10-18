@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { type Level } from '../../features/level/levelSlice';
+import { type Level } from '../../features/levels/levelsSlice';
 import { selectTheme } from '../../features/theme/themeSlice';
 import { addFilter, selectActiveFilters } from '../../features/activeFilters/activeFiltersSlice';
-import { selectLevels } from '../../features/level/levelSlice';
+import { selectLevels } from '../../features/levels/levelsSlice';
 import { getColorForLevel } from './levelColor';
 import './levelSelect.css';
 
