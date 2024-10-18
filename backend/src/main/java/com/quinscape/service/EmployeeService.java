@@ -33,4 +33,11 @@ public class EmployeeService {
 
         return newEmployee;
     }
+
+    public void updateSkillsVisibility(String employeeId, boolean skillsVisibility) {
+        Employee employee = employeeRepository.findById(employeeId)
+                .orElseThrow(() -> new RuntimeException("Employee not found"));
+        employee.setSkillsVisibility(skillsVisibility);
+        employeeRepository.save(employee);
+    }
 }

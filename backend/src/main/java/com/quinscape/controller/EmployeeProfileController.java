@@ -1,11 +1,11 @@
 package com.quinscape.controller;
 
 import com.quinscape.dto.AzureUserGroupsAndRoles;
+import com.quinscape.dto.EmployeeSkillDTO;
 import com.quinscape.mapper.AzureUserMapper;
 import com.quinscape.model.AzureUser;
 import com.quinscape.model.Employee;
 import com.quinscape.model.EmployeeProfile;
-import com.quinscape.model.EmployeeSkill;
 import com.quinscape.service.AzureTokenService;
 import com.quinscape.service.AzureUserService;
 import com.quinscape.service.EmployeeProfileService;
@@ -17,7 +17,6 @@ import org.springframework.security.oauth2.client.OAuth2AuthorizedClient;
 import org.springframework.security.oauth2.client.annotation.RegisteredOAuth2AuthorizedClient;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -55,19 +54,19 @@ public class EmployeeProfileController {
         }
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<EmployeeProfile> getEmployeeById(@PathVariable String id) {
+    @GetMapping("/{employeeId}")
+    public ResponseEntity<EmployeeProfile> getEmployeeById(@PathVariable String employeeId) {
         try {
             String graphAccessToken = azureTokenService.getGraphAccessToken();
 
-            String responseBody = azureUserService.fetchUserData(graphAccessToken, id);
+            String responseBody = azureUserService.fetchUserData(graphAccessToken, employeeId);
             AzureUser azureEmployee = azureUserMapper.parseUser(responseBody);
 
             if (azureEmployee == null) {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
             }
 
-            Employee employee = employeeService.getEmployeeById(id);
+            Employee employee = employeeService.getEmployeeById(employeeId);
             if (employee == null) {
                 employee = employeeService.createEmployee(azureEmployee);
             }
@@ -85,6 +84,13 @@ public class EmployeeProfileController {
         }
     }
 
+    @PatchMapping("/{employeeId}/skills-visibility")
+    public ResponseEntity<Void> updateSkillsVisibility(
+            @PathVariable String employeeId,
+            @RequestParam boolean skillsVisibility) {
+        employeeService.updateSkillsVisibility(employeeId, skillsVisibility);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }
 
 

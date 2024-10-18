@@ -57,11 +57,14 @@ const userSlice = createSlice({
         state.employeeSkills[existingSkill].level = level
       }
 
+    },
+    toggleSkillsVisibility : (state, action: PayloadAction<boolean>) => {
+      state.skillsVisibility = action.payload
     }
   },
 });
 
-export const { setCurrentUser, addSkill } = userSlice.actions;
+export const { setCurrentUser, addSkill, toggleSkillsVisibility } = userSlice.actions;
 
 export default userSlice.reducer;
 

@@ -96,9 +96,9 @@ public class SkillInitializer {
             skillRepository.save(new Skill(null, "Aktives Zuhören", communicationSkills));
             skillRepository.save(new Skill(null, "Begeisterungsfähigkeit", communicationSkills));
             skillRepository.save(new Skill(null, "Wissensvermittlung", communicationSkills));
-            skillRepository.save(new Skill(null, "Gesprächs- und Verhandlungsführung", communicationSkills));
+            skillRepository.save(new Skill(null, "Verhandlungsführung", communicationSkills));
             skillRepository.save(new Skill(null, "Gestik und Mimik", communicationSkills));
-            skillRepository.save(new Skill(null, "Rhetorik, sprachliche Gewandtheit", communicationSkills));
+            skillRepository.save(new Skill(null, "Rhetorik", communicationSkills));
             skillRepository.save(new Skill(null, "Verhandlungskompetenz", communicationSkills));
             skillRepository.save(new Skill(null, "Überzeugungsvermögen", communicationSkills));
 

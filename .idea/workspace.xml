@@ -7,22 +7,14 @@
     <list default="true" id="8a2fbda8-20e1-4e01-9d22-741a966261eb" name="Changes" comment="">
       <change afterPath="$PROJECT_DIR$/backend/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/controller/EmployeeSkillController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/controller/EmployeeSkillController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/model/EmployeeSkill.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/model/EmployeeSkill.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/controller/EmployeeProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/controller/EmployeeProfileController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/data/SkillInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/data/SkillInitializer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/service/EmployeeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/service/EmployeeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/service/EmployeeSkillService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/service/EmployeeSkillService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/app/services/currentUser.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/services/currentUser.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/active-filters/ActiveFilters.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/active-filters/ActiveFilters.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/level-select/LevelSelect.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/level-select/LevelSelect.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/level-select/levelColor.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/login-form/LoginForm.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/login-form/loginForm.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/skills-accordion/SkillAccordion.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/skills-accordion/SkillAccordion.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/skills-accordion/SkillsAccordion.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/skills-accordion/SkillsAccordion.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/features/activeFilters/activeFiltersSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/activeFilters/activeFiltersSlice.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/features/currentUser/currentUserSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/currentUser/currentUserSlice.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/hooks/useLoadData.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/hooks/useLoadData.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/pages/Profil.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Profil.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/styles/styles.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/styles/styles.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

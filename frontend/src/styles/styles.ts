@@ -37,7 +37,6 @@ export const styles = (theme: ThemeMode) => {
       startColor : '#ECF9A1',
       endColor : '#B2CC1D'
     }
-    
   }
 };
 

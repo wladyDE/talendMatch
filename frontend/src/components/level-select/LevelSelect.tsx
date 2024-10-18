@@ -9,7 +9,7 @@ import { getColorForLevel, getSelectedLevel } from './utils';
 import './levelSelect.css';
 import { selectSkills } from '../../features/skills/skillsSlice';
 import { addSkill, selectCurrentUser } from '../../features/currentUser/currentUserSlice';
-import { useAddSkillToEmployeeMutation } from '../../app/services/currentUser';
+import { useAddSkillMutation } from '../../app/services/currentUser';
 
 export type LevelType = 'USER' | 'FILTER' | 'ACTIVE_FILTER'
 
@@ -27,7 +27,7 @@ const LevelSelect: React.FC<SkillLevelSelectorProps> = ({ skill, showAll, value 
     const levels = useSelector(selectLevels)
     const theme = useSelector(selectTheme);
     const currentUser = useSelector(selectCurrentUser)
-    const [addSkillToEmployee] = useAddSkillToEmployeeMutation()
+    const [addSkillToEmployee] = useAddSkillMutation()
 
     let selectedLevel = getSelectedLevel(value, skill, currentUser, activeFilters, levels);
  
