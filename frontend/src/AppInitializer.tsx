@@ -1,36 +1,43 @@
-import { useEffect, useState } from 'react';
-import { useMsal } from '@azure/msal-react';
-import { useDispatch } from 'react-redux';
-import { useGetAllLevelsQuery } from './app/services/levels';
-import { setLevels } from './features/level/levelSlice';
-import { useGetCurrentUserQuery } from './app/services/currentUser';
-import { setCurrentUser } from './features/currentUser/currentUserSlice';
+import { useEffect, useState } from "react";
+import { useMsal, useIsAuthenticated } from "@azure/msal-react";
+import { useDispatch } from "react-redux";
+import { useGetAllLevelsQuery } from "./app/services/levels";
+import { setLevels } from "./features/level/levelSlice";
+import { useGetCurrentUserQuery } from "./app/services/currentUser";
+import { setCurrentUser } from "./features/currentUser/currentUserSlice";
+import { ReactNode } from "react";
+import Spinner from "./components/spinner/Spinner";
 
-const AppInitializer = () => {
-  const { instance } = useMsal();
+interface ProtectedAppInitializerProps {
+  children: ReactNode;
+}
+
+export const AppInitializer = ({ children }: ProtectedAppInitializerProps) => {
+  const { instance, inProgress } = useMsal();
+  const isAuthenticated = useIsAuthenticated();
   const dispatch = useDispatch();
   const { data: levels } = useGetAllLevelsQuery();
   const [userId, setUserId] = useState<string | null>(null);
 
   useEffect(() => {
-    const initializeMsal = async () => {
-      if (instance) {
-        instance.addEventCallback((event) => {
-          if (event.eventType === "msal:loginSuccess") {
-            const accounts = instance.getAllAccounts();
-            if (accounts.length > 0) {
-              instance.setActiveAccount(accounts[0]);
-              console.log('Active account was set');
-            } else {
-              console.error("No accounts found after login");
-            }
-          }
-        });
+    if (!isAuthenticated && inProgress === "none") {
+      instance.loginRedirect();
+    }
+  }, [isAuthenticated, inProgress, instance]);
 
-        await instance.initialize();
+  useEffect(() => {
+    const initializeMsal = async () => {
+      if (instance && isAuthenticated) {
+        const accounts = instance.getAllAccounts();
+        if (accounts.length > 0) {
+          instance.setActiveAccount(accounts[0]);
+          console.log("Active account was set");
+        } else {
+          console.error("No accounts found after login");
+        }
 
         const tokenRequestGraph = {
-          scopes: ['https://graph.microsoft.com/.default'],
+          scopes: ["https://graph.microsoft.com/.default"],
         };
 
         const tokenResponseGraph = await instance.acquireTokenSilent(tokenRequestGraph);
@@ -41,12 +48,13 @@ const AppInitializer = () => {
         if (levels) {
           dispatch(setLevels(levels));
         }
-        console.log("Levels:", levels);
       }
     };
 
-    initializeMsal();
-  }, [instance, levels, dispatch]);
+    if (isAuthenticated) {
+      initializeMsal();
+    }
+  }, [instance, isAuthenticated, levels, dispatch]);
 
   const { data: currentUser } = useGetCurrentUserQuery(userId ?? "", {
     skip: !userId,
@@ -59,7 +67,11 @@ const AppInitializer = () => {
     }
   }, [currentUser, dispatch]);
 
-  return null;
-};
+  if (((inProgress === "login" || inProgress === "none") && !isAuthenticated) 
+    || (!levels || !currentUser)
+  ) {
+    return <Spinner />
+  }
 
-export default AppInitializer;
+  return <>{children}</>;
+};

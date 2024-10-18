@@ -7,7 +7,7 @@ import { useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { selectTheme } from '../../features/theme/themeSlice';
 
-import { Paths } from '../../constants';
+import { Paths } from '../../constants/paths';
 import LightLogo from '../../img/dataciders_quinscape_black.png'
 import './header.css'
 

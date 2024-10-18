@@ -30,7 +30,7 @@ const baseQuery: BaseQueryFn<string | FetchArgs, unknown, FetchBaseQueryError> =
         })(args, api, extraOptions);
 
     } catch (error: any) {
-        console.error("Token acquisition error:", error);
+      //  console.error("Token acquisition error:", error);
         return { error: { status: 'FETCH_ERROR', error: error.message } };
     }
 };
