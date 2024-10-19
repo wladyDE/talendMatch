@@ -3,7 +3,8 @@ import themeReducer from '../features/theme/themeSlice'
 import activeFiltersReducer from '../features/activeFilters/activeFiltersSlice';
 import levelsReducer from '../features/levels/levelsSlice';
 import currentUserreducer from '../features/currentUser/currentUserSlice';
-import skillReducer from '../features/skills/skillsSlice'
+import skillsReducer from '../features/skills/skillsSlice'
+import employeesReducer from '../features/employees/employeesSlice'
 import { api } from './services/api'
 
 export const store = configureStore({
@@ -12,7 +13,8 @@ export const store = configureStore({
     activeFiltersReducer,
     levelsReducer,
     currentUserreducer,
-    skillReducer,
+    skillReducer: skillsReducer,
+    employeesReducer,
     [api.reducerPath]: api.reducer,
   },
   middleware: (getDefaultMiddleware) =>

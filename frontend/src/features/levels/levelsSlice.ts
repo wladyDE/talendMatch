@@ -6,11 +6,11 @@ export type Level = {
   levelName: string;  
 }
 
-interface LevelState {
+interface LevelsState {
   levels: Level[];
 }
 
-const initialState: LevelState = {
+const initialState: LevelsState = {
   levels: [], 
 };
 

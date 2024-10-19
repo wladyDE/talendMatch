@@ -13,10 +13,10 @@ import { IUser } from '../../features/currentUser/currentUserSlice';
 import ProfilePhoto from '../profilePhoto/ProfilePhoto';
 
 interface EmployeeCardProps {
-    currentUser: IUser;
+    user: IUser;
 }
 
-const EmployeeCard: React.FC<EmployeeCardProps> = ({ currentUser }) => {
+const EmployeeCard: React.FC<EmployeeCardProps> = ({ user: currentUser }) => {
     const { displayName, jobTitle, email, mobilePhone, photo, groups } = currentUser;
 
     const theme = useSelector(selectTheme)
@@ -33,7 +33,9 @@ const EmployeeCard: React.FC<EmployeeCardProps> = ({ currentUser }) => {
                         <Card.Title className='mb-3' style={{ fontWeight: 'bold' }}>{displayName}</Card.Title>
                         <Card.Text className="mb-2"><FaEnvelope /> Email: {email}</Card.Text>
                         <Card.Text className="mb-2"><FaBriefcase /> Position: {jobTitle}</Card.Text>
-                        <Card.Text className="mb-2"><FaBuilding /> Abteilung: {groups[0]}</Card.Text>
+                        <Card.Text className="mb-2">
+                            <FaBuilding /> Abteilung: {groups && groups.length > 0 ? groups[0] : 'Nicht angegeben'}
+                        </Card.Text>
                         <Card.Text className="mb-2"><FaPhone /> Telefon: {mobilePhone}</Card.Text>
                     </Col>
                 </Row>

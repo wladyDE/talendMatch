@@ -34,12 +34,11 @@ public class EmployeeProfileController {
     private AzureTokenService azureTokenService;
 
     @GetMapping
-    public ResponseEntity<List<EmployeeProfile>> getEmployees(
-            @RegisteredOAuth2AuthorizedClient("azure") OAuth2AuthorizedClient authorizedClient) {
-        String accessToken = authorizedClient.getAccessToken().getTokenValue();
-
+    public ResponseEntity<List<EmployeeProfile>> getEmployees() {
         try {
-            String responseBody = azureUserService.fetchUserData(accessToken, null);
+            String graphAccessToken = azureTokenService.getGraphAccessToken();
+
+            String responseBody = azureUserService.fetchUserData(graphAccessToken, null);
             List<AzureUser> azureEmployees = azureUserMapper.parseUsers(responseBody);
 
             List<Employee> employees = employeeService.getEmployees();

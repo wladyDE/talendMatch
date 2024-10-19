@@ -6,28 +6,32 @@ import { useGetCurrentUserQuery } from "../app/services/currentUser";
 import { setCurrentUser } from "../features/currentUser/currentUserSlice";
 import { useGetSkillsQuery } from "../app/services/skills";
 import { setSkills } from "../features/skills/skillsSlice";
+import { useGetEmloyeesQuery } from "../app/services/users";
+import { setEmployees } from "../features/employees/employeesSlice";
 
 export const useLoadData = (userId: string | null) => {
     const dispatch = useDispatch();
     const { data: levels } = useGetLevelsQuery();
     const { data: skills } = useGetSkillsQuery(); 
+    const { data: employees } = useGetEmloyeesQuery(); 
     const { data: currentUser } = useGetCurrentUserQuery(userId ?? "", {
         skip: !userId,
     });
 
     useEffect(() => {
-        if (levels && skills) {
+        if (levels && skills && employees) {
             dispatch(setLevels(levels));
             dispatch(setSkills(skills))
+            dispatch(setEmployees(employees))
             console.log("Levels:", levels);
         }
-    }, [levels, skills, dispatch]);
+    }, [levels, skills, employees, dispatch]);
 
     useEffect(() => {
         if (currentUser) {
             dispatch(setCurrentUser(currentUser));
         }
-    }, [currentUser, dispatch]);
+    }, [currentUser, employees, dispatch]);
 
-    return { levels, currentUser };
+    return { levels, employees, currentUser };
 };

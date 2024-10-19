@@ -66,8 +66,7 @@ public class EmployeeProfileService {
 
     public List<EmployeeProfile> sortEmployeeProfiles(List<EmployeeProfile> employeeProfiles) {
         return employeeProfiles.stream()
-                .sorted(Comparator.comparing(EmployeeProfile::getSurname)
-                        .thenComparing(EmployeeProfile::getGivenName))
+                .sorted(Comparator.comparing(EmployeeProfile::getDisplayName))
                 .collect(Collectors.toList());
     }
 }

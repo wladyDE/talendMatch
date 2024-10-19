@@ -16,13 +16,13 @@ const ProfilPage = () => {
   const styles = currentStyles(theme)
 
   console.log(currentUser);
-  
+
 
   return (
     <Layout>
       <Row className="my-4">
         <EmployeeCard
-          currentUser={currentUser}
+          user={currentUser}
         />
       </Row>
       <Row>

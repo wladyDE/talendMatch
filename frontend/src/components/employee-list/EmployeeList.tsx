@@ -1,39 +1,41 @@
 import React, { useState, useEffect } from 'react'
 import EmployeeCard from '../../components/employee-card/EmployeeCard'
 import EmployeePagination from '../employee-pagination/EmployeePagination';
+import { IUser } from '../../features/currentUser/currentUserSlice';
+import { useSelector } from 'react-redux';
+import { selectEmployees } from '../../features/employees/employeesSlice';
+
+interface IEmployeeListData {
+    currentPageEmployees : IUser[],
+    totalPage : number
+}
 
 const EmployeeList = () => {
-    return null
-    /*
-    const [data, setData] = useState<IEmployeeData>({ employees: [], totalPage: 0 })
+    const employees = useSelector(selectEmployees)
+    const [data, setData] = useState<IEmployeeListData>({ currentPageEmployees: [], totalPage: 0 })
     const [page, setPage] = useState(1)
+    const employeeNumber = 10
 
     useEffect(() => {
-        const startIndex = (page - 1) * 5;
-        const endIndex = startIndex + 5;
+        const startIndex = (page - 1) * employeeNumber;
+        const endIndex = startIndex + employeeNumber;
 
         setData({
-            employees: employees.slice(startIndex, endIndex),
-            totalPage: Math.ceil(employees.length / 5),
+            currentPageEmployees: employees.employees.slice(startIndex, endIndex),
+            totalPage: Math.ceil(employees.employees.length / employeeNumber),
         });
-    }, [page]);
+    }, [page, employees.employees]);
 
-    const handleChangePage = (page : number) => {
-        setPage(page)
-    }
+    const handleChangePage = (newPage: number) => {
+        setPage(newPage);
+    };
 
     return (
         <>
-            {data.employees.map((employee, index) => (
+            {data.currentPageEmployees.map((employee, index) => (
                 <EmployeeCard
                     key={index}
-                    name={employee.name}
-                    year={employee.year}
-                    email={employee.email}
-                    location={employee.location}
-                    department={employee.department}
-                    position={employee.position}
-                    image={employee.image}
+                    user={employee}
                 />
             ))}
             {data.totalPage > 1 && (
@@ -45,7 +47,6 @@ const EmployeeList = () => {
             )}
         </>
     )
-        */
 }
 
 export default EmployeeList
