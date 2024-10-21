@@ -9,21 +9,11 @@ import { selectTheme } from '../features/theme/themeSlice';
 import { styles as currentStyles } from '../styles/styles';
 import { selectCurrentUser } from '../features/currentUser/currentUserSlice';
 import SkillsCheckBox from '../components/skills-checkbox/SkillsCheckBox';
-import { selectSkills } from '../features/skills/skillsSlice';
-import Spinner from '../components/spinner/Spinner';
 
 const ProfilPage = () => {
   const currentUser = useSelector(selectCurrentUser)
-  const skills = useSelector(selectSkills);
   const theme = useSelector(selectTheme);
   const styles = currentStyles(theme)
-
-  if (skills.length === 0) {
-    return <Spinner />
-  }
-
-  console.log(currentUser);
-  
 
   return (
     <Layout>

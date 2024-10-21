@@ -1,6 +1,6 @@
 import { SkillFilter } from '../../features/activeFilters/activeFiltersSlice';
 import { EmployeeSkill, IUser } from '../../features/currentUser/currentUserSlice';
-import { Level } from '../../features/levels/levelsSlice';
+import { type Level } from '../../app/services/levels';
 import { ThemeMode } from '../../features/theme/themeSlice';
 import { styles as currentStyles } from '../../styles/styles';
 

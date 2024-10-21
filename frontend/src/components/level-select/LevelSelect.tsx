@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { type Level } from '../../features/levels/levelsSlice';
+import { type Level } from '../../app/services/levels';
 import { selectTheme } from '../../features/theme/themeSlice';
 import { addSkillFilter, selectActiveFilters } from '../../features/activeFilters/activeFiltersSlice';
-import { selectLevels } from '../../features/levels/levelsSlice';
 import { getColorForLevel, getSelectedLevel } from './utils';
 import { addSkill, selectCurrentUser } from '../../features/currentUser/currentUserSlice';
 import { useAddSkillMutation } from '../../app/services/currentUser';
 import { selectSkills } from '../../features/skills/skillsSlice';
 import './levelSelect.css';
+import { useGetLevelsQuery } from '../../app/services/levels';
 
 export type LevelType = 'USER' | 'FILTER' | 'ACTIVE_FILTER'
 
@@ -23,10 +23,10 @@ const LevelSelect: React.FC<SkillLevelSelectorProps> = ({ skillId, showAll, valu
     const [hoveredLevel, setHoveredLevel] = useState<number>(0);
     const dispatch = useDispatch();
     const activeFilters = useSelector(selectActiveFilters);
-    const levels = useSelector(selectLevels)
     const theme = useSelector(selectTheme);
     const currentUser = useSelector(selectCurrentUser)
     const skills = useSelector(selectSkills)
+    const { data: levels = [] } = useGetLevelsQuery();
     const [addSkillToEmployee] = useAddSkillMutation()
 
     let selectedLevel = getSelectedLevel(value, skillId, currentUser, activeFilters.skillFilters, levels);

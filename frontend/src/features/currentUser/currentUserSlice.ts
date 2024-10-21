@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from "../../app/store";
-import { Level } from '../levels/levelsSlice';
-import { Skill } from '../skills/skillsSlice';
-import { Group } from '../../app/services/groups';
+import { type Level } from '../../app/services/levels';
+import { type Skill } from '../skills/skillsSlice';
+import { type Group } from '../../app/services/groups';
 
 export interface EmployeeSkill {
   skill : Skill,

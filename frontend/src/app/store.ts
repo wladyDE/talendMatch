@@ -1,7 +1,6 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import themeReducer from '../features/theme/themeSlice'
 import activeFiltersReducer from '../features/activeFilters/activeFiltersSlice';
-import levelsReducer from '../features/levels/levelsSlice';
 import currentUserreducer from '../features/currentUser/currentUserSlice';
 import skillsReducer from '../features/skills/skillsSlice'
 import employeesReducer from '../features/employees/employeesSlice'
@@ -11,7 +10,6 @@ export const store = configureStore({
   reducer: {
     themeReducer,
     activeFiltersReducer,
-    levelsReducer,
     currentUserreducer,
     skillReducer: skillsReducer,
     employeesReducer,

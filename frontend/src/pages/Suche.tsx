@@ -5,17 +5,9 @@ import Layout from '../components/layout/Layout'
 import SkillsFilter from '../components/skills-filters/SkillsFilter'
 import EmployeeList from '../components/employee-list/EmployeeList'
 import ActiveFilters from '../components/active-filters/ActiveFilters'
-import { useSelector } from 'react-redux'
-import { selectEmployees } from '../features/employees/employeesSlice'
-import Spinner from '../components/spinner/Spinner'
 import EmployeeFilter from '../components/employee-filters/EmployeeFilters'
 
 const SuchePage = () => {
-    const employees = useSelector(selectEmployees)
-    if (!employees || employees.length === 0) {      
-        return <Spinner />
-    }     
-
     return (
         <Layout>
             <ActiveFilters />

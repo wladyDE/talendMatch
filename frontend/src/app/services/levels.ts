@@ -1,5 +1,9 @@
-import { Level } from '../../features/levels/levelsSlice'
 import { api } from './api'
+
+export type Level = {
+    levelId : string;
+    levelName: string;  
+  }
 
 export const levelsApi = api.injectEndpoints({
     endpoints: (builder) => ({
