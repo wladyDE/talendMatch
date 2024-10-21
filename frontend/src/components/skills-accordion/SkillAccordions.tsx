@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { selectSkills } from '../../features/skills/skillsSlice';
 import { SkillAccordion } from './SkillAccordion';
 
-const SkillsAccordion: React.FC = () => {
+const SkillAccordions: React.FC = () => {
   const skills = useSelector(selectSkills);
   const softSkills = skills.filter(skill => skill.skillSubcategory.skillCategory.skillCategoryId === 1);
   const hardSkills = skills.filter(skill => skill.skillSubcategory.skillCategory.skillCategoryId === 2);
@@ -26,4 +26,4 @@ const SkillsAccordion: React.FC = () => {
   );
 };
 
-export default SkillsAccordion;
+export default SkillAccordions;

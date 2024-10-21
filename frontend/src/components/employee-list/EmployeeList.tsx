@@ -4,6 +4,8 @@ import EmployeePagination from '../employee-pagination/EmployeePagination';
 import { IUser } from '../../features/currentUser/currentUserSlice';
 import { useSelector } from 'react-redux';
 import { selectEmployees } from '../../features/employees/employeesSlice';
+import { selectActiveFilters } from '../../features/activeFilters/activeFiltersSlice';
+import { filterEmployees } from './utils';
 
 interface IEmployeeListData {
     currentPageEmployees : IUser[],
@@ -12,6 +14,7 @@ interface IEmployeeListData {
 
 const EmployeeList = () => {
     const employees = useSelector(selectEmployees)
+    const activeFilters = useSelector(selectActiveFilters);
     const [data, setData] = useState<IEmployeeListData>({ currentPageEmployees: [], totalPage: 0 })
     const [page, setPage] = useState(1)
     const employeeNumber = 10
@@ -20,11 +23,13 @@ const EmployeeList = () => {
         const startIndex = (page - 1) * employeeNumber;
         const endIndex = startIndex + employeeNumber;
 
+        const filteredEmployees = filterEmployees(employees, activeFilters)
+
         setData({
-            currentPageEmployees: employees.employees.slice(startIndex, endIndex),
-            totalPage: Math.ceil(employees.employees.length / employeeNumber),
+            currentPageEmployees: filteredEmployees.slice(startIndex, endIndex),
+            totalPage: Math.ceil(filteredEmployees.length / employeeNumber),
         });
-    }, [page, employees.employees]);
+    }, [page, employees, activeFilters]);
 
     const handleChangePage = (newPage: number) => {
         setPage(newPage);

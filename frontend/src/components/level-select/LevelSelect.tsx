@@ -3,48 +3,47 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { type Level } from '../../features/levels/levelsSlice';
 import { selectTheme } from '../../features/theme/themeSlice';
-import { addFilter, selectActiveFilters } from '../../features/activeFilters/activeFiltersSlice';
+import { addSkillFilter, selectActiveFilters } from '../../features/activeFilters/activeFiltersSlice';
 import { selectLevels } from '../../features/levels/levelsSlice';
 import { getColorForLevel, getSelectedLevel } from './utils';
-import './levelSelect.css';
-import { selectSkills } from '../../features/skills/skillsSlice';
 import { addSkill, selectCurrentUser } from '../../features/currentUser/currentUserSlice';
 import { useAddSkillMutation } from '../../app/services/currentUser';
+import { selectSkills } from '../../features/skills/skillsSlice';
+import './levelSelect.css';
 
 export type LevelType = 'USER' | 'FILTER' | 'ACTIVE_FILTER'
 
 interface SkillLevelSelectorProps {
-    skill: string;
+    skillId : string;
     showAll: boolean;
     value: LevelType
 }
 
-const LevelSelect: React.FC<SkillLevelSelectorProps> = ({ skill, showAll, value }) => {
+const LevelSelect: React.FC<SkillLevelSelectorProps> = ({ skillId, showAll, value }) => {
     const [hoveredLevel, setHoveredLevel] = useState<number>(0);
     const dispatch = useDispatch();
     const activeFilters = useSelector(selectActiveFilters);
-    const skills = useSelector(selectSkills)
     const levels = useSelector(selectLevels)
     const theme = useSelector(selectTheme);
     const currentUser = useSelector(selectCurrentUser)
+    const skills = useSelector(selectSkills)
     const [addSkillToEmployee] = useAddSkillMutation()
 
-    let selectedLevel = getSelectedLevel(value, skill, currentUser, activeFilters, levels);
- 
-    const addActiveFilter = (levelName: Level["levelName"]) => {
-        dispatch(addFilter({ levelName, skill }));
+    let selectedLevel = getSelectedLevel(value, skillId, currentUser, activeFilters.skillFilters, levels);
+    const skill = skills.find(skill => skill.skillId === +skillId)!
+
+    const addActiveFilter = (level : Level) => {
+        dispatch(addSkillFilter({ levelId: level.levelId, skillId }));
     };
 
-    const addCurrentUserSkill = async (level: Level, skill: string) => {
-        const currentSkill = skills.find(s => s.skillName === skill)!;
-
+    const addCurrentUserSkill = async (level: Level) => {        
         try {
             await addSkillToEmployee({
                 employeeId: currentUser.employeeId,
-                skillId: +currentSkill.skillId,
+                skillId : +skillId,
                 level: +level.levelId
             }).unwrap();
-            dispatch(addSkill({ skill: currentSkill, level }));
+            dispatch(addSkill({ skill , level }));
         } catch (error) {
             console.error("Failed to add skill:", error);
         }
@@ -52,15 +51,15 @@ const LevelSelect: React.FC<SkillLevelSelectorProps> = ({ skill, showAll, value 
 
     const handleLevelClick = (level: Level) => {
         if (value === 'USER') {
-            addCurrentUserSkill(level, skill);
+            addCurrentUserSkill(level);
         } else if (value === 'FILTER') {
-            addActiveFilter(level.levelName);
+            addActiveFilter(level);
         }
     };
 
     return (
         <>
-            <label>{skill}</label>
+            <label>{skill.skillName}</label>
             <div className="d-flex align-items-center">
                 {levels.map((level, index) => (
                     (showAll || index + 1 <= selectedLevel) && (

@@ -2,21 +2,28 @@ import React from 'react'
 import { Row, Col } from 'react-bootstrap';
 
 import Layout from '../components/layout/Layout'
-import SkillsAccordion from '../components/skills-accordion/SkillsAccordion';
+import SkillAccordions from '../components/skills-accordion/SkillAccordions';
 import EmployeeCard from '../components/employee-card/EmployeeCard';
 import { useSelector } from 'react-redux';
 import { selectTheme } from '../features/theme/themeSlice';
 import { styles as currentStyles } from '../styles/styles';
 import { selectCurrentUser } from '../features/currentUser/currentUserSlice';
 import SkillsCheckBox from '../components/skills-checkbox/SkillsCheckBox';
+import { selectSkills } from '../features/skills/skillsSlice';
+import Spinner from '../components/spinner/Spinner';
 
 const ProfilPage = () => {
   const currentUser = useSelector(selectCurrentUser)
+  const skills = useSelector(selectSkills);
   const theme = useSelector(selectTheme);
   const styles = currentStyles(theme)
 
-  console.log(currentUser);
+  if (skills.length === 0) {
+    return <Spinner />
+  }
 
+  console.log(currentUser);
+  
 
   return (
     <Layout>
@@ -33,7 +40,7 @@ const ProfilPage = () => {
             </h4>
             <SkillsCheckBox />
           </div>
-          <SkillsAccordion />
+          <SkillAccordions />
         </Col>
       </Row>
     </Layout>

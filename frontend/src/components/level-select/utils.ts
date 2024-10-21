@@ -1,5 +1,5 @@
-import { ActiveFilter } from '../../features/activeFilters/activeFiltersSlice';
-import { IUser } from '../../features/currentUser/currentUserSlice';
+import { SkillFilter } from '../../features/activeFilters/activeFiltersSlice';
+import { EmployeeSkill, IUser } from '../../features/currentUser/currentUserSlice';
 import { Level } from '../../features/levels/levelsSlice';
 import { ThemeMode } from '../../features/theme/themeSlice';
 import { styles as currentStyles } from '../../styles/styles';
@@ -22,16 +22,17 @@ export const getColorForLevel = (index: number, theme: ThemeMode, levels: Level[
 
 export const getSelectedLevel = (
     value: string,
-    skill: string,
+    skillId: string,
     currentUser: IUser,
-    activeFilters: ActiveFilter[],
+    activeFilters: SkillFilter[],
     levels: Level[]
 ): number => {
     if (value === 'USER') {
-        const userSkill = currentUser.employeeSkills.find((filter: any) => filter.skill.skillName === skill);
-        return userSkill ? levels.findIndex(level => level.levelName === userSkill.level.levelName) + 1 : 0;
+        const userSkill = currentUser.employeeSkills.find(
+            (employeeSkill: EmployeeSkill) => employeeSkill.skill.skillId === +skillId);
+        return userSkill ? levels.findIndex(level => level.levelId === userSkill.level.levelId) + 1 : 0;
     } else {
-        const activeFilter = activeFilters.find(filter => filter.skill === skill);
-        return activeFilter ? levels.findIndex(level => level.levelName === activeFilter.levelName) + 1 : 0;
+        const activeFilter = activeFilters.find(filter => filter.skillId === skillId);
+        return activeFilter ? levels.findIndex(level => level.levelId === activeFilter.levelId) + 1 : 0;
     }
 };

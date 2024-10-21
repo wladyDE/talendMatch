@@ -1,10 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from "../../app/store";
-import { Skill } from '../skills/skillsSlice';
 import { Level } from '../levels/levelsSlice';
+import { Skill } from '../skills/skillsSlice';
 
 export interface EmployeeSkill {
-  skill: Skill,
+  skill : Skill,
   level: Level
 }
 
@@ -19,7 +19,6 @@ export interface IUser {
   mobilePhone: string;
   photo: string | null;
   employeeSkills: EmployeeSkill[];
-  roles: string[];
   groups: string[];
 }
 
@@ -34,7 +33,6 @@ const initialState: IUser = {
   mobilePhone: '',
   photo: null,
   employeeSkills: [],
-  roles: [],
   groups: []
 };
 

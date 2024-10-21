@@ -10,7 +10,7 @@ import { useSelector } from 'react-redux';
 import { selectTheme } from '../../features/theme/themeSlice';
 import { styles as currentStyles } from '../../styles/styles';
 import { IUser } from '../../features/currentUser/currentUserSlice';
-import ProfilePhoto from '../profilePhoto/ProfilePhoto';
+import ProfilePhoto from '../profile-photo/ProfilePhoto';
 
 interface EmployeeCardProps {
     user: IUser;

@@ -12,9 +12,9 @@ import './skillsAccordion.css';
 
 interface SkillAccordionProps {
   title: string,
-  skills : Skill [],
+  skills: Skill[],
   size: number,
-  value : LevelType
+  value: LevelType
 }
 
 export const SkillAccordion: React.FC<SkillAccordionProps> = ({ title, skills, size, value }) => {
@@ -42,7 +42,7 @@ export const SkillAccordion: React.FC<SkillAccordionProps> = ({ title, skills, s
                   {skills.map((skill, skillIndex) => (
                     <Col md={size} key={skillIndex} className="mb-2">
                       <LevelSelect
-                        skill={skill.skillName}
+                        skillId={skill.skillId.toString()}
                         showAll={true}
                         value={value}
                       />

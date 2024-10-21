@@ -2,20 +2,14 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from "../../app/store";
 import { IUser } from '../currentUser/currentUserSlice';
 
-interface EmployeesState {
-    employees : IUser[]
-}
-
-const initialState : EmployeesState = {
-    employees : []
-}
+const initialState: IUser[] = [];
 
 const employeesSlice = createSlice({
   name: 'employees',
   initialState,
   reducers: {
     setEmployees: (state, action: PayloadAction<IUser[]>) => {
-      state.employees = action.payload
+      return action.payload;     
     },
   },
 });
