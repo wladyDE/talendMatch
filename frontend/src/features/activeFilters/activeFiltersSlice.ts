@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../app/store';
+import { Group } from '../../app/services/groups';
 
 export interface SkillFilter {
   levelId: string;
@@ -9,13 +10,13 @@ export interface SkillFilter {
 export interface ActiveFilters {
   skillFilters: SkillFilter[],
   nameFilter: string,
-  costcenterFilter: string
+  costcenterFilter: Group
 }
 
 const state = {
   skillFilters: [],
   nameFilter: '',
-  costcenterFilter: ''
+  costcenterFilter: {id : 0, displayName : '-'}
 }
 
 const storedFilters = JSON.parse(
@@ -53,14 +54,20 @@ const activeFiltersSlice = createSlice({
       state.nameFilter = action.payload
 
       localStorage.setItem('filters', JSON.stringify(state));
-    }
+    },
+    changeCostcenterFilter: (state, action: PayloadAction<Group>) => {
+      state.costcenterFilter = action.payload
+
+      localStorage.setItem('filters', JSON.stringify(state));
+    },
   },
 });
 
 export const {
   addSkillFilter,
   removeSkillFilter,
-  changeNameFilter
+  changeNameFilter,
+  changeCostcenterFilter
 } = activeFiltersSlice.actions;
 
 export default activeFiltersSlice.reducer;

@@ -31,6 +31,19 @@ public class AzureUserMapper {
         return buildAzureUser(rootNode);
     }
 
+    public List<String> parseUserGroups(String responseBody) throws Exception {
+        ObjectMapper objectMapper = new ObjectMapper();
+        JsonNode rootNode = objectMapper.readTree(responseBody);
+        JsonNode groupsArray = rootNode.path("value");
+
+        List<String> groupList = new ArrayList<>();
+        for (JsonNode groupNode : groupsArray) {
+            groupList.add(groupNode.path("displayName").asText());
+        }
+
+        return groupList;
+    }
+
     private AzureUser buildAzureUser(JsonNode userNode) {
         return AzureUser.builder()
                 .id(userNode.path("id").asText())

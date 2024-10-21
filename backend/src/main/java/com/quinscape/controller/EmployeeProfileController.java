@@ -1,7 +1,6 @@
 package com.quinscape.controller;
 
 import com.quinscape.dto.AzureUserGroupsAndRoles;
-import com.quinscape.dto.EmployeeSkillDTO;
 import com.quinscape.mapper.AzureUserMapper;
 import com.quinscape.model.AzureUser;
 import com.quinscape.model.Employee;
@@ -13,8 +12,6 @@ import com.quinscape.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.oauth2.client.OAuth2AuthorizedClient;
-import org.springframework.security.oauth2.client.annotation.RegisteredOAuth2AuthorizedClient;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -41,6 +38,12 @@ public class EmployeeProfileController {
             String responseBody = azureUserService.fetchUserData(graphAccessToken, null);
             List<AzureUser> azureEmployees = azureUserMapper.parseUsers(responseBody);
 
+            for (AzureUser azureEmployee : azureEmployees) {
+                String groupsResponse = azureUserService.fetchUserGroups(graphAccessToken, azureEmployee.getId());
+                List<String> groups = azureUserMapper.parseUserGroups(groupsResponse);
+                azureEmployee.setGroups(groups);
+            }
+
             List<Employee> employees = employeeService.getEmployees();
 
             List<EmployeeProfile> employeeProfiles = employeeProfileService.getEmployeeProfiles(employees, azureEmployees);
@@ -65,6 +68,10 @@ public class EmployeeProfileController {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
             }
 
+            String groupsResponse = azureUserService.fetchUserGroups(graphAccessToken, azureEmployee.getId());
+            List<String> groups = azureUserMapper.parseUserGroups(groupsResponse);
+            azureEmployee.setGroups(groups);
+
             Employee employee = employeeService.getEmployeeById(employeeId);
             if (employee == null) {
                 employee = employeeService.createEmployee(azureEmployee);
@@ -72,7 +79,6 @@ public class EmployeeProfileController {
 
             AzureUserGroupsAndRoles userGroupsAndRoles = azureUserService.fetchUserRoles(graphAccessToken, azureEmployee.getId());
             azureEmployee.setGroups(userGroupsAndRoles.getGroups());
-            azureEmployee.setRoles(userGroupsAndRoles.getRoles());
 
             EmployeeProfile employeeProfile = employeeProfileService.getEmployeeProfile(employee, azureEmployee);
 

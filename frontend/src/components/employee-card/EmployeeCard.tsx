@@ -34,7 +34,7 @@ const EmployeeCard: React.FC<EmployeeCardProps> = ({ user: currentUser }) => {
                         <Card.Text className="mb-2"><FaEnvelope /> Email: {email}</Card.Text>
                         <Card.Text className="mb-2"><FaBriefcase /> Position: {jobTitle}</Card.Text>
                         <Card.Text className="mb-2">
-                            <FaBuilding /> Abteilung: {groups && groups.length > 0 ? groups[0] : 'Nicht angegeben'}
+                            <FaBuilding /> Abteilung: {groups && groups.length > 0 ? groups[0].displayName : 'Nicht angegeben'}
                         </Card.Text>
                         <Card.Text className="mb-2"><FaPhone /> Telefon: {mobilePhone}</Card.Text>
                     </Col>

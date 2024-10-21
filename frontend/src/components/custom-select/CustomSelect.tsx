@@ -3,29 +3,29 @@ import { useSelector } from 'react-redux';
 import { selectTheme } from '../../features/theme/themeSlice';
 import { styles as currentStyles } from '../../styles/styles';
 import './customSelect.css';
+import { Group } from '../../app/services/groups';
 
-interface Option {
-    value: string;
-    label: string;
-}
-
-interface CustomSelectProps {
-    options: Option[];
+interface CustomSelectProps<T extends Group> {
+    options: T[];
     placeholder: string;
+    onOptionClick : (group : Group) => void
+    firstOption : T
 }
 
-const CustomSelect: React.FC<CustomSelectProps> = ({ options, placeholder }) => {
+const CustomSelect = <T extends Group>(
+    { options, placeholder, onOptionClick, firstOption }: CustomSelectProps<T>) => { 
     const [isOpen, setIsOpen] = useState(false);
-    const [selectedOption, setSelectedOption] = useState<Option | null>(options[0]);
+    const [selectedOption, setSelectedOption] = useState<T | null>(firstOption);
     const theme = useSelector(selectTheme);
     const styles = currentStyles(theme);
     const selectRef = useRef<HTMLDivElement>(null);
 
     const toggleDropdown = () => setIsOpen(!isOpen);
 
-    const handleOptionClick = (option: Option) => {
+    const handleOptionClick = (option: T) => {
         setSelectedOption(option);
         setIsOpen(false);
+        onOptionClick(option)
     };
 
     const handleClickOutside = (event: MouseEvent) => {
@@ -48,22 +48,22 @@ const CustomSelect: React.FC<CustomSelectProps> = ({ options, placeholder }) => 
             style={styles.card}
         >
             <div className="select-box" onClick={toggleDropdown}>
-                {selectedOption ? selectedOption.label : placeholder}
+                {selectedOption ? selectedOption.displayName : placeholder}
                 <span className="arrow">{isOpen ? '▲' : '▼'}</span>
             </div>
             {isOpen && (
                 <ul className="options-list">
                     {options.map((option) => (
                         <li
-                            key={option.value}
-                            className={`option-item ${selectedOption?.value === option.value ? 'selected' : ''}`}
+                            key={option.displayName}
+                            className={`option-item ${selectedOption?.displayName === option.displayName ? 'selected' : ''}`}
                             style={{
                                 ...styles.card, 
                                 backgroundColor: theme === 'dark' ? '#22272B' : 'white'
                             }}
                             onClick={() => handleOptionClick(option)}
                         >
-                            {option.label}
+                            {option.displayName}
                         </li>
                     ))}
                 </ul>

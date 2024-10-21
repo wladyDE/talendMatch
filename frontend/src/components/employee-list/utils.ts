@@ -10,6 +10,12 @@ export const filterEmployees = (employees: IUser[], activeFilters: ActiveFilters
       );
     }
 
+    if(activeFilters.costcenterFilter.id !== "0"){
+      filteredEmployees = filteredEmployees.filter(employee => 
+        employee.groups.includes(activeFilters.costcenterFilter)
+      )
+    }
+
     if (activeFilters.skillFilters.length > 0) {
       filteredEmployees = filteredEmployees.filter(employee =>
         activeFilters.skillFilters.every(filter =>

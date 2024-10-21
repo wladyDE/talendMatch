@@ -59,7 +59,6 @@ public class EmployeeProfileService {
                 .mail(azureUser.getMail())
                 .mobilePhone(azureUser.getMobilePhone())
                 .photo(azureUser.getPhoto())
-                .roles(azureUser.getRoles())
                 .groups(azureUser.getGroups())
                 .build();
     }
