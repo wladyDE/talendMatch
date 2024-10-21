@@ -9,10 +9,10 @@ interface ProtectedAppInitializerProps {
 
 export const AppInitializer = ({ children }: ProtectedAppInitializerProps) => {
   const { userId, inProgress, isAuthenticated } = useMsalAuthentication();
-  const { employees, currentUser } = useLoadData(userId);
+  const { employees, currentUser, skills } = useLoadData(userId);
 
   if (((inProgress === "login" || inProgress === "none") && !isAuthenticated) 
-    || ( !currentUser || !employees)
+    || ( !currentUser || !employees || !skills)
   ) {
     return <Spinner />;
   }

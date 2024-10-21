@@ -26,7 +26,7 @@ export const useLoadData = (userId: string | null) => {
         if (currentUser) {
             dispatch(setCurrentUser(currentUser));
         }
-    }, [currentUser, employees, dispatch]);
+    }, [currentUser, dispatch]);
 
-    return { employees, currentUser };
+    return { employees, currentUser, skills };
 };

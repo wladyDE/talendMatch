@@ -12,7 +12,7 @@ import LightLogo from '../../img/dataciders_quinscape_black.png'
 import './header.css'
 
 import { styles as currentStyles } from '../../styles/styles';
-import AusloggenButton from './buttons/AusloggenButton';
+import LogoutButton from './buttons/LogoutButton';
 import ThemeButton from './buttons/ThemeButton';
 
 const Header = () => {
@@ -46,7 +46,7 @@ const Header = () => {
                 </Nav>
 
                 <ThemeButton />
-                <AusloggenButton />
+                <LogoutButton />
 
             </Container>
         </Navbar>

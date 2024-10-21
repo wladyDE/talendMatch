@@ -59,7 +59,7 @@ const LevelSelect: React.FC<SkillLevelSelectorProps> = ({ skillId, showAll, valu
 
     return (
         <>
-            <label>{skill.skillName}</label>
+            <label>{skill?.skillName}</label>
             <div className="d-flex align-items-center">
                 {levels.map((level, index) => (
                     (showAll || index + 1 <= selectedLevel) && (

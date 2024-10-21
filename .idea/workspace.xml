@@ -6,16 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="8a2fbda8-20e1-4e01-9d22-741a966261eb" name="Changes" comment="">
       <change afterPath="$PROJECT_DIR$/backend/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/AppInitializer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/AppInitializer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/services/levels.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/services/levels.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/store.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/header/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/header/Header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/header/buttons/AusloggenButton.tsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/level-select/LevelSelect.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/level-select/LevelSelect.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/level-select/utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/level-select/utils.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/features/currentUser/currentUserSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/currentUser/currentUserSlice.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/features/levels/levelsSlice.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/hooks/useLoadData.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/hooks/useLoadData.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Profil.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Profil.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Suche.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Suche.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,7 +136,7 @@
       <workItem from="1729154497140" duration="2155000" />
       <workItem from="1729336299399" duration="1220000" />
       <workItem from="1729434383998" duration="625000" />
-      <workItem from="1729494810610" duration="6843000" />
+      <workItem from="1729494810610" duration="7670000" />
     </task>
     <servers />
   </component>
