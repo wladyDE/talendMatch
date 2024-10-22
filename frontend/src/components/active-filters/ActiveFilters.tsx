@@ -19,9 +19,6 @@ const ActiveFilters = () => {
         return null;
     }
 
-    console.log(activeFilters);
-
-
     return (
         <Row className="my-3">
             <div className="filters-container">

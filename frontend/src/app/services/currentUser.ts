@@ -1,5 +1,7 @@
 import { type IUser } from '../../features/currentUser/currentUserSlice'
+import { Skill } from '../../features/skills/skillsSlice';
 import { api } from './api'
+import { Level } from './levels';
 
 export const currentUserApi = api.injectEndpoints({
     endpoints: (builder) => ({
@@ -9,11 +11,11 @@ export const currentUserApi = api.injectEndpoints({
                 method: 'GET',
             }),
         }),
-        addSkill: builder.mutation<void, { employeeId: string; skillId: number; level: number }>({
-            query: ({ employeeId, skillId, level }) => ({
+        addSkill: builder.mutation<void, { employeeId: string; skill: Skill; level: Level }>({
+            query: ({ employeeId, skill, level }) => ({
                 url: `/employees/${employeeId}/skill`,
                 method: 'POST',
-                body: { employeeId, skillId, level },
+                body: { employeeId, skillId : skill.skillId, level : level.levelId },
             }),
         }),
         toggleSkillsVisibility : builder.mutation<void, {employeeId : string, skillsVisibility: boolean}>({

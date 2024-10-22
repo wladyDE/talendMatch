@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../../app/store";
+import { skillsApi } from "../../app/services/skills";
 
 export interface SkillCategory {
     skillCategoryId: number;
@@ -29,14 +30,14 @@ const initialState: SkillState = {
 const skillSlice = createSlice({
     name: 'skills',
     initialState,
-    reducers: {
-        setSkills: (state, action) => {
-            state.skills = action.payload
-        },
-    },
+    reducers: {},
+    extraReducers: (builder) => {
+        builder
+            .addMatcher(skillsApi.endpoints.getSkills.matchFulfilled, (state, action) => {
+                state.skills = action.payload
+            })
+    }
 });
-
-export const { setSkills } = skillSlice.actions;
 
 export default skillSlice.reducer;
 

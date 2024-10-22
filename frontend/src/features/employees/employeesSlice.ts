@@ -1,20 +1,21 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import { RootState } from "../../app/store";
 import { IUser } from '../currentUser/currentUserSlice';
+import { employeesApi } from '../../app/services/users';
 
 const initialState: IUser[] = [];
 
 const employeesSlice = createSlice({
   name: 'employees',
   initialState,
-  reducers: {
-    setEmployees: (state, action: PayloadAction<IUser[]>) => {
-      return action.payload;     
-    },
-  },
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addMatcher(employeesApi.endpoints.getEmloyees.matchFulfilled, (state, action) => {
+        return action.payload
+      })
+  }
 });
-
-export const { setEmployees } = employeesSlice.actions;
 
 export default employeesSlice.reducer;
 

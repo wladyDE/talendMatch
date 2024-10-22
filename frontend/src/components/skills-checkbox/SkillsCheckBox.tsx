@@ -1,6 +1,6 @@
 import React from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { selectCurrentUser, toggleSkillsVisibility } from '../../features/currentUser/currentUserSlice'
+import { useSelector } from 'react-redux'
+import { selectCurrentUser} from '../../features/currentUser/currentUserSlice'
 import { selectTheme } from '../../features/theme/themeSlice'
 import { styles as currentStyles } from '../../styles/styles'
 import './skillsCheckBox.css'
@@ -8,7 +8,6 @@ import { useToggleSkillsVisibilityMutation } from '../../app/services/currentUse
 
 const SkillsCheckBox = () => {
     const currentUser = useSelector(selectCurrentUser)
-    const dispatch = useDispatch();
     const theme = useSelector(selectTheme);
     const styles = currentStyles(theme)
     const [toggleSkillsVisibilityRequest] = useToggleSkillsVisibilityMutation()
@@ -23,8 +22,6 @@ const SkillsCheckBox = () => {
                     employeeId: currentUser.employeeId,
                     skillsVisibility: !currentUser.skillsVisibility,  
                 }).unwrap();
-                
-                dispatch(toggleSkillsVisibility(!currentUser.skillsVisibility)); 
             } catch (error) {
                 console.error("Failed to change skillsVisibility:", error);
             }

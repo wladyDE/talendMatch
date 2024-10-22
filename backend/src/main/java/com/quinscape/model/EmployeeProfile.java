@@ -21,5 +21,5 @@ public class EmployeeProfile {
     private String mail;
     private String mobilePhone;
     private String photo;
-    private List<String> groups;
+    private List<Group> groups;
 }

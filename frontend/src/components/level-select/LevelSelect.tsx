@@ -5,7 +5,7 @@ import { type Level } from '../../app/services/levels';
 import { selectTheme } from '../../features/theme/themeSlice';
 import { addSkillFilter, selectActiveFilters } from '../../features/activeFilters/activeFiltersSlice';
 import { getColorForLevel, getSelectedLevel } from './utils';
-import { addSkill, selectCurrentUser } from '../../features/currentUser/currentUserSlice';
+import { selectCurrentUser } from '../../features/currentUser/currentUserSlice';
 import { useAddSkillMutation } from '../../app/services/currentUser';
 import { selectSkills } from '../../features/skills/skillsSlice';
 import './levelSelect.css';
@@ -40,10 +40,9 @@ const LevelSelect: React.FC<SkillLevelSelectorProps> = ({ skillId, showAll, valu
         try {
             await addSkillToEmployee({
                 employeeId: currentUser.employeeId,
-                skillId : +skillId,
-                level: +level.levelId
+                skill,
+                level
             }).unwrap();
-            dispatch(addSkill({ skill , level }));
         } catch (error) {
             console.error("Failed to add skill:", error);
         }

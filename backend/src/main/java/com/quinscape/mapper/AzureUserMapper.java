@@ -3,6 +3,7 @@ package com.quinscape.mapper;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.quinscape.model.AzureUser;
+import com.quinscape.model.Group;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -31,14 +32,18 @@ public class AzureUserMapper {
         return buildAzureUser(rootNode);
     }
 
-    public List<String> parseUserGroups(String responseBody) throws Exception {
+    public List<Group> parseUserGroups(String responseBody) throws Exception {
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode rootNode = objectMapper.readTree(responseBody);
         JsonNode groupsArray = rootNode.path("value");
 
-        List<String> groupList = new ArrayList<>();
+        List<Group> groupList = new ArrayList<>();
         for (JsonNode groupNode : groupsArray) {
-            groupList.add(groupNode.path("displayName").asText());
+            Group group = Group.builder()
+                    .id(groupNode.path("id").asText())
+                    .displayName(groupNode.path("displayName").asText())
+                    .build();
+            groupList.add(group);
         }
 
         return groupList;

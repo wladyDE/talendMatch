@@ -19,6 +19,9 @@ const EmployeeList = () => {
     const [page, setPage] = useState(1)
     const employeeNumber = 10
 
+    console.log(employees);
+    
+
     useEffect(() => {
         const startIndex = (page - 1) * employeeNumber;
         const endIndex = startIndex + employeeNumber;

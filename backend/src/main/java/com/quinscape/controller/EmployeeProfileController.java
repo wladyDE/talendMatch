@@ -5,6 +5,7 @@ import com.quinscape.mapper.AzureUserMapper;
 import com.quinscape.model.AzureUser;
 import com.quinscape.model.Employee;
 import com.quinscape.model.EmployeeProfile;
+import com.quinscape.model.Group;
 import com.quinscape.service.AzureTokenService;
 import com.quinscape.service.AzureUserService;
 import com.quinscape.service.EmployeeProfileService;
@@ -40,7 +41,7 @@ public class EmployeeProfileController {
 
             for (AzureUser azureEmployee : azureEmployees) {
                 String groupsResponse = azureUserService.fetchUserGroups(graphAccessToken, azureEmployee.getId());
-                List<String> groups = azureUserMapper.parseUserGroups(groupsResponse);
+                List<Group> groups = azureUserMapper.parseUserGroups(groupsResponse);
                 azureEmployee.setGroups(groups);
             }
 
@@ -69,16 +70,13 @@ public class EmployeeProfileController {
             }
 
             String groupsResponse = azureUserService.fetchUserGroups(graphAccessToken, azureEmployee.getId());
-            List<String> groups = azureUserMapper.parseUserGroups(groupsResponse);
+            List<Group> groups = azureUserMapper.parseUserGroups(groupsResponse);
             azureEmployee.setGroups(groups);
 
             Employee employee = employeeService.getEmployeeById(employeeId);
             if (employee == null) {
                 employee = employeeService.createEmployee(azureEmployee);
             }
-
-            AzureUserGroupsAndRoles userGroupsAndRoles = azureUserService.fetchUserRoles(graphAccessToken, azureEmployee.getId());
-            azureEmployee.setGroups(userGroupsAndRoles.getGroups());
 
             EmployeeProfile employeeProfile = employeeProfileService.getEmployeeProfile(employee, azureEmployee);
 

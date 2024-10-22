@@ -1,11 +1,12 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice} from '@reduxjs/toolkit';
 import { RootState } from "../../app/store";
 import { type Level } from '../../app/services/levels';
 import { type Skill } from '../skills/skillsSlice';
 import { type Group } from '../../app/services/groups';
+import { currentUserApi } from '../../app/services/currentUser';
 
 export interface EmployeeSkill {
-  skill : Skill,
+  skill: Skill,
   level: Level
 }
 
@@ -40,32 +41,32 @@ const initialState: IUser = {
 const userSlice = createSlice({
   name: 'currentUser',
   initialState,
-  reducers: {
-    setCurrentUser: (state, action: PayloadAction<IUser>) => {
-      return action.payload
-    },
-    addSkill: (state, action: PayloadAction<EmployeeSkill>) => {
-      const { skill, level } = action.payload
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addMatcher(currentUserApi.endpoints.getCurrentUser.matchFulfilled, (state, action) => {
+        return action.payload
+      })
+      .addMatcher(currentUserApi.endpoints.addSkill.matchFulfilled, (state, action) => {
+        const { skill, level } = action.meta.arg.originalArgs;
 
-      const existingSkill = state.employeeSkills.findIndex(
-        employeeSkill => employeeSkill.skill.skillId === skill.skillId)
+        const existingSkill = state.employeeSkills.findIndex(
+          employeeSkill => employeeSkill.skill.skillId === skill.skillId
+        );
 
-      if (existingSkill === -1) {
-        state.employeeSkills.push(action.payload)
-      } else if (state.employeeSkills[existingSkill].level.levelId !== level.levelId) {
-        state.employeeSkills[existingSkill].level = level
-      }
-
-    },
-    toggleSkillsVisibility : (state, action: PayloadAction<boolean>) => {
-      state.skillsVisibility = action.payload
-    }
-  },
+        if (existingSkill === -1) {
+          state.employeeSkills.push({ skill, level });
+        } else if (state.employeeSkills[existingSkill].level.levelId !== level.levelId) {
+          state.employeeSkills[existingSkill].level = level;
+        }
+      })
+      .addMatcher(currentUserApi.endpoints.toggleSkillsVisibility.matchFulfilled, (state, action) => {
+        const { skillsVisibility } = action.meta.arg.originalArgs;
+        state.skillsVisibility = skillsVisibility
+      })
+  }
 });
 
-export const { setCurrentUser, addSkill, toggleSkillsVisibility } = userSlice.actions;
-
 export default userSlice.reducer;
-
 
 export const selectCurrentUser = (state: RootState) => state.currentUserreducer

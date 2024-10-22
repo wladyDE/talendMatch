@@ -16,11 +16,14 @@ interface EmployeeCardProps {
     user: IUser;
 }
 
-const EmployeeCard: React.FC<EmployeeCardProps> = ({ user: currentUser }) => {
-    const { displayName, jobTitle, email, mobilePhone, photo, groups } = currentUser;
+const EmployeeCard: React.FC<EmployeeCardProps> = ({ user }) => {
+    const { displayName, jobTitle, email, mobilePhone, photo, groups } = user;
 
     const theme = useSelector(selectTheme)
     const styles = currentStyles(theme)
+
+    console.log(groups);
+    
 
     return (
         <Card className="mb-3" style={styles.card}>
