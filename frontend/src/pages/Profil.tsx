@@ -6,31 +6,40 @@ import SkillAccordions from '../components/skills-accordion/SkillAccordions';
 import EmployeeCard from '../components/employee-card/EmployeeCard';
 import { useSelector } from 'react-redux';
 import { selectTheme } from '../features/theme/themeSlice';
-import { styles as currentStyles } from '../styles/styles';
+import { centeredFlexBox, styles as currentStyles } from '../styles/styles';
 import { selectCurrentUser } from '../features/currentUser/currentUserSlice';
 import SkillsCheckBox from '../components/skills-checkbox/SkillsCheckBox';
+import { useParams } from 'react-router-dom';
+import { selectEmployees } from '../features/employees/employeesSlice';
 
 const ProfilPage = () => {
+  const { id } = useParams<{ id: string }>();
   const currentUser = useSelector(selectCurrentUser)
+  const employees = useSelector(selectEmployees)
   const theme = useSelector(selectTheme);
   const styles = currentStyles(theme)
+
+  const user = id ? employees.find(employee => employee.employeeId === id)! : currentUser
 
   return (
     <Layout>
       <Row className="my-4">
         <EmployeeCard
-          user={currentUser}
+          user={user}
         />
       </Row>
       <Row>
         <Col>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', color: 'gray' }}>
+          <div style={{ ...centeredFlexBox, color: 'gray' }}>
             <h4 className="mt-2 mb-3" style={{ ...styles.h }}>
-              Ihre Fähigkeiten und deren Level
+              Fähigkeiten und deren Level
             </h4>
-            <SkillsCheckBox />
+            {!id && <SkillsCheckBox />}
           </div>
-          <SkillAccordions />
+          <SkillAccordions
+             type="USER"
+             user={user}
+          />
         </Col>
       </Row>
     </Layout>

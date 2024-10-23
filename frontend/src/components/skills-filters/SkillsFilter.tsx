@@ -12,7 +12,7 @@ const SkillsFilter = () => {
         title='Mitarbeiter filtern'
         skills={skills}
         size={12}
-        value='FILTER'
+        value={{ type: 'FILTER' }}
       />
     </div>
   )

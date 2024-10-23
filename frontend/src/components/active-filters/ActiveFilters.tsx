@@ -28,7 +28,7 @@ const ActiveFilters = () => {
                             <LevelSelect
                                 skillId={filter.skillId}
                                 showAll={false}
-                                value='ACTIVE_FILTER'
+                                value={{ type: 'ACTIVE_FILTER' }}
                             />
                             <span
                                 className="remove-filter"

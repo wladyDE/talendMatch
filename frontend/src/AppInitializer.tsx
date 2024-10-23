@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+
 import { useMsalAuthentication } from "./hooks/useMsalAuthentication";
 import Spinner from "./components/spinner/Spinner";
 import { useGetSkillsQuery } from "./app/services/skills";

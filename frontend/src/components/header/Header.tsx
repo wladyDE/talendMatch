@@ -23,7 +23,7 @@ const Header = () => {
     return (
         <Navbar style={styles.navbar}>
             <Container>
-                <Navbar.Brand href={Paths.home} style={{ marginRight: '30px' }}>
+                <Navbar.Brand href={Paths.profile} style={{ marginRight: '30px' }}>
                     <Image
                         src={LightLogo}
                         className='logo-img'
@@ -32,8 +32,8 @@ const Header = () => {
 
                 <Nav className="me-auto">
                     <Nav.Link
-                        href={Paths.home}
-                        style={location.pathname === Paths.home ? styles.navLinkActive : styles.navLink}
+                        href={Paths.profile}
+                        style={location.pathname === Paths.profile ? styles.navLinkActive : styles.navLink}
                     >
                         Profil
                     </Nav.Link>

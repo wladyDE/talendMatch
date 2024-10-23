@@ -17,7 +17,7 @@ export interface IUser {
   givenName: string;
   surname: string;
   jobTitle: string;
-  email: string;
+  mail: string;
   mobilePhone: string;
   photo: string | null;
   employeeSkills: EmployeeSkill[];
@@ -31,7 +31,7 @@ const initialState: IUser = {
   givenName: '',
   surname: '',
   jobTitle: '',
-  email: '',
+  mail: '',
   mobilePhone: '',
   photo: null,
   employeeSkills: [],

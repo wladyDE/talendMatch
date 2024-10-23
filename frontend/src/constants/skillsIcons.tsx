@@ -1,4 +1,18 @@
-import { FaBrain, FaHandshake, FaUserTie, FaComments, FaCode, FaServer, FaDatabase, FaTools, FaFlask, FaLanguage, FaAtom, FaIndustry, FaStar } from 'react-icons/fa';
+import { 
+    FaBrain, 
+    FaHandshake, 
+    FaUserTie, 
+    FaComments, 
+    FaCode, 
+    FaServer, 
+    FaDatabase, 
+    FaTools, 
+    FaFlask, 
+    FaLanguage, 
+    FaAtom, 
+    FaIndustry, 
+    FaStar 
+} from 'react-icons/fa';
 
 export const skillsIcons = {
     "Methodische Skills": <FaBrain />,

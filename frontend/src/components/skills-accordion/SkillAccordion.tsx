@@ -8,6 +8,7 @@ import { selectTheme } from '../../features/theme/themeSlice';
 import { styles as currentStyles } from '../../styles/styles';
 import { Skill } from '../../features/skills/skillsSlice';
 import { groupSkillsBySubcategory } from './utils';
+import AccordionHeader from './AccordionHeader';
 import './skillsAccordion.css';
 
 interface SkillAccordionProps {
@@ -32,11 +33,11 @@ export const SkillAccordion: React.FC<SkillAccordionProps> = ({ title, skills, s
 
           return (
             <Accordion.Item eventKey={index.toString()} key={index}>
-              <Accordion.Header>
-                {icon ? React.cloneElement(icon, { style: { marginRight: '8px' } }) : null}
-                {subcategoryName}
-              </Accordion.Header>
-
+              <AccordionHeader
+                icon={icon}
+                subcategoryName={subcategoryName}
+                value={value}
+              />
               <Accordion.Body>
                 <Row>
                   {skills.map((skill, skillIndex) => (

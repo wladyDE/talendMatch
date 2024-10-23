@@ -14,19 +14,22 @@ import ProfilePhoto from '../profile-photo/ProfilePhoto';
 
 interface EmployeeCardProps {
     user: IUser;
+    style?: React.CSSProperties;
+    onClick?: (id: string) => void;
 }
 
-const EmployeeCard: React.FC<EmployeeCardProps> = ({ user }) => {
-    const { displayName, jobTitle, email, mobilePhone, photo, groups } = user;
+const EmployeeCard: React.FC<EmployeeCardProps> = ({ user, style, onClick }) => {
+    const { displayName, jobTitle, mail, mobilePhone, photo, groups } = user;
 
     const theme = useSelector(selectTheme)
     const styles = currentStyles(theme)
 
-    console.log(groups);
-    
-
     return (
-        <Card className="mb-3" style={styles.card}>
+        <Card
+            className="mb-3"
+            style={{ ...styles.card, ...style }}
+            onClick={onClick ? () => onClick(user.employeeId) : undefined}
+        >
             <Card.Body>
                 <Row>
                     <Col md={4} className="text-center">
@@ -34,7 +37,7 @@ const EmployeeCard: React.FC<EmployeeCardProps> = ({ user }) => {
                     </Col>
                     <Col md={8}>
                         <Card.Title className='mb-3' style={{ fontWeight: 'bold' }}>{displayName}</Card.Title>
-                        <Card.Text className="mb-2"><FaEnvelope /> Email: {email}</Card.Text>
+                        <Card.Text className="mb-2"><FaEnvelope /> Email: {mail}</Card.Text>
                         <Card.Text className="mb-2"><FaBriefcase /> Position: {jobTitle}</Card.Text>
                         <Card.Text className="mb-2">
                             <FaBuilding /> Abteilung: {groups && groups.length > 0 ? groups[0].displayName : 'Nicht angegeben'}

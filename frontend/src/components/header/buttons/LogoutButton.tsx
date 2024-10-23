@@ -10,7 +10,7 @@ const LogoutButton = () => {
 
     const handleLogout = () => {
         instance.logoutRedirect({
-            postLogoutRedirectUri: Paths.home,
+            postLogoutRedirectUri: Paths.profile,
         });
     };
 

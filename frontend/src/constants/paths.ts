@@ -1,4 +1,4 @@
 export const Paths = {
-    home: '/',
+    profile: '/profile',
     search: '/search'
 } as const 
