@@ -18,8 +18,9 @@ public class EmployeeService {
         return employeeRepository.findAll();
     }
 
-    public Employee getEmployeeById(String id) {
-        return employeeRepository.findById(id).orElse(null);
+    public Employee getEmployeeById(String id, AzureUser azureUser) {
+        return employeeRepository.findById(id)
+                .orElse(createEmployee(azureUser));
     }
 
     public Employee createEmployee(AzureUser azureUser){

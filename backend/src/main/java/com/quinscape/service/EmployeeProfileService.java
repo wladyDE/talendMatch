@@ -44,7 +44,7 @@ public class EmployeeProfileService {
             employeeRepository.saveAll(newEmployees);
         }
 
-        return employeeProfiles;
+        return sortEmployeeProfiles(employeeProfiles);
     }
 
     public EmployeeProfile getEmployeeProfile(Employee employee, AzureUser azureUser) {
@@ -63,7 +63,7 @@ public class EmployeeProfileService {
                 .build();
     }
 
-    public List<EmployeeProfile> sortEmployeeProfiles(List<EmployeeProfile> employeeProfiles) {
+    private List<EmployeeProfile> sortEmployeeProfiles(List<EmployeeProfile> employeeProfiles) {
         return employeeProfiles.stream()
                 .sorted(Comparator.comparing(EmployeeProfile::getDisplayName))
                 .collect(Collectors.toList());

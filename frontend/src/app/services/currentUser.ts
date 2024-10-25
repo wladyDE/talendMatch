@@ -7,20 +7,20 @@ export const currentUserApi = api.injectEndpoints({
     endpoints: (builder) => ({
         getCurrentUser: builder.query<IEmployee, void>({
             query: () => ({
-                url: `employees/me`,
+                url: `/me`,
                 method: 'GET',
             }),
         }),
         addSkill: builder.mutation<void, { skill: Skill; level: Level }>({
             query: ({ skill, level }) => ({
-                url: `/employees/me/skill`,
+                url: `/me/skill`,
                 method: 'POST',
                 body: { skillId: skill.skillId, level: level.levelId },
             }),
         }),
         toggleSkillsVisibility: builder.mutation<void, { skillsVisibility: boolean }>({
             query: ({ skillsVisibility }) => ({
-                url: `employees/me/skills-visibility`,
+                url: `/me/skills-visibility`,
                 method: 'PATCH',
                 params: { skillsVisibility },
             }),
