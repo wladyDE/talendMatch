@@ -10,7 +10,7 @@ export interface EmployeeSkill {
   level: Level
 }
 
-export interface IUser {
+export interface IEmployee {
   employeeId: string;
   skillsVisibility: boolean;
   displayName: string;
@@ -24,7 +24,7 @@ export interface IUser {
   groups: Group[];
 }
 
-const initialState: IUser = {
+const initialState: IEmployee = {
   employeeId: '',
   skillsVisibility: false,
   displayName: '',

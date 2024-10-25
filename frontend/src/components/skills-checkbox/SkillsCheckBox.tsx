@@ -19,7 +19,6 @@ const SkillsCheckBox = () => {
         const handleClick = async () => {
             try {
                 await toggleSkillsVisibilityRequest({
-                    employeeId: currentUser.employeeId,
                     skillsVisibility: !currentUser.skillsVisibility,  
                 }).unwrap();
             } catch (error) {

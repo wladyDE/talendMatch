@@ -1,5 +1,5 @@
 import { ActiveFilters } from "../../features/activeFilters/activeFiltersSlice";
-import { IUser } from "../../features/currentUser/currentUserSlice";
+import { IEmployee } from "../../features/currentUser/currentUserSlice";
 import { Skill } from "../../features/skills/skillsSlice";
 
 export const groupSkillsBySubcategory = (skills: Skill[]) => {
@@ -14,9 +14,9 @@ export const groupSkillsBySubcategory = (skills: Skill[]) => {
 };
 
 export const getFilterCount = (
-  activeFilters : ActiveFilters,
-  user : IUser | undefined,
-  subcategoryName : string 
+  activeFilters: ActiveFilters,
+  user: IEmployee | undefined,
+  subcategoryName: string
 ) => {
   let filterCount = 0
 

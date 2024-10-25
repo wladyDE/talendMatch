@@ -9,11 +9,11 @@ import {
 import { useSelector } from 'react-redux';
 import { selectTheme } from '../../features/theme/themeSlice';
 import { styles as currentStyles } from '../../styles/styles';
-import { IUser } from '../../features/currentUser/currentUserSlice';
+import { IEmployee } from '../../features/currentUser/currentUserSlice';
 import ProfilePhoto from '../profile-photo/ProfilePhoto';
 
 interface EmployeeCardProps {
-    user: IUser;
+    user: IEmployee;
     style?: React.CSSProperties;
     onClick?: (id: string) => void;
 }

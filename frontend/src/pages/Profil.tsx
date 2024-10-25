@@ -21,6 +21,9 @@ const ProfilPage = () => {
 
   const user = id ? employees.find(employee => employee.employeeId === id)! : currentUser
 
+  console.log(user);
+  
+
   return (
     <Layout>
       <Row className="my-4">

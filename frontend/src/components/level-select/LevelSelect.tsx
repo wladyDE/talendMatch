@@ -5,7 +5,7 @@ import { type Level } from '../../app/services/levels';
 import { selectTheme } from '../../features/theme/themeSlice';
 import { addSkillFilter, selectActiveFilters } from '../../features/activeFilters/activeFiltersSlice';
 import { getColorForLevel, getSelectedLevel, isActiveSkill } from './utils';
-import { IUser, selectCurrentUser } from '../../features/currentUser/currentUserSlice';
+import { IEmployee, selectCurrentUser } from '../../features/currentUser/currentUserSlice';
 import { useAddSkillMutation } from '../../app/services/currentUser';
 import { selectSkills } from '../../features/skills/skillsSlice';
 import './levelSelect.css';
@@ -14,7 +14,7 @@ import { borderStyle } from '../../styles/styles';
 
 export type LevelType = {
     type: 'USER' | 'FILTER' | 'ACTIVE_FILTER',
-    user?: IUser
+    user?: IEmployee
 }
 
 interface SkillLevelSelectorProps {
@@ -45,7 +45,6 @@ const LevelSelect: React.FC<SkillLevelSelectorProps> = ({ skillId, showAll, valu
     const addCurrentUserSkill = async (level: Level) => {
         try {
             await addSkillToEmployee({
-                employeeId: currentUser.employeeId,
                 skill,
                 level
             }).unwrap();

@@ -1,9 +1,9 @@
-import { IUser } from '../../features/currentUser/currentUserSlice'
+import { IEmployee } from '../../features/currentUser/currentUserSlice'
 import { api } from './api'
 
 export const employeesApi = api.injectEndpoints({
     endpoints: (builder) => ({
-        getEmloyees: builder.query<IUser[], void>({
+        getEmloyees: builder.query<IEmployee[], void>({
             query: () => ({
                 url: '/employees',
                 method: 'GET'
