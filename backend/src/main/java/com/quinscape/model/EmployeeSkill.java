@@ -12,22 +12,27 @@ import lombok.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@IdClass(EmployeeSkillId.class)
+@Table(uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"employee_id", "skill_id"})
+})
 public class EmployeeSkill {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     @ManyToOne
     @JoinColumn(name = "employee_id", nullable = false)
     @JsonBackReference
     private Employee employee;
 
-    @Id
     @ManyToOne
     @JoinColumn(name = "skill_id", nullable = false)
     private Skill skill;
 
-    @Id
     @ManyToOne
     @JoinColumn(name = "level_id", nullable = false)
     private Level level;
 }
+
+
 

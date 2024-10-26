@@ -70,8 +70,8 @@ const LevelSelect: React.FC<SkillLevelSelectorProps> = ({ skillId, showAll, valu
                         <div
                             key={index}
                             title={level.levelName}
-                            onMouseEnter={isNotCurrentUser ? undefined : () => setHoveredLevel(index + 1)}
-                            onMouseLeave={isNotCurrentUser ? undefined : () => setHoveredLevel(0)}
+                            onMouseEnter={isNotCurrentUser || value.type === 'ACTIVE_FILTER' ? undefined : () => setHoveredLevel(index + 1)}
+                            onMouseLeave={isNotCurrentUser || value.type === 'ACTIVE_FILTER'  ? undefined : () => setHoveredLevel(0)}
                             className="level"
                             style={{
                                 backgroundColor:

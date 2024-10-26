@@ -21,11 +21,17 @@ export const getFilterCount = (
   let filterCount = 0
 
   activeFilters.skillFilters.forEach(activeFilter => {
+    console.log(user);
+    
     user?.employeeSkills.forEach(employeeSkill => {
       if (employeeSkill.skill.skillSubcategory.skillSubcategoryName === subcategoryName
         && employeeSkill.skill.skillId === parseInt(activeFilter.skillId)
         && parseInt(employeeSkill.level.levelId) >= parseInt(activeFilter.levelId)
       ) {
+        if(subcategoryName === 'Backend Entwicklung') {
+          console.log(employeeSkill.skill.skillName);
+        }
+        
         filterCount++
       }
     })

@@ -25,7 +25,7 @@ const AccordionHeader: React.FC<AccordionHeaderProps> = ({ icon, subcategoryName
 
     if (isNotCurrentUser && activeFilters.skillFilters.length > 0) {
       const user = employees.find(employee => employee.employeeId === value.user?.employeeId)
-      const filterCount = getFilterCount(activeFilters, user, subcategoryName)
+      const filterCount = getFilterCount(activeFilters, user, subcategoryName)      
 
       if (filterCount) {
         return (

@@ -13,6 +13,8 @@ import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class EmployeeSkillService {
     @Autowired
@@ -34,12 +36,20 @@ public class EmployeeSkillService {
         Level level = levelRepository.findById(employeeSkillDTO.getLevel())
                 .orElseThrow(() -> new EntityNotFoundException("Level not found"));
 
-        EmployeeSkill employeeSkill = EmployeeSkill.builder()
-                .employee(employee)
-                .skill(skill)
-                .level(level)
-                .build();
+        Optional<EmployeeSkill> existingEmployeeSkill = employeeSkillRepository.findByEmployeeAndSkill(employee, skill);
 
-        employeeSkillRepository.save(employeeSkill);
+        if (existingEmployeeSkill.isPresent()) {
+            EmployeeSkill employeeSkill = existingEmployeeSkill.get();
+            employeeSkill.setLevel(level);
+            employeeSkillRepository.save(employeeSkill);
+        } else {
+            EmployeeSkill newEmployeeSkill = EmployeeSkill.builder()
+                    .employee(employee)
+                    .skill(skill)
+                    .level(level)
+                    .build();
+            employeeSkillRepository.save(newEmployeeSkill);
+        }
     }
+
 }

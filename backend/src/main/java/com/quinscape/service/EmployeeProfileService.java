@@ -3,8 +3,6 @@ package com.quinscape.service;
 import com.quinscape.model.AzureUser;
 import com.quinscape.model.Employee;
 import com.quinscape.model.EmployeeProfile;
-import com.quinscape.repository.EmployeeRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -14,15 +12,9 @@ import java.util.stream.Collectors;
 
 @Service
 public class EmployeeProfileService {
-    @Autowired
-    private EmployeeRepository employeeRepository;
-
-    @Autowired
-    private EmployeeService employeeService;
 
     public List<EmployeeProfile> getEmployeeProfiles(List<Employee> employees, List<AzureUser> azureEmployees) {
         List<EmployeeProfile> employeeProfiles = new ArrayList<>();
-        List<Employee> newEmployees = new ArrayList<>();
 
         for (AzureUser azureUser : azureEmployees) {
             Employee employee = employees.stream()
@@ -30,18 +22,10 @@ public class EmployeeProfileService {
                     .findFirst()
                     .orElse(null);
 
-            if (employee == null) {
-                employee = employeeService.createEmployee(azureUser);
-
-                newEmployees.add(employee);
+            if (employee != null) {
+                EmployeeProfile employeeProfile = getEmployeeProfile(employee, azureUser);
+                employeeProfiles.add(employeeProfile);
             }
-
-            EmployeeProfile employeeProfile = getEmployeeProfile(employee, azureUser);
-            employeeProfiles.add(employeeProfile);
-        }
-
-        if (!newEmployees.isEmpty()) {
-            employeeRepository.saveAll(newEmployees);
         }
 
         return sortEmployeeProfiles(employeeProfiles);
@@ -49,7 +33,7 @@ public class EmployeeProfileService {
 
     public EmployeeProfile getEmployeeProfile(Employee employee, AzureUser azureUser) {
         return EmployeeProfile.builder()
-                .employeeId(employee.getEmployeeId())
+                .employeeId(azureUser.getId())
                 .skillsVisibility(employee.isSkillsVisibility())
                 .employeeSkills(employee.getEmployeeSkills())
                 .displayName(azureUser.getDisplayName())

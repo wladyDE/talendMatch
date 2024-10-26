@@ -14,16 +14,19 @@ public class EmployeeService {
     @Autowired
     private EmployeeRepository employeeRepository;
 
-    public List<Employee> getEmployees() {
-        return employeeRepository.findAll();
+    public List<Employee> getEmployees(String userId, boolean isAdministrator) {
+        if (isAdministrator) {
+            return employeeRepository.findByEmployeeIdNot(userId);
+        } else {
+            return employeeRepository.findByEmployeeIdNotAndSkillsVisibilityTrue(userId);
+        }
     }
 
-    public Employee getEmployeeById(String id, AzureUser azureUser) {
-        return employeeRepository.findById(id)
-                .orElse(createEmployee(azureUser));
+    public Employee getEmployeeById(String id) {
+        return employeeRepository.findById(id).orElse(null);
     }
 
-    public Employee createEmployee(AzureUser azureUser){
+    public Employee createEmployee(AzureUser azureUser) {
         Employee newEmployee = Employee.builder()
                 .employeeId(azureUser.getId())
                 .skillsVisibility(false)

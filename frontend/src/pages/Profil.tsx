@@ -34,7 +34,7 @@ const ProfilPage = () => {
       </Row>
       <Row>
         <Col>
-          <div style={{ ...centeredFlexBox, color: 'gray' }}>
+          <div style={{ ...centeredFlexBox(), color: 'gray' }}>
             <h4 className="mt-2 mb-3" style={{ ...styles.h }}>
               Fähigkeiten und deren Level
             </h4>

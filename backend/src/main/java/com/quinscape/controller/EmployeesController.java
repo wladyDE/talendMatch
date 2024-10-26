@@ -10,6 +10,8 @@ import com.quinscape.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,13 +31,16 @@ public class EmployeesController {
     private AzureTokenService azureTokenService;
 
     @GetMapping
-    public ResponseEntity<List<EmployeeProfile>> getEmployees() {
+    public ResponseEntity<List<EmployeeProfile>> getEmployees(@AuthenticationPrincipal Jwt jwt) {
         try {
+            String employeeIdFromToken = jwt.getClaim("oid");
             String graphAccessToken = azureTokenService.getGraphAccessToken();
+
+            boolean isAdministrator = azureUserService.isAdministrator(graphAccessToken, employeeIdFromToken);
 
             List<AzureUser> azureEmployees = azureUserService.fetchUsersData(graphAccessToken);
 
-            List<Employee> employees = employeeService.getEmployees();
+            List<Employee> employees = employeeService.getEmployees(employeeIdFromToken, isAdministrator);
 
             List<EmployeeProfile> employeeProfiles = employeeProfileService.getEmployeeProfiles(employees, azureEmployees);
 
