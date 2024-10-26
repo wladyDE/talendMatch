@@ -36,14 +36,17 @@ public class EmployeeProfileService {
                 .employeeId(azureUser.getId())
                 .skillsVisibility(employee.isSkillsVisibility())
                 .employeeSkills(employee.getEmployeeSkills())
+
                 .displayName(azureUser.getDisplayName())
-                .givenName(azureUser.getGivenName())
-                .surname(azureUser.getSurname())
-                .jobTitle(azureUser.getJobTitle())
                 .mail(azureUser.getMail())
+                .jobTitle(azureUser.getJobTitle())
+                .department(azureUser.getDepartment())
+                .officeLocation(azureUser.getOfficeLocation())
+                .streetAddress(azureUser.getStreetAddress())
+                .city(azureUser.getCity())
+                .postalCode(azureUser.getPostalCode())
                 .mobilePhone(azureUser.getMobilePhone())
                 .photo(azureUser.getPhoto())
-                .groups(azureUser.getGroups())
                 .build();
     }
 

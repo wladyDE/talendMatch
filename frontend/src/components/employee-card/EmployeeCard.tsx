@@ -5,6 +5,8 @@ import {
     FaBuilding,
     FaBriefcase,
     FaPhone,
+    FaMapMarkerAlt,
+    FaHome
 } from 'react-icons/fa'
 import { useSelector } from 'react-redux';
 import { selectTheme } from '../../features/theme/themeSlice';
@@ -19,7 +21,7 @@ interface EmployeeCardProps {
 }
 
 const EmployeeCard: React.FC<EmployeeCardProps> = ({ user, style, onClick }) => {
-    const { displayName, jobTitle, mail, mobilePhone, photo, groups } = user;
+    const { displayName, jobTitle, department, officeLocation, streetAddress, city, postalCode, mail, mobilePhone, photo } = user;
 
     const theme = useSelector(selectTheme)
     const styles = currentStyles(theme)
@@ -37,20 +39,65 @@ const EmployeeCard: React.FC<EmployeeCardProps> = ({ user, style, onClick }) => 
                     </Col>
                     <Col md={8}>
                         <Card.Title className='mb-3' style={{ fontWeight: 'bold' }}>{displayName}</Card.Title>
-                        <Card.Text className="mb-2"><FaEnvelope /> Email: {mail}</Card.Text>
-                        <Card.Text className="mb-2"><FaBriefcase /> Position: {jobTitle}</Card.Text>
-                        <Card.Text className="mb-2">
-                            <FaBuilding /> Abteilung: {groups && groups.length > 0 ? groups[0].displayName : 'Nicht angegeben'}
-                        </Card.Text>
-                        <Card.Text className="mb-2"><FaPhone /> Telefon: {mobilePhone}</Card.Text>
+                        <CardText
+                            description='Email :'
+                            text={mail}
+                            icon={<FaEnvelope />}
+                        />
+                        <CardText
+                            description='Bürolage :'
+                            text={officeLocation}
+                            icon={<FaMapMarkerAlt />}
+                        />
+                        <CardText
+                            description='Abteilung :'
+                            text={department}
+                            icon={<FaBuilding />}
+                        />
+                        <CardText
+                            description='Position :'
+                            text={jobTitle}
+                            icon={<FaBriefcase />}
+                        />
+                        <CardText
+                            description='Wohnanschrift :'
+                            text={getAddress(streetAddress, city, postalCode)}
+                            icon={<FaHome />}
+                        />
+                        <CardText
+                            description='Telefon :'
+                            text={mobilePhone}
+                            icon={<FaPhone />}
+                        />
                     </Col>
                 </Row>
             </Card.Body>
-        </Card>
+        </Card >
     );
 };
 
 export default EmployeeCard;
 
-//<Card.Text className="mb-2"><FaCalendarAlt /> Geburtsjahr: {year}</Card.Text>
-//<Card.Text className="mb-2"><FaMapMarkerAlt /> Standort: {location}</Card.Text>
+interface CardTextProps {
+    description: string,
+    text: string | null,
+    icon: JSX.Element,
+}
+
+type Text = string | null;
+
+const isValidText = (text: Text): boolean => !!text && text !== "null";
+
+const CardText: React.FC<CardTextProps> = ({ text, icon, description }) => {
+    if (!isValidText(text)) return null;
+
+    return <Card.Text className='mb-2'>{icon} {description} {text}</Card.Text>
+}
+
+const getAddress = (streetAddress: Text, city: Text, postalCode: Text): string | null => {
+    if (!isValidText(streetAddress) || !isValidText(city) || !isValidText(postalCode)) {
+        return null;
+    }
+    return `${streetAddress}, ${postalCode} ${city}`;
+}
+

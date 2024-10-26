@@ -11,11 +11,13 @@ import lombok.*;
 public class AzureUser {
     private String id;
     private String displayName;
-    private String givenName;
-    private String surname;
-    private String jobTitle;
     private String mail;
+    private String jobTitle;
+    private String department;
+    private String officeLocation;
+    private String streetAddress;
+    private String city;
+    private String postalCode;
     private String mobilePhone;
     private String photo;
-    private List<Group> groups;
 }

@@ -1,8 +1,7 @@
 package com.quinscape.service;
 
-import com.quinscape.dto.AzureUserGroupsAndRoles;
-import com.quinscape.mapper.AzureGroupsAndRolesMapper;
 import com.quinscape.mapper.AzureUserMapper;
+import com.quinscape.mapper.AzureUserRolesMapper;
 import com.quinscape.model.AzureUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
@@ -27,20 +26,28 @@ public class AzureUserService {
     @Autowired
     AzureUserMapper azureUserMapper;
     @Autowired
-    AzureGroupsAndRolesMapper azureGroupsAndRolesMapper;
+    AzureUserRolesMapper azureUserRolesMapper;
     private final Map<String, String> photoCache = new HashMap<>();
 
-    public String fetchUserData(String accessToken, String userId) {
-        RestTemplate restTemplate = new RestTemplate();
-        HttpHeaders headers = new HttpHeaders();
-        headers.setBearerAuth(accessToken);
+    public AzureUser fetchUserData(String accessToken, String userId) throws Exception {
+        String url = "https://graph.microsoft.com/v1.0/users/" + userId;
+        String response = fetchData(url, accessToken);
+        return azureUserMapper.parseUser(response);
+    }
 
-        HttpEntity<String> entity = new HttpEntity<>(headers);
+    public List<AzureUser> fetchUsersData(String accessToken) throws Exception {
         String url = "https://graph.microsoft.com/v1.0/users";
+        String response = fetchData(url, accessToken);
+        return azureUserMapper.parseUsers(response);
+    }
 
-        if (userId != null && !userId.isEmpty()) {
-            url += "/" + userId;
-        }
+    private String fetchData(String url, String accessToken) {
+        RestTemplate restTemplate = new RestTemplate();
+        HttpHeaders headers = new HttpHeaders();
+        headers.setBearerAuth(accessToken);
+
+        HttpEntity<String> entity = new HttpEntity<>(headers);
+        url += "?$select=id,displayName,mail,jobTitle,department,officeLocation,streetAddress,city,postalCode,mobilePhone";
 
         ResponseEntity<String> response = restTemplate.exchange(
                 url,
@@ -52,7 +59,13 @@ public class AzureUserService {
         return response.getBody();
     }
 
-    public String fetchUserGroups(String accessToken, String userId) {
+    public boolean isAdministrator(String accessToken, String userId) throws Exception {
+        List<String> roles = fetchUserRoles(accessToken, userId);
+        return roles.stream().anyMatch(role -> role.equals("Global Administrator"));
+    }
+
+
+    private List<String> fetchUserRoles(String accessToken, String userId) throws Exception {
         RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
         headers.setBearerAuth(accessToken);
@@ -67,25 +80,7 @@ public class AzureUserService {
                 String.class
         );
 
-        return response.getBody();
-    }
-
-    public AzureUserGroupsAndRoles fetchUserRoles(String accessToken, String userId) throws Exception {
-        RestTemplate restTemplate = new RestTemplate();
-        HttpHeaders headers = new HttpHeaders();
-        headers.setBearerAuth(accessToken);
-
-        HttpEntity<String> entity = new HttpEntity<>(headers);
-        String url = "https://graph.microsoft.com/v1.0/users/" + userId + "/memberOf";
-
-        ResponseEntity<String> response = restTemplate.exchange(
-                url,
-                HttpMethod.GET,
-                entity,
-                String.class
-        );
-
-        return azureGroupsAndRolesMapper.parseAzureUserGroupsAndRoles(response.getBody());
+        return azureUserRolesMapper.parseRoles(response.getBody());
     }
 
     public String fetchUserPhoto(String accessToken, String userId) {
@@ -136,14 +131,5 @@ public class AzureUserService {
         BufferedImage outputImage = new BufferedImage(targetWidth, targetHeight, BufferedImage.TYPE_INT_RGB);
         outputImage.getGraphics().drawImage(resultingImage, 0, 0, null);
         return outputImage;
-    }
-
-
-    public AzureUser findAzureUser(String responseBody, String userEmail) throws Exception {
-        List<AzureUser> azureUsers = azureUserMapper.parseUsers(responseBody);
-        return azureUsers.stream()
-                .filter(user -> user.getDisplayName().equalsIgnoreCase(userEmail))
-                .findFirst()
-                .orElse(null);
     }
 }

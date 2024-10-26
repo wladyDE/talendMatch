@@ -2,22 +2,23 @@ import React from 'react';
 import { Col, Form } from 'react-bootstrap';
 
 import CustomSelect from '../../custom-select/CustomSelect';
-import { Group, useGetGroupsQuery } from '../../../app/services/groups';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeCostcenterFilter, selectActiveFilters } from '../../../features/activeFilters/activeFiltersSlice';
+import { IOption } from '../../custom-select/CustomSelect';
 
 const Costcenterfilter = () => {
-    const { data: groups = [] } = useGetGroupsQuery()
     const activeFilters = useSelector(selectActiveFilters)
     const dispatch = useDispatch()
 
-    const options = [
+    const options : IOption[] = [
         { id: "0", displayName : '-' },
-        ...groups
+        { id: "1", displayName : 'D&A' },
+        { id: "2", displayName : 'cplace' },
+        { id: "3", displayName : 'Java' },
     ];
 
-    const changeFilter = (group : Group) => {
-        dispatch(changeCostcenterFilter(group))
+    const changeFilter = (option : IOption) => {
+        dispatch(changeCostcenterFilter(option))
     }
 
     return (

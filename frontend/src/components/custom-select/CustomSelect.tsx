@@ -3,16 +3,20 @@ import { useSelector } from 'react-redux';
 import { selectTheme } from '../../features/theme/themeSlice';
 import { styles as currentStyles } from '../../styles/styles';
 import './customSelect.css';
-import { Group } from '../../app/services/groups';
 
-interface CustomSelectProps<T extends Group> {
+export interface IOption {
+    id : string; 
+    displayName : string; 
+}
+
+interface CustomSelectProps<T extends IOption> {
     options: T[];
     placeholder: string;
-    onOptionClick : (group : Group) => void
+    onOptionClick : (group : IOption) => void
     firstOption : T
 }
 
-const CustomSelect = <T extends Group>(
+const CustomSelect = <T extends IOption>(
     { options, placeholder, onOptionClick, firstOption }: CustomSelectProps<T>) => { 
     const [isOpen, setIsOpen] = useState(false);
     const [selectedOption, setSelectedOption] = useState<T | null>(firstOption);
@@ -40,7 +44,7 @@ const CustomSelect = <T extends Group>(
             document.removeEventListener('mousedown', handleClickOutside);
         };
     }, []);
-
+    
     return (
         <div
             ref={selectRef}

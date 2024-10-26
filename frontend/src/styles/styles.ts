@@ -48,9 +48,9 @@ export const centeredFlexBox = (justifyContent = 'space-between') => {
   }
 }
 
-export const borderStyle = {
-  border: '1px solid #dfe1e6',
-  borderRadius: '7px',
-  padding: '5px'
+export const skillFilterStyle = {
+  fontSize: '12px',
+  marginBottom: '3px',
+  marginLeft: '3px',
+  color: 'grey'
 }
-

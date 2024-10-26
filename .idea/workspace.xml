@@ -4,28 +4,33 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8a2fbda8-20e1-4e01-9d22-741a966261eb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/backend/src/main/resources/application.properties" afterDir="false" />
+    <list default="true" id="ebe82fa7-3933-496c-b352-636d2375644a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/controller/AzureGroupsController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/controller/CurrentUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/controller/CurrentUserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/mapper/AzureUserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/mapper/AzureUserMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/mapper/GroupMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/model/AzureUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/model/AzureUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/model/EmployeeProfile.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/model/EmployeeProfile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/model/Group.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/service/AzureGroupsService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/service/AzureUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/service/AzureUserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/service/EmployeeProfileService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/service/EmployeeProfileService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/AppInitializer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/AppInitializer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/active-filters/ActiveFilters.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/active-filters/ActiveFilters.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/services/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/services/api.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/services/groups.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/custom-select/CustomSelect.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/custom-select/CustomSelect.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/employee-card/EmployeeCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/employee-card/EmployeeCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/employee-filters/costcenter-filter/CostcenterFilter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/employee-filters/costcenter-filter/CostcenterFilter.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/employee-list/EmployeeList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/employee-list/EmployeeList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/employee-list/utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/employee-list/utils.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/header/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/header/Header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/header/buttons/LogoutButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/header/buttons/LogoutButton.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/level-select/LevelSelect.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/level-select/LevelSelect.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/level-select/utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/level-select/utils.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/skills-accordion/SkillAccordion.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/skills-accordion/SkillAccordion.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/skills-accordion/SkillAccordions.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/skills-accordion/SkillAccordions.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/skills-accordion/utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/skills-accordion/utils.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/skills-filters/SkillsFilter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/skills-filters/SkillsFilter.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/constants/paths.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/constants/paths.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/constants/skillsIcons.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/constants/skillsIcons.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/features/activeFilters/activeFiltersSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/activeFilters/activeFiltersSlice.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/features/currentUser/currentUserSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/currentUser/currentUserSlice.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Profil.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Profil.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/router/router.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/router/router.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/features/employees/employeesSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/employees/employeesSlice.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/styles/styles.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/styles/styles.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/tsconfig.json" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -153,7 +158,11 @@
       <workItem from="1729494810610" duration="7809000" />
       <workItem from="1729595586824" duration="96000" />
       <workItem from="1729596430014" duration="2824000" />
-      <workItem from="1729669748362" duration="687000" />
+      <workItem from="1729669748362" duration="6509000" />
+      <workItem from="1729754346463" duration="659000" />
+      <workItem from="1729834126434" duration="3382000" />
+      <workItem from="1729851790484" duration="4043000" />
+      <workItem from="1729925528194" duration="8505000" />
     </task>
     <servers />
   </component>

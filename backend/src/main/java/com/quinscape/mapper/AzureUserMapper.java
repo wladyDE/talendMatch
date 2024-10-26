@@ -3,7 +3,6 @@ package com.quinscape.mapper;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.quinscape.model.AzureUser;
-import com.quinscape.model.Group;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -32,31 +31,17 @@ public class AzureUserMapper {
         return buildAzureUser(rootNode);
     }
 
-    public List<Group> parseUserGroups(String responseBody) throws Exception {
-        ObjectMapper objectMapper = new ObjectMapper();
-        JsonNode rootNode = objectMapper.readTree(responseBody);
-        JsonNode groupsArray = rootNode.path("value");
-
-        List<Group> groupList = new ArrayList<>();
-        for (JsonNode groupNode : groupsArray) {
-            Group group = Group.builder()
-                    .id(groupNode.path("id").asText())
-                    .displayName(groupNode.path("displayName").asText())
-                    .build();
-            groupList.add(group);
-        }
-
-        return groupList;
-    }
-
     private AzureUser buildAzureUser(JsonNode userNode) {
         return AzureUser.builder()
                 .id(userNode.path("id").asText())
                 .displayName(userNode.path("displayName").asText())
-                .givenName(userNode.path("givenName").asText())
-                .surname(userNode.path("surname").asText())
-                .jobTitle(userNode.path("jobTitle").asText())
                 .mail(userNode.path("mail").asText())
+                .jobTitle(userNode.path("jobTitle").asText())
+                .department(userNode.path("department").asText())
+                .officeLocation(userNode.path("officeLocation").asText())
+                .streetAddress(userNode.path("streetAddress").asText())
+                .city(userNode.path("city").asText())
+                .postalCode(userNode.path("postalCode").asText())
                 .mobilePhone(userNode.path("mobilePhone").asText())
                 .build();
     }

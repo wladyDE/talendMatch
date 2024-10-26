@@ -1,25 +1,21 @@
 package com.quinscape.controller;
 
-import com.quinscape.dto.AzureUserGroupsAndRoles;
-import com.quinscape.mapper.AzureUserMapper;
+import com.quinscape.dto.EmployeeSkillDTO;
 import com.quinscape.model.AzureUser;
 import com.quinscape.model.Employee;
 import com.quinscape.model.EmployeeProfile;
-import com.quinscape.model.Group;
-import com.quinscape.service.AzureTokenService;
-import com.quinscape.service.AzureUserService;
-import com.quinscape.service.EmployeeProfileService;
-import com.quinscape.service.EmployeeService;
+import com.quinscape.service.*;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
-@RequestMapping("/talendmatch/api/v1/employees")
-public class EmployeeProfileController {
+@RequestMapping("/talendmatch/api/v1/me")
+public class CurrentUserController {
     @Autowired
     private EmployeeService employeeService;
     @Autowired
@@ -27,56 +23,20 @@ public class EmployeeProfileController {
     @Autowired
     private AzureUserService azureUserService;
     @Autowired
-    private AzureUserMapper azureUserMapper;
-    @Autowired
     private AzureTokenService azureTokenService;
+    @Autowired
+    private EmployeeSkillService employeeSkillService;
 
     @GetMapping
-    public ResponseEntity<List<EmployeeProfile>> getEmployees() {
+    public ResponseEntity<EmployeeProfile> getEmployeeById(@AuthenticationPrincipal Jwt jwt) {
         try {
+            String employeeIdFromToken = jwt.getClaim("oid");
+
             String graphAccessToken = azureTokenService.getGraphAccessToken();
 
-            String responseBody = azureUserService.fetchUserData(graphAccessToken, null);
-            List<AzureUser> azureEmployees = azureUserMapper.parseUsers(responseBody);
+            AzureUser azureEmployee =  azureUserService.fetchUserData(graphAccessToken, employeeIdFromToken);
 
-            for (AzureUser azureEmployee : azureEmployees) {
-                String groupsResponse = azureUserService.fetchUserGroups(graphAccessToken, azureEmployee.getId());
-                List<Group> groups = azureUserMapper.parseUserGroups(groupsResponse);
-                azureEmployee.setGroups(groups);
-            }
-
-            List<Employee> employees = employeeService.getEmployees();
-
-            List<EmployeeProfile> employeeProfiles = employeeProfileService.getEmployeeProfiles(employees, azureEmployees);
-            List<EmployeeProfile> sortedProfiles = employeeProfileService.sortEmployeeProfiles(employeeProfiles);
-
-            return ResponseEntity.ok(sortedProfiles);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
-    }
-
-    @GetMapping("/{employeeId}")
-    public ResponseEntity<EmployeeProfile> getEmployeeById(@PathVariable String employeeId) {
-        try {
-            String graphAccessToken = azureTokenService.getGraphAccessToken();
-
-            String responseBody = azureUserService.fetchUserData(graphAccessToken, employeeId);
-            AzureUser azureEmployee = azureUserMapper.parseUser(responseBody);
-
-            if (azureEmployee == null) {
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-            }
-
-            String groupsResponse = azureUserService.fetchUserGroups(graphAccessToken, azureEmployee.getId());
-            List<Group> groups = azureUserMapper.parseUserGroups(groupsResponse);
-            azureEmployee.setGroups(groups);
-
-            Employee employee = employeeService.getEmployeeById(employeeId);
-            if (employee == null) {
-                employee = employeeService.createEmployee(azureEmployee);
-            }
+            Employee employee = employeeService.getEmployeeById(employeeIdFromToken);
 
             EmployeeProfile employeeProfile = employeeProfileService.getEmployeeProfile(employee, azureEmployee);
 
@@ -87,12 +47,34 @@ public class EmployeeProfileController {
         }
     }
 
-    @PatchMapping("/{employeeId}/skills-visibility")
+    @PostMapping("/skill")
+    public ResponseEntity<Void> addEmployeeSkill(
+            @AuthenticationPrincipal Jwt jwt,
+            @RequestBody EmployeeSkillDTO employeeSkillDTO) {
+        try {
+            String employeeIdFromToken = jwt.getClaim("oid");
+            employeeSkillDTO.setEmployeeId(employeeIdFromToken);
+            employeeSkillService.addEmployeeSkill(employeeSkillDTO);
+
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (EntityNotFoundException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @PatchMapping("/skills-visibility")
     public ResponseEntity<Void> updateSkillsVisibility(
-            @PathVariable String employeeId,
+            @AuthenticationPrincipal Jwt jwt,
             @RequestParam boolean skillsVisibility) {
-        employeeService.updateSkillsVisibility(employeeId, skillsVisibility);
-        return new ResponseEntity<>(HttpStatus.OK);
+        try {
+            String employeeIdFromToken = jwt.getClaim("oid");
+
+            employeeService.updateSkillsVisibility(employeeIdFromToken, skillsVisibility);
+
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (EntityNotFoundException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 }
 

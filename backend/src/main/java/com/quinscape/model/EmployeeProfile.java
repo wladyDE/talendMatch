@@ -12,14 +12,18 @@ import java.util.List;
 @NoArgsConstructor
 public class EmployeeProfile {
     private String employeeId;
+
     private boolean skillsVisibility;
     private List<EmployeeSkill> employeeSkills;
+
     private String displayName;
-    private String givenName;
-    private String surname;
-    private String jobTitle;
     private String mail;
+    private String jobTitle;
+    private String department;
+    private String officeLocation;
+    private String streetAddress;
+    private String city;
+    private String postalCode;
     private String mobilePhone;
     private String photo;
-    private List<Group> groups;
 }

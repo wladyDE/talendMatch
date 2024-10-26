@@ -1,8 +1,7 @@
-import { createSlice} from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import { RootState } from "../../app/store";
 import { type Level } from '../../app/services/levels';
 import { type Skill } from '../skills/skillsSlice';
-import { type Group } from '../../app/services/groups';
 import { currentUserApi } from '../../app/services/currentUser';
 
 export interface EmployeeSkill {
@@ -14,28 +13,32 @@ export interface IEmployee {
   employeeId: string;
   skillsVisibility: boolean;
   displayName: string;
-  givenName: string;
-  surname: string;
-  jobTitle: string;
   mail: string;
+  jobTitle: string;
+  department: string;
+  officeLocation: string;
+  streetAddress: string;
+  city: string;
+  postalCode: string;
   mobilePhone: string;
   photo: string | null;
   employeeSkills: EmployeeSkill[];
-  groups: Group[];
 }
 
 const initialState: IEmployee = {
   employeeId: '',
   skillsVisibility: false,
   displayName: '',
-  givenName: '',
-  surname: '',
-  jobTitle: '',
   mail: '',
+  jobTitle: '',
+  department: '',
+  officeLocation: '',
+  streetAddress: '',
+  city: '',
+  postalCode: '',
   mobilePhone: '',
   photo: null,
   employeeSkills: [],
-  groups: []
 };
 
 const userSlice = createSlice({
