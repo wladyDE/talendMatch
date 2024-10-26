@@ -3,6 +3,7 @@ import { createBrowserRouter, Navigate } from 'react-router-dom';
 import { Paths } from '../constants/paths';
 import ProfilPage from '../pages/Profil';
 import SuchePage from '../pages/Suche';
+import NotFoundPage from '../pages/NotFoundPage';
 
 
 export const router = createBrowserRouter([
@@ -21,5 +22,9 @@ export const router = createBrowserRouter([
   {
     path: `${Paths.profile}/:id`,
     element: <ProfilPage />
-  }
+  },
+  {
+    path: '*',
+    element: <NotFoundPage />
+  }  
 ]);

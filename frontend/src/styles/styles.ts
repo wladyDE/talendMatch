@@ -40,10 +40,12 @@ export const styles = (theme: ThemeMode) => {
   }
 };
 
-export const centeredFlexBox = {
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'space-between'
+export const centeredFlexBox = (justifyContent = 'space-between') => {
+  return {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent
+  }
 }
 
 export const borderStyle = {

@@ -11,6 +11,7 @@ import { selectCurrentUser } from '../features/currentUser/currentUserSlice';
 import SkillsCheckBox from '../components/skills-checkbox/SkillsCheckBox';
 import { useParams } from 'react-router-dom';
 import { selectEmployees } from '../features/employees/employeesSlice';
+import NotFoundPage from './NotFoundPage';
 
 const ProfilPage = () => {
   const { id } = useParams<{ id: string }>();
@@ -18,11 +19,11 @@ const ProfilPage = () => {
   const employees = useSelector(selectEmployees)
   const theme = useSelector(selectTheme);
   const styles = currentStyles(theme)
+  const user = id ? employees.find(employee => employee.employeeId === id) : currentUser
 
-  const user = id ? employees.find(employee => employee.employeeId === id)! : currentUser
-
-  console.log(user);
-  
+  if (!user) {
+    return <NotFoundPage />;
+  }
 
   return (
     <Layout>
