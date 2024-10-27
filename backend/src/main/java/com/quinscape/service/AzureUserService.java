@@ -4,11 +4,9 @@ import com.quinscape.mapper.AzureUserMapper;
 import com.quinscape.mapper.AzureUserRolesMapper;
 import com.quinscape.model.AzureUser;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import javax.imageio.ImageIO;
@@ -32,13 +30,27 @@ public class AzureUserService {
     public AzureUser fetchUserData(String accessToken, String userId) throws Exception {
         String url = "https://graph.microsoft.com/v1.0/users/" + userId;
         String response = fetchData(url, accessToken);
-        return azureUserMapper.parseUser(response);
+
+        AzureUser user = azureUserMapper.parseUser(response);
+
+        String photo = fetchUserPhoto(accessToken, user.getId());
+        user.setPhoto(photo);
+
+        return user;
     }
 
     public List<AzureUser> fetchUsersData(String accessToken) throws Exception {
         String url = "https://graph.microsoft.com/v1.0/users";
         String response = fetchData(url, accessToken);
-        return azureUserMapper.parseUsers(response);
+
+        List<AzureUser> users = azureUserMapper.parseUsers(response);
+
+        for (AzureUser user : users) {
+            String photo = fetchUserPhoto(accessToken, user.getId());
+            user.setPhoto(photo);
+        }
+
+        return users;
     }
 
     private String fetchData(String url, String accessToken) {
@@ -108,7 +120,7 @@ public class AzureUserService {
 
                 ByteArrayInputStream inputStream = new ByteArrayInputStream(photoBytes);
                 BufferedImage originalImage = ImageIO.read(inputStream);
-                BufferedImage resizedImage = resizeImage(originalImage, 100, 100);
+                BufferedImage resizedImage = resizeImage(originalImage, 200, 200);
 
                 ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
                 ImageIO.write(resizedImage, "jpg", outputStream);
@@ -119,12 +131,19 @@ public class AzureUserService {
                 photoCache.put(userId, photoBase64);
                 return photoBase64;
             }
+        } catch (HttpClientErrorException e) {
+            if (e.getStatusCode() == HttpStatus.NOT_FOUND) {
+                photoCache.put(userId, null);
+                return null;
+            }
+            e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         return null;
     }
+
 
     private BufferedImage resizeImage(BufferedImage originalImage, int targetWidth, int targetHeight) {
         Image resultingImage = originalImage.getScaledInstance(targetWidth, targetHeight, Image.SCALE_SMOOTH);
