@@ -6,31 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="ebe82fa7-3933-496c-b352-636d2375644a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/controller/AzureGroupsController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/controller/CurrentUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/controller/CurrentUserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/mapper/AzureUserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/mapper/AzureUserMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/mapper/GroupMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/model/AzureUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/model/AzureUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/model/EmployeeProfile.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/model/EmployeeProfile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/model/Group.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/service/AzureGroupsService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/service/AzureUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/service/AzureUserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/service/EmployeeProfileService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/quinscape/service/EmployeeProfileService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/AppInitializer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/AppInitializer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/services/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/services/api.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/services/groups.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/custom-select/CustomSelect.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/custom-select/CustomSelect.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/employee-card/EmployeeCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/employee-card/EmployeeCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/employee-filters/costcenter-filter/CostcenterFilter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/employee-filters/costcenter-filter/CostcenterFilter.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/employee-list/EmployeeList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/employee-list/EmployeeList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/employee-list/utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/employee-list/utils.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/header/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/header/Header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/level-select/LevelSelect.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/level-select/LevelSelect.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/features/activeFilters/activeFiltersSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/activeFilters/activeFiltersSlice.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/features/currentUser/currentUserSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/currentUser/currentUserSlice.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/features/employees/employeesSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/employees/employeesSlice.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/styles/styles.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/styles/styles.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/tsconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/layout/Layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/layout/Layout.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,7 +96,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="8a2fbda8-20e1-4e01-9d22-741a966261eb" name="Changes" comment="" />
+      <changelist id="ebe82fa7-3933-496c-b352-636d2375644a" name="Changes" comment="" />
       <created>1720704603143</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -163,6 +139,10 @@
       <workItem from="1729834126434" duration="3382000" />
       <workItem from="1729851790484" duration="4043000" />
       <workItem from="1729925528194" duration="8505000" />
+      <workItem from="1729937798984" duration="62000" />
+      <workItem from="1730010839580" duration="4061000" />
+      <workItem from="1730025541727" duration="48000" />
+      <workItem from="1730097798506" duration="732000" />
     </task>
     <servers />
   </component>
