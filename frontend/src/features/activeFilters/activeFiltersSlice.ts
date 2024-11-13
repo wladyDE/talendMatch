@@ -13,14 +13,14 @@ export interface ActiveFilters {
   costcenterFilter: IOption
 }
 
-const state = {
+export const defaultFilterState = {
   skillFilters: [],
   nameFilter: '',
-  costcenterFilter: {id : 0, displayName : '-'}
+  costcenterFilter: { id: '0', displayName: '-' }
 }
 
 const storedFilters = JSON.parse(
-  localStorage.getItem('filters') || JSON.stringify(state)) as ActiveFilters;
+  localStorage.getItem('filters') || JSON.stringify(defaultFilterState)) as ActiveFilters;
 
 const initialState: ActiveFilters = storedFilters
 
@@ -59,7 +59,7 @@ const activeFiltersSlice = createSlice({
       state.costcenterFilter = action.payload
 
       localStorage.setItem('filters', JSON.stringify(state));
-    },
+    }
   },
 });
 

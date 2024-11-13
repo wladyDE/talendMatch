@@ -21,11 +21,13 @@ const EmployeeList = () => {
     const [data, setData] = useState<IEmployeeListData>({ currentPageEmployees: [], totalPage: 0 })
     const [page, setPage] = useState(1)
     const [filteredEmployees, setFilteredEmployees] = useState<IEmployee[]>([]);
+    const [isLoading, setIsLoading] = useState(true);
     const navigate = useNavigate();
     const employeeNumber = 10
 
 
     useEffect(() => {
+        setIsLoading(true);
         const filtered = filterEmployees(employees, activeFilters);
         setFilteredEmployees(filtered);
 
@@ -36,6 +38,7 @@ const EmployeeList = () => {
             currentPageEmployees: filtered.slice(startIndex, endIndex),
             totalPage: Math.ceil(filtered.length / employeeNumber),
         });
+        setIsLoading(false);
     }, [page, employees, activeFilters]);
 
     const handleChangePage = (newPage: number) => {
@@ -46,8 +49,8 @@ const EmployeeList = () => {
         navigate(`${Paths.profile}/${employeeId}`);
     };
 
-    if (filteredEmployees.length === 0) {
-        return <p>Es gibt momentan keine Mitarbeiter, die Ihren Suchkriterien entsprechen</p>
+    if (!isLoading && filteredEmployees.length === 0) {
+        return <p>Es gibt momentan keine Mitarbeiter, die Ihren Suchkriterien entsprechen</p>;
     }
 
     return (
