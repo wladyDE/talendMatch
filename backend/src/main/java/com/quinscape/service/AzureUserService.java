@@ -120,7 +120,7 @@ public class AzureUserService {
 
                 ByteArrayInputStream inputStream = new ByteArrayInputStream(photoBytes);
                 BufferedImage originalImage = ImageIO.read(inputStream);
-                BufferedImage resizedImage = resizeImage(originalImage, 200, 200);
+                BufferedImage resizedImage = resizeImage(originalImage, 300, 300);
 
                 ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
                 ImageIO.write(resizedImage, "jpg", outputStream);

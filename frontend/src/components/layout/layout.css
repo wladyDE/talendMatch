@@ -1,5 +1,5 @@
 @media (min-width: 1600px) {
     .app-container {
-        height: 100vh;
+        min-height: 100vh;
     }
 }
