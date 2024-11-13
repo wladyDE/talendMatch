@@ -18,7 +18,11 @@ public class AzureUserMapper {
 
         List<AzureUser> userDTOList = new ArrayList<>();
         for (JsonNode userNode : usersArray) {
-            userDTOList.add(buildAzureUser(userNode));
+            String displayName = userNode.path("displayName").asText();
+
+            if (!displayName.equals("On-Premises Directory Synchronization Service Account")) {
+                userDTOList.add(buildAzureUser(userNode));
+            }
         }
 
         return userDTOList;
