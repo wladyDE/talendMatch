@@ -25,7 +25,6 @@ const EmployeeList = () => {
     const navigate = useNavigate();
     const employeeNumber = 10
 
-
     useEffect(() => {
         setIsLoading(true);
         const filtered = filterEmployees(employees, activeFilters);

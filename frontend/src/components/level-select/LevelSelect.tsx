@@ -46,13 +46,15 @@ const LevelSelect: React.FC<SkillLevelSelectorProps> = ({ skillId, showAll, valu
     };
 
     const addCurrentUserSkill = async (level: Level) => {
-        try {
-            await addSkillToEmployee({
-                skill,
-                level
-            }).unwrap();
-        } catch (error) {
-            console.error("Failed to add skill:", error);
+        if (selectedLevel !== parseInt(level.levelId)) {
+            try {
+                await addSkillToEmployee({
+                    skill,
+                    level
+                }).unwrap();
+            } catch (error) {
+                console.error("Failed to add skill:", error);
+            }
         }
     };
 
@@ -77,7 +79,7 @@ const LevelSelect: React.FC<SkillLevelSelectorProps> = ({ skillId, showAll, valu
                             key={index}
                             title={level.levelName}
                             onMouseEnter={isNotCurrentUser || value.type === 'ACTIVE_FILTER' ? undefined : () => setHoveredLevel(index + 1)}
-                            onMouseLeave={isNotCurrentUser || value.type === 'ACTIVE_FILTER'  ? undefined : () => setHoveredLevel(0)}
+                            onMouseLeave={isNotCurrentUser || value.type === 'ACTIVE_FILTER' ? undefined : () => setHoveredLevel(0)}
                             className="level"
                             style={{
                                 backgroundColor:
