@@ -1,10 +1,11 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
+
 import { selectCurrentUser} from '../../features/currentUser/currentUserSlice'
 import { selectTheme } from '../../features/theme/themeSlice'
 import { styles as currentStyles } from '../../styles/styles'
-import './skillsCheckBox.css'
 import { useToggleSkillsVisibilityMutation } from '../../app/services/currentUser'
+import './skillsCheckBox.css'
 
 const SkillsCheckBox = () => {
     const currentUser = useSelector(selectCurrentUser)

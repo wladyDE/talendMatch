@@ -8,6 +8,7 @@ import com.quinscape.repository.SkillCategoryRepository;
 import com.quinscape.repository.SkillRepository;
 import com.quinscape.repository.SkillSubcategoryRepository;
 import jakarta.annotation.PostConstruct;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -21,6 +22,7 @@ public class SkillInitializer {
     SkillCategoryRepository skillCategoryRepository;
 
     @PostConstruct
+    @Transactional
     public void init() {
         SkillCategory softSkills = new SkillCategory(null, "Soft Skills");
         SkillCategory hardSkills = new SkillCategory(null, "Hard Skills");

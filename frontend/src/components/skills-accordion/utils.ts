@@ -20,9 +20,7 @@ export const getFilterCount = (
 ) => {
   let filterCount = 0
 
-  activeFilters.skillFilters.forEach(activeFilter => {
-    console.log(user);
-    
+  activeFilters.skillFilters.forEach(activeFilter => {    
     user?.employeeSkills.forEach(employeeSkill => {
       if (employeeSkill.skill.skillSubcategory.skillSubcategoryName === subcategoryName
         && employeeSkill.skill.skillId === parseInt(activeFilter.skillId)

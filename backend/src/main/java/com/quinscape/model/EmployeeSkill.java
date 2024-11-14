@@ -18,7 +18,7 @@ import lombok.*;
 public class EmployeeSkill {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long employeeSkillId;
 
     @ManyToOne
     @JoinColumn(name = "employee_id", nullable = false)

@@ -3,6 +3,7 @@ package com.quinscape.data;
 import com.quinscape.model.Level;
 import com.quinscape.repository.LevelRepository;
 import jakarta.annotation.PostConstruct;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -12,6 +13,7 @@ public class LevelInitializer {
     private LevelRepository levelRepository;
 
     @PostConstruct
+    @Transactional
     public void init() {
         if (levelRepository.count() == 0) {
             levelRepository.save(new Level(null, "Einsteiger"));

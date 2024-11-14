@@ -14,10 +14,8 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.util.Base64;
-import java.util.HashMap;
+import java.util.*;
 import java.util.List;
-import java.util.Map;
 
 @Service
 public class AzureUserService {
@@ -118,9 +116,9 @@ public class AzureUserService {
             if (response.getStatusCode().is2xxSuccessful()) {
                 byte[] photoBytes = response.getBody();
 
-                ByteArrayInputStream inputStream = new ByteArrayInputStream(photoBytes);
+                ByteArrayInputStream inputStream = new ByteArrayInputStream(Objects.requireNonNull(photoBytes));
                 BufferedImage originalImage = ImageIO.read(inputStream);
-                BufferedImage resizedImage = resizeImage(originalImage, 300, 300);
+                BufferedImage resizedImage = resizeImage(originalImage);
 
                 ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
                 ImageIO.write(resizedImage, "jpg", outputStream);
@@ -145,9 +143,10 @@ public class AzureUserService {
     }
 
 
-    private BufferedImage resizeImage(BufferedImage originalImage, int targetWidth, int targetHeight) {
-        Image resultingImage = originalImage.getScaledInstance(targetWidth, targetHeight, Image.SCALE_SMOOTH);
-        BufferedImage outputImage = new BufferedImage(targetWidth, targetHeight, BufferedImage.TYPE_INT_RGB);
+    private BufferedImage resizeImage(BufferedImage originalImage) {
+        int imageResolution = 300;
+        Image resultingImage = originalImage.getScaledInstance(imageResolution, imageResolution, Image.SCALE_SMOOTH);
+        BufferedImage outputImage = new BufferedImage(imageResolution, imageResolution, BufferedImage.TYPE_INT_RGB);
         outputImage.getGraphics().drawImage(resultingImage, 0, 0, null);
         return outputImage;
     }

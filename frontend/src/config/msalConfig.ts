@@ -4,7 +4,7 @@ const msalConfig = {
   auth: {
     clientId: process.env.REACT_APP_CLIENT_ID || "",
     authority: process.env.REACT_APP_AUTHORITY || "",
-    redirectUri: "http://localhost:3000",
+    redirectUri: window.location.origin,
   },
   cache: {
     cacheLocation: "sessionStorage",

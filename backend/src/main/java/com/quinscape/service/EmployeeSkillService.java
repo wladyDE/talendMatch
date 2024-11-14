@@ -33,7 +33,7 @@ public class EmployeeSkillService {
                 .orElseThrow(() -> new EntityNotFoundException("Employee not found"));
         Skill skill = skillRepository.findById(employeeSkillDTO.getSkillId())
                 .orElseThrow(() -> new EntityNotFoundException("Skill not found"));
-        Level level = levelRepository.findById(employeeSkillDTO.getLevel())
+        Level level = levelRepository.findById(employeeSkillDTO.getLevelId())
                 .orElseThrow(() -> new EntityNotFoundException("Level not found"));
 
         Optional<EmployeeSkill> existingEmployeeSkill = employeeSkillRepository.findByEmployeeAndSkill(employee, skill);

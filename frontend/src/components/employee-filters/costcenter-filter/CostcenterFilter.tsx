@@ -1,8 +1,8 @@
 import React from 'react';
 import { Col, Form } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
 
 import CustomSelect from '../../custom-select/CustomSelect';
-import { useDispatch, useSelector } from 'react-redux';
 import { changeCostcenterFilter, selectActiveFilters } from '../../../features/activeFilters/activeFiltersSlice';
 import { IOption } from '../../custom-select/CustomSelect';
 

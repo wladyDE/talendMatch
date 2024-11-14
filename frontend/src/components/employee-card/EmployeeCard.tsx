@@ -9,6 +9,7 @@ import {
     FaHome
 } from 'react-icons/fa'
 import { useSelector } from 'react-redux';
+
 import { selectTheme } from '../../features/theme/themeSlice';
 import { styles as currentStyles } from '../../styles/styles';
 import { IEmployee } from '../../features/currentUser/currentUserSlice';

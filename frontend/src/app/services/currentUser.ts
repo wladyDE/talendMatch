@@ -15,7 +15,7 @@ export const currentUserApi = api.injectEndpoints({
             query: ({ skill, level }) => ({
                 url: `/me/skill`,
                 method: 'POST',
-                body: { skillId: skill.skillId, level: level.levelId },
+                body: { skillId: skill.skillId, levelId: level.levelId },
             }),
         }),
         toggleSkillsVisibility: builder.mutation<void, { skillsVisibility: boolean }>({

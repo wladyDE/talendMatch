@@ -1,15 +1,15 @@
 import React from 'react'
 import { Row, Col } from 'react-bootstrap';
+import { useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 
 import Layout from '../components/layout/Layout'
 import SkillAccordions from '../components/skills-accordion/SkillAccordions';
 import EmployeeCard from '../components/employee-card/EmployeeCard';
-import { useSelector } from 'react-redux';
 import { selectTheme } from '../features/theme/themeSlice';
 import { centeredFlexBox, styles as currentStyles } from '../styles/styles';
 import { selectCurrentUser } from '../features/currentUser/currentUserSlice';
 import SkillsCheckBox from '../components/skills-checkbox/SkillsCheckBox';
-import { useParams } from 'react-router-dom';
 import { selectEmployees } from '../features/employees/employeesSlice';
 import NotFoundPage from './NotFoundPage';
 

@@ -1,9 +1,9 @@
 import React from 'react';
 import { Image } from 'react-bootstrap';
 import { FaUser } from 'react-icons/fa';
-import './profilePhoto.css';
-import { centeredFlexBox } from '../../styles/styles';
 
+import { centeredFlexBox } from '../../styles/styles';
+import './profilePhoto.css';
 interface ProfilBildProps {
     theme: 'dark' | 'light';
     photo: string | null;

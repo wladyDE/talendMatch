@@ -1,12 +1,12 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux';
+import { Row } from 'react-bootstrap';
 
 import { selectTheme } from '../../features/theme/themeSlice';
 import { removeSkillFilter, selectActiveFilters } from '../../features/activeFilters/activeFiltersSlice';
 import LevelSelect from '../level-select/LevelSelect';
 import { styles as currentStyles } from '../../styles/styles';
 import './activeFilter.css'
-import { Row } from 'react-bootstrap';
 
 
 const ActiveFilters = () => {

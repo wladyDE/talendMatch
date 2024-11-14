@@ -5,15 +5,14 @@ import Navbar from 'react-bootstrap/Navbar';
 import { Image } from 'react-bootstrap';
 import { useLocation, Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { selectTheme } from '../../features/theme/themeSlice';
 
+import { selectTheme } from '../../features/theme/themeSlice';
 import { Paths } from '../../constants/paths';
 import LightLogo from '../../img/dataciders_quinscape_black.png';
-import './header.css';
-
 import { styles as currentStyles } from '../../styles/styles';
 import LogoutButton from './buttons/LogoutButton';
 import ThemeButton from './buttons/ThemeButton';
+import './header.css';
 
 const Header = () => {
     const location = useLocation();

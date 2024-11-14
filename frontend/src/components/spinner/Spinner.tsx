@@ -1,7 +1,7 @@
 import React from 'react'
 import { Spinner as BootstrapSpinner } from 'react-bootstrap';
-
 import { useSelector } from 'react-redux';
+
 import { selectTheme } from '../../features/theme/themeSlice';
 import { styles as currentStyles } from '../../styles/styles';
 

@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+
 import { RootState } from "../../app/store";
 import { skillsApi } from "../../app/services/skills";
 

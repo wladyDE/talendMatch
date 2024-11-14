@@ -7,6 +7,7 @@ import com.quinscape.service.AzureTokenService;
 import com.quinscape.service.AzureUserService;
 import com.quinscape.service.EmployeeService;
 import jakarta.annotation.PostConstruct;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -26,6 +27,7 @@ public class EmployeeInitializer {
     private AzureTokenService azureTokenService;
 
     @PostConstruct
+    @Transactional
     public void init() {
         try {
             String graphAccessToken = azureTokenService.getGraphAccessToken();

@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+
 import { RootState } from "../../app/store";
 import { type Level } from '../../app/services/levels';
 import { type Skill } from '../skills/skillsSlice';
