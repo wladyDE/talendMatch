@@ -5,6 +5,18 @@ Easily find the right talent for your project needs through smart search and int
 
 ---
 
+This is how the employee profile looks after authentication.
+![Profile page](./frontend/src/img/readme/profile.jpg)
+
+You can fill in your own skills, make your profile visible not only to team leads but also to other employees. There is also an option in the menu to switch to dark mode and log out of the account.
+![Profile page](./frontend/src/img/readme/profile2.jpg)
+
+This is what the employee search page looks like. You can search by name, department, or skills.
+![Search page](./frontend/src/img/readme/search.png)
+
+And this is what the page looks like when we have selected a few skills for a search.
+![Search page](./frontend/src/img/readme/search%20active.jpg)
+
 ## ✨ Features
 
 - 🔐 Secure Microsoft Entra ID (SSO, OAuth2) authentication
@@ -27,6 +39,7 @@ Easily find the right talent for your project needs through smart search and int
 - Spring Boot
 - PostgreSQL
 - Microsoft Graph API
+- Microsoft Entra ID
 
 ---
 
